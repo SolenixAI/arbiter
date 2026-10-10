@@ -1,0 +1,55 @@
+name: Problem in the file
+description: Report a fragment in AGENTS.md, such as a contradiction, an unknown or a landmine.
+title: "§N: "
+labels: ["needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. A fragment with a source is a task we can act on at once.
+  - type: input
+    id: section
+    attributes:
+      label: Section
+      description: The section number, or "root".
+      placeholder: §6
+    validations:
+      required: true
+  - type: dropdown
+    id: body
+    attributes:
+      label: Body
+      description: Which form of the rule has the problem?
+      options:
+        - Docus (text)
+        - Experis (formula)
+        - Imples (diagram)
+        - More than one, or they disagree
+    validations:
+      required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: Fragment type
+      options:
+        - "<⊥> contradiction: two facts that cannot both be true"
+        - "<≠> divergence: a fact that is not from its one source of truth"
+        - "<?> unknown: a question with no answer yet"
+        - "<!> landmine: a thing that will cause a failure"
+        - "<~> unmeasured: a claim with no measurement"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What is wrong
+      description: Quote the exact text, formula or diagram line.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: A link, a file path or a result that shows the problem, with its date.
+    validations:
+      required: true

@@ -299,7 +299,7 @@ flowchart TD
   - TTT = {[expected execution time, event dates]} to the goal, each predicted, then compared with the actual (§7).
   - Fix the check (a pass or fail test) before you build, and the target: metric, direction, next Fibonacci number.
 - Loop: measure the baseline, build, measure again.
-  - Keep a change only if checks pass and either it wins beyond noise, or is required or simpler (§9) within noise.
+  - Keep a change only if checks pass, and it wins beyond noise or is required or simpler (§9) within noise.
   - Same input, different result: declare a `<~>` with its rate, and raise the rate until you can debug it.
 - Lock, the ratchet: each kept win is the new baseline and sets the next Fibonacci target. Revert the rest.
   - After two reverts of one idea, change the approach, not the details.

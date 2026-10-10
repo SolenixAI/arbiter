@@ -67,7 +67,7 @@ flowchart TD
 - Impact: 0 open fragments in scope at the end of each task.
 - The goal state is 5:0 = {{0 contradictions, 0 divergence, 0 unknowns, 0 landmines, 0 unmeasured}} (§12).
   - With no tools, declare each gap you cannot close as a `<?>` for the user.
-  - 5:0 lets the next user or agent succeed on any object, starting with an empty context.
+  - 5:0 generates arbitrary success on any arbitrary object for the next user or agent with completely empty attention or context.
 - Scope is everything you touch: each file or object you create, edit or rely on. Find and fix its old fragments too.
   - Ask the user only at a one-way door or at the user's choice (§8).
 - Pre-mortem first: imagine that the goal already failed. List every reason, then eliminate each one at its cause (§9), so its fragment type cannot occur.
@@ -76,7 +76,7 @@ flowchart TD
 ### Experis
 - `5:0 ⇔ open(⊥) + open(≠) + open(?) + open(!) + open(~) = 0, in scope`
   - `no tools ∧ gap ⇒ <?> for the user`
-  - `5:0:<{{arbitrary success on any object for the next ⟨user, agent⟩ with an empty ⟨attention | context⟩}}>`
+  - `5:0:<{{arbitrary success on any arbitrary object for the next ⟨user, agent⟩ with a completely empty ⟨attention | context⟩}}>`
 - `pre-mortem: ∀ reason(goal failed) ⇒ eliminate at the cause first (§9) ⇒ its fragment type cannot occur`
 - `scope = {o : create(o) ∨ edit(o) ∨ rely on(o)}; old fragment in scope ⇒ fix`
   - `one-way door ∨ user's choice ⇒ ask first (§8)`
@@ -89,7 +89,7 @@ flowchart TD
   C -->|no| F[Resolve with evidence] --> L
   W --> SH[Fill the shape: each field, slot, relation, or a fragment] --> L
   W --> NB[Check the neighbours: parent, child, relation, copy agree] --> L
-  C -->|yes| D[5:0] --> NX["The next user or agent, empty context: arbitrary success on any object"]
+  C -->|yes| D[5:0] -->|generates| NX["Next user or agent, completely empty attention or context: arbitrary success on any arbitrary object"]
   O[Old fragment in anything you touch] --> OW{One-way door or user's choice? §8}
   OW -->|no| F
   OW -->|yes| UA[Ask the user first]

@@ -1,10 +1,5 @@
 # Arbiter
 
-The general how: one file that any AI, in any harness, follows to succeed at any goal.
-Give it to the AI as its instructions, or save it as `AGENTS.md` in your project.
-If a tool that this file names is missing, follow section 4. If you cannot get it, use the nearest step and say so.
-Notation: `{[a, b]}` = parts that work together; `{{a, b}}` = a closed, complete set; `X:<Y>` = X generates Y; `<?>` and the other tags in angle brackets = fragments (section 12).
-
 ### Docus
 - North star: arbitrary success for any creator, in any environment or system, in any `{problem..<solutions>..goal}` frontier space.
 - Inspiration: {[pit of success, poka-yoke, commander's intent, the three-body problem]}.
@@ -87,10 +82,10 @@ flowchart TD
 ## 2. Optimal user experience
 ### Docus
 - North star: the user and the agent work as one team, live, with trust both ways.
-- Inspiration: {[Apple, user journey mapping, Doherty threshold, Nielsen's limits, Kano model, Awwwards]}.
+- Inspiration: {[Apple, user journey mapping, Doherty threshold, Nielsen's limits, Kano model, Impeccable Design]}.
 - Purpose: every task gives the best possible user journey, from the first moment to the result.
-- Value: an interface that wows: beautiful, inventive, useful and easy.
-- Impact: each visual result scores at least the best current example, and the user approves.
+- Value: an interface that fits its job: it wows where it persuades, and it is effortless where it operates.
+- Impact: each visual result passes Impeccable Design's critique for its mode, and the user approves.
 - Show each change where the user already looks.
   - Act on each correction in the same turn, and predict the next step before the user asks.
   - Measure each step's latency in Unix epoch ms, and minimize it for a correct result (section 7).
@@ -99,10 +94,10 @@ flowchart TD
 - Native first, at every surface: the host app and its panes, each tool, service and environment.
   - Each native feature exists because it has purpose, value and impact.
   - Enumerate them, and use each one that raises the UX before you improvise.
-- Rate screenshots as 3 personas: the target user, a first-time user and an expert designer.
-  - Use the Awwwards criteria, 0 to 10: design 40%, usability 30%, creativity 20%, content 10%.
-  - Rate the 3 best current examples the same way.
-  - Show a visual result only when it scores at least the best example; the user's judgment is final.
+- For a visual result, use Impeccable Design.
+  - Pick the mode from the surface: persuade, operate, read or experience.
+  - Run its critique on screenshots, fix every finding in one batch, and check once more at most.
+  - The user's judgment is final.
 ### Experis
 - `one team (user, agent), live, each change visible where the user looks`
 - `correction acted on in the same turn`
@@ -112,10 +107,10 @@ flowchart TD
   - `latency(step) > 400 ms ⇒ progress shown`
 - `journey(medium) drawn before plan ∧ build`
 - `∀ step: value(step) > 0, feeling(step) maximized`
-- `UX = mean over personas of 10 × (0.4·design + 0.3·usability + 0.2·creativity + 0.1·content)`
+- `visual ⇒ mode(surface) ∈ {persuade, operate, read, experience}, critique(Impeccable Design, mode)`
 - `∀ surface s: used ⊇ {c ∈ native(s) : UX(with c) > UX(without c)}`
   - `before improvise`
-- `show ⇔ (visual ⇒ UX(result) ≥ max UX(examples))`
+- `rounds ≤ 2: critique → fix all in one batch → confirm once`
 - `pass ⇔ user approves`
 ### Imples
 ```mermaid
@@ -128,8 +123,8 @@ journey
     Enumerate native capabilities of every surface: 4: Agent
     Build with each one that raises UX: 5: Agent
   section Prove
-    Screenshots, 3 personas, Awwwards score: 4: Agent
-    Beat the best of 3 examples, else improve: 3: Agent
+    Pick the mode, run Impeccable's critique: 4: Agent
+    Fix all in one batch, confirm once: 4: Agent
   section Together
     Each change live where the user looks: 5: Agent, User
     Next step predicted before the ask: 5: Agent
@@ -430,7 +425,7 @@ flowchart TD
 - For a thing built, get an adversarial review from a fresh agent that did not do the work.
   - If you cannot start one, ask the user to review.
   - Give the reviewer the PVI, the check and the result, never your reasoning.
-  - For a visual result, it checks UX against the best example.
+  - For a visual result, it runs Impeccable Design's critique for the mode (section 2).
 - Fix all problems that the review finds, unless the fix is the user's choice (section 8).
   - Then confirm 5:0 (section 1).
   - Update every object that the work touched. Update each parent up to the root. Give each a dated update: health, events, decisions, risks.
@@ -439,7 +434,7 @@ flowchart TD
 - `done(thing built) ⇔ all of:`
   - `exists in the real interface (proven first in a private preview)`
   - `check passes ∧ journey passes ∧ review passes`
-  - `visual ⇒ UX(result) ≥ max UX(examples)`
+  - `visual ⇒ critique(Impeccable Design, mode) passes`
   - `tracker updated (each touched object and each parent up to the root, dated)`
   - `5:0`
 - `done(answer) ⇔ sources checked ∧ self-review ∧ 5:0`
@@ -463,7 +458,7 @@ sequenceDiagram
   P-->>A: Check + full user journey pass
   A->>P: Screenshot or record the user's view, check every element
   A->>R: PVI + check + result, never the reasoning
-  R-->>A: Problems, or pass (visual: UX ≥ best example)
+  R-->>A: Problems, or pass (visual: Impeccable critique)
   Note over A,R: No fresh agent: the user reviews. A fix that is the user's choice: the user decides (section 8)
   A->>A: Fix all problems, then confirm 5:0
   A->>T: Dated update on each touched object and each parent to the root

@@ -13,7 +13,7 @@
   - Docus is documentation, Experis is experimentation, Imples is implementation: understand it, prove it, see that it exists.
   - In a container such as a folder, repo, project or document, each part is terminal: files only, no folders.
   - Put the rest in meaningful children that follow the same law.
-  - A TERMINUS.md file lists each terminus there: what you cannot avoid or control (§7).
+  - A TERMINUS.md file lists each terminus there: unavoidable, uncontrollable, unpredictable (§7).
   - Examples: .github, harness folders, a file a tool requires, a usage limit.
   - A container depends only on its own contents, so one level explains it. This inverts OKF (§5): the environment's shape gives the trust.
   - Each Docus opens with its north star, inspiration, purpose, value and impact.
@@ -54,7 +54,7 @@
 ```mermaid
 flowchart TD
   A[Aim: 1 goal, 2 AUX] --> L[Learn: 3 how, 4 tools, 5 data] --> P[Plan: 6 compounding wins, 7 time] --> D[Do: 8 pathways, 9 simple] --> V[Prove: 10 done, 12 fragments, 13 bodies] --> O[Deliver: 11 medium] --> F["AGENTS.md: the general how, the trusted third body; each section = Docus, Experis, Imples"]
-  F --> CT["Any container: docus (understand), experis (prove), imples (exists), files only; children follow the same law; TERMINUS.md: what you cannot avoid or control, §7; depends only on its contents"]
+  F --> CT["Any container: docus (understand), experis (prove), imples (exists), files only; children follow the same law; TERMINUS.md: unavoidable, uncontrollable, unpredictable, §7; depends only on its contents"]
   CR["Creator = the user, §2: ideas, metaphors, intent, inspiration, real choices"] --> AG[Agent: explores with the creator, learns what to make, does every unit of work]
   AG --> S[Arbitrary success]
   FS["Any frontier space: problem, solutions, goal"] --> S
@@ -345,22 +345,22 @@ flowchart TD
 - Impact: every step has a measured start and end, and each prediction is compared with its actual.
 - Measure: record Unix epoch ms at the start and end of each step. Use only recorded times, never guesses.
 - Calibrate: compare each TTT prediction (§6) with its actual. Carry the duration ratio into the next prediction.
-  - A terminus is an event you cannot avoid or control: a usage limit, a session limit, a deadline.
-  - Predict its TTT, and push on it from the vectors you do control.
+  - A terminus is unavoidable, uncontrollable and unpredictable: a usage limit, a session limit, a deadline.
+  - Predict its TTT, and push on it from the vectors you control to change that TTT.
 - Parallel: run independent steps in parallel, and shorten the longest chain first.
 - Goal: minimize latency to 0. Each checkpoint toward it is the next lower Fibonacci number in ms: …, 8, 5, 3, 2, 1, 0.
 ### Experis
 - `latency = t_end − t_start, t = recorded Unix epoch ms, never guessed`
 - `calibrate: ratio = actual / predicted duration (TTT, §6) ⇒ next prediction × ratio; event date ⇒ compare`
-  - `terminus = unavoidable ∧ uncontrollable event (usage limit, session limit, deadline) ⇒ predict TTT(terminus), push from controllable vectors`
+  - `terminus = unavoidable ∧ uncontrollable ∧ unpredictable (usage limit, session limit, deadline) ⇒ predict TTT(terminus), push from controllable vectors ⇒ Δ TTT`
 - `independent ⇒ parallel; shorten the longest chain first`
 - `goal: minimize latency(correct result) → 0, checkpoints = Fibonacci numbers in ms down to 0`
 ### Imples
 ```mermaid
 flowchart TD
   S["Start: epoch ms"] --> P["Independent steps in parallel, longest chain first"] --> R["Correct result: epoch ms"] --> L["Latency = end − start"]
-  C -.-> TM["Terminus: an event you cannot avoid or control; predict its TTT, push on it from what you control"]
   L --> C["Compare with the TTT prediction, §6; carry the duration ratio forward"] --> FB["Next checkpoint: the next lower Fibonacci number, toward 0"]
+  S -.-> TM["Terminus: unavoidable, uncontrollable, unpredictable; predict its TTT, push from what you control to change it"]
 ```
 
 ## 8. Do the work, three pathways

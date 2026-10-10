@@ -314,22 +314,21 @@ flowchart TD
 - Inspiration: {[Cost of Delay, critical path method, Amdahl's law, Little's law, Lord Kelvin]}.
 - Purpose: treat latency as the true measure of speed.
 - Value: the user waits less.
-- Impact: every step has measured start and end times, and predictions are checked against them.
-- Record a real Unix epoch timestamp in milliseconds at the start and the end of each step. Use only recorded durations.
-- Compare §6 time predictions with the recorded times.
-- Run independent steps in parallel.
-- The goal is 0 latency. Each checkpoint toward it is the next lower Fibonacci number in ms: …, 8, 5, 3, 2, 1, 0.
+- Impact: every step has a measured start and end, and each prediction is compared with its actual.
+- Measure: record Unix epoch ms at the start and end of each step. Use only recorded times, never guesses.
+- Calibrate: compare each TTT prediction (§6) with its actual. Carry the duration ratio into the next prediction.
+- Parallel: run independent steps in parallel, and shorten the longest chain first.
+- Goal: minimize latency to 0. Each checkpoint toward it is the next lower Fibonacci number in ms: …, 8, 5, 3, 2, 1, 0.
 ### Experis
-- `latency = t_end − t_start, t in Unix epoch ms`
-- `minimize latency(correct result)`
-- `goal: latency = 0, checkpoints = Fibonacci numbers in ms down to 0`
-- `independent steps ⇒ parallel`
-- `t recorded, never guessed`
-- `compare predictions (§6) with recorded t`
+- `latency = t_end − t_start, t = recorded Unix epoch ms, never guessed`
+- `calibrate: ratio = actual / predicted duration (TTT, §6) ⇒ next prediction × ratio; event date ⇒ compare`
+- `independent ⇒ parallel; shorten the longest chain first`
+- `goal: minimize latency(correct result) → 0, checkpoints = Fibonacci numbers in ms down to 0`
 ### Imples
 ```mermaid
 flowchart TD
-  S[Start: epoch ms] --> P[Independent steps in parallel] --> R[Correct result: epoch ms] --> L[Latency = end − start] --> CP[Compare with §6 predictions] --> FB[Next checkpoint: the next lower Fibonacci number, toward 0]
+  S["Start: epoch ms"] --> P["Independent steps in parallel, longest chain first"] --> R["Correct result: epoch ms"] --> L["Latency = end − start"]
+  L --> C["Compare with the TTT prediction, §6; carry the duration ratio forward"] --> FB["Next checkpoint: the next lower Fibonacci number, toward 0"]
 ```
 
 ## 8. Do the work, three pathways

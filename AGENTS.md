@@ -154,6 +154,7 @@ flowchart TD
 - Value: almost everything already exists, at least in fragments, so the work becomes a step-by-step recipe. When the recipe is known, the failures are skipped.
 - Impact: each plan object has 5 independent sources before you build.
 - Learn from the best first: the section's inspiration and the best examples.
+  - Before you change or remove a thing, learn why it exists (Chesterton's fence).
   - Enumerate every field, feature, option or object that applies.
   - Search the web, docs, live configurations, files, skills, plugins, connectors and data that the task names or needs.
 - Every task starts with at least 5 open web searches, each an open human question of 5 to 10 words.
@@ -162,7 +163,7 @@ flowchart TD
   - Layer 1 is now: where are we, and what must we know?
   - Read the open fragments first, then search in reverse chronology from now (§5).
 - Each part of the goal has many attempts that race toward it, like branches in a git graph. Use the attempt that is furthest along, and build only the missing 1%.
-- Discovery ends when each object has 5 independent sources, at least 3 in agreement and 0 against (§13).
+- Discovery ends when each object has 5 sources with no shared origin, at least 3 in agreement and 0 against (§13).
   - Record them in the tracker (§10).
   - If the searches end with fewer than 5, declare a `<?>` that blocks the start of the work. When done, show the 5.
   - Then plan with sections 6 and 8.
@@ -170,7 +171,7 @@ flowchart TD
   - With the user's yes, build from the best fragments. Record the yes as the evidence that resolves the `<?>`.
   - When a valuable feature causes a problem, learn its correct use.
 ### Experis
-- `learn(how) → enumerate(set) → searches ≥ 5, each an open question`
+- `learn(how) → enumerate(set) → searches ≥ 5, each an open question; change ∨ remove(x) ⇒ learn why(x) first`
 - `L₁ = now: state + open fragments → what to search or know`
   - `search ⊆ sources the task names or needs, order = reverse chronology from t_now (§5)`
 - `q = open human question, 5 to 10 words, ends in ?`
@@ -180,7 +181,7 @@ flowchart TD
   - `build only the missing 1%; known(recipe) ⇒ failures → 0`
 - `hard ⇒ Fib3 tree ≤ 1 + 2 + 6 = 9 questions`
   - `grow(branch) ⇔ new gap`
-- `stop ⇔ ∀ object: |sources(object)| ≥ 5 ∧ agree ≥ 3 ∧ against = 0 (§13)`
+- `stop ⇔ ∀ object: |sources(object), no shared origin| ≥ 5 ∧ agree ≥ 3 ∧ against = 0 (§13)`
   - `searches done ∧ fewer ⇒ <?>, which blocks start(work)`
   - `done ⇒ show the 5`
 - `¬exists after discovery ⇒ tell the user`
@@ -190,12 +191,13 @@ flowchart TD
 ```mermaid
 flowchart TD
   G[Goal] --> L[Learn how: inspiration, best examples, enumerate] --> F1["L1 = now: where are we? open fragments, then reverse chronology, §5"] --> Q["At least 5 open searches; hard problem: Fib3 tree, spawns 2 then 3; only new gaps grow"] --> S[Search what the task names or needs: web, docs, config, files, skills, data]
-  S --> A[Answers + sources] -->|something found| N{Every object has 5 sources, 3 in agreement, 0 against?}
+  S --> A[Answers + sources] -->|something found| N{Every object has 5 sources, no shared origin, 3 in agreement, 0 against?}
   N -->|no, searches not done| Q
   N -->|no, searches done| X3["Declare ?, which blocks the start"]
   N -->|yes| R[Recipe: furthest attempt per part, build only the 1%] --> P[Plan: check, baseline, pathways] --> B[Do the work]
   A -->|nothing exists| U["Tell the user; with a yes, build from the best fragments; the yes is the evidence that resolves the ?"]
   L -.-> NB[Feature causes a problem: learn its correct use]
+  L -.-> CF[Before you change or remove a thing: learn why it exists]
 ```
 
 ## 4. Install, use, configure, understand

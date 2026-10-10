@@ -11,9 +11,10 @@
 - The creator brings ideas, beautiful metaphors, intent and inspiration. The agent explores them with the creator to learn what to make.
 - Each section, and any container, has three parts: Docu(Ω)s, Experi(Ω)s and Imple(Ω)s, where Ω = mentation.
   - Docus is documentation, Experis is experimentation, Imples is implementation: understand it, prove it, see that it exists.
-  - In a container such as a folder, repo or project, each part is terminal: files only, no folders.
-  - Put the rest in meaningful children that follow the same law. A TERMINUS.md file lists what others control.
-  - A container depends only on its own contents, so one level explains it. This turns OKF (§5) into the environment's shape.
+  - In a container such as a folder, repo, project or document, each part is terminal: files only, no folders.
+  - Put the rest in meaningful children that follow the same law.
+  - A TERMINUS.md file lists what others control there, such as .github, harness folders and files a tool requires.
+  - A container depends only on its own contents, so one level explains it. This inverts OKF (§5): the environment's shape gives the trust.
   - Each Docus opens with its north star, inspiration, purpose, value and impact.
   - An inspiration is a well-known named exemplar outside this environment: a hyper-condensed form or standard. It is not rated.
   - The north star condenses purpose, value and impact.
@@ -32,8 +33,8 @@
 - `{[purpose, value, impact]}:<{[north star]}>`
   - `impact = 5:0 ⇔ open fragments in scope = 0 (§1, §12)`
 - `AGENTS.md = general how = trusted third body (§13); creator = user (§2)`
-  - `∀ container c: c = {{docus, experis, imples}} + children + TERMINUS.md; parts terminal: files only`
-  - `docus = documentation, experis = experimentation, imples = implementation; deps(c) ⊆ contents(c) ⇒ one level explains c`
+  - `∀ container c: c = {{docus, experis, imples}} + children + TERMINUS.md; parts terminal: files only; ∀ child ∈ children(c): child is a container`
+  - `docus = documentation → understand; experis = experimentation → prove; imples = implementation → see it exists; deps(c) ⊆ contents(c) ⇒ one level explains c`
   - `section = {{Docus, Experis, Imples}}, Ω = mentation; Docus opens with {{north star, inspiration, purpose, value, impact}}`
 - `creator = {[ideas, beautiful metaphors, intent, inspiration, real choices]}`
   - `agent = explore(creator, together) → what to make → every unit of work`
@@ -52,7 +53,7 @@
 ```mermaid
 flowchart TD
   A[Aim: 1 goal, 2 AUX] --> L[Learn: 3 how, 4 tools, 5 data] --> P[Plan: 6 compounding wins, 7 time] --> D[Do: 8 pathways, 9 simple] --> V[Prove: 10 done, 12 fragments, 13 bodies] --> O[Deliver: 11 medium] --> F["AGENTS.md: the general how, the trusted third body; each section = Docus, Experis, Imples"]
-  F --> CT["Any container: docus, experis, imples, files only; meaningful children; TERMINUS.md; depends only on its contents"]
+  F --> CT["Any container: docus (understand), experis (prove), imples (exists), files only; children follow the same law; TERMINUS.md; depends only on its contents"]
   CR["Creator = the user, §2: ideas, metaphors, intent, inspiration, real choices"] --> AG[Agent: explores with the creator, learns what to make, does every unit of work]
   AG --> S[Arbitrary success]
   FS["Any frontier space: problem, solutions, goal"] --> S
@@ -269,7 +270,7 @@ flowchart TD
 - Give each fact its source and the date of that source, as a clickable link or a file path.
   - Copy the exact URL that the tool returns into each link.
   - Write all knowledge in OKF (Open Knowledge Format), in every store. Redact every secret first.
-  - OKF is the trust framework for files between agents, people and sessions. Each file states its type, sources, dates and status.
+  - OKF is the trust framework for files between agents, people and sessions. Each file states its type, sources, dates and status. A container's shape adds trust by design (root).
 ### Experis
 - `decision = argmax over options of metric(option)`
   - `with a score, probability or confidence when data supports one`
@@ -278,7 +279,7 @@ flowchart TD
 - `error(SOT) ⇒ §13`
 - `no data ⇒ <?>, ¬guessed value; assumed(number) ⇒ <~>`
 - `order(sources) = reverse chronology from t_now (epoch ms); bisect any [t₁, t₂]`
-- `knowledge ⇒ OKF ∧ secrets redacted, OKF = trust header: type, sources, dates, status`
+- `knowledge ⇒ OKF ∧ secrets redacted, OKF = trust header: type, sources, dates, status; container shape ⇒ trust by design (root)`
 ### Imples
 ```mermaid
 flowchart TD
@@ -287,7 +288,7 @@ flowchart TD
   D -->|no data| U["Declare ?, never a guessed value"]
   D -->|assumed number| U2["Declare ~"]
   E -->|SOT may be wrong| S13[Check with §13]
-  E --> K["Every doc, every store: OKF trust header (type, sources, dates, status), secrets redacted"]
+  E --> K["Every doc, every store: OKF trust header (type, sources, dates, status), secrets redacted; a container's shape adds trust by design"]
 ```
 
 ## 6. Compounding wins

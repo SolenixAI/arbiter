@@ -96,7 +96,7 @@ flowchart TD
   - Enumerate them, and use each one that raises the UX before you improvise.
 - For a visual result, use Impeccable Design.
   - Pick the mode from the surface: persuade, operate, read or experience.
-  - Run its critique on screenshots, fix every finding in one batch, and check once more at most.
+  - Run its critique on screenshots, fix every finding in one batch, and confirm once.
   - The user's judgment is final.
 ### Experis
 - `one team (user, agent), live, each change visible where the user looks`
@@ -108,10 +108,10 @@ flowchart TD
 - `journey(medium) drawn before plan ∧ build`
 - `∀ step: value(step) > 0, feeling(step) maximized`
 - `visual ⇒ mode(surface) ∈ {persuade, operate, read, experience}, critique(Impeccable Design, mode)`
-- `∀ surface s: used ⊇ {c ∈ native(s) : UX(with c) > UX(without c)}`
+- `∀ surface s: used ⊇ {c ∈ native(s) : c raises the UX}`
   - `before improvise`
 - `rounds ≤ 2: critique → fix all in one batch → confirm once`
-- `pass ⇔ user approves`
+- `pass ⇔ critique passes ∧ user approves`
 ### Imples
 ```mermaid
 journey
@@ -200,7 +200,7 @@ flowchart TD
   3. Make it the 1 SOT, with 0 divergence (sections 1 and 5).
   4. Prove it with POE.
   5. Use it.
-- Keep the output at full quality: install what it needs. If no tool or version has the capability, tell the user.
+- Keep the output at full quality: install what it needs. If no tool or version has the capability, use the nearest step and tell the user.
 - Before you use or configure a tool for the first time, read its official docs and its live configuration.
 - Before you rely on a tool's output, predict the results for a few cases. Then compare the real results with your predictions. If any result differs, you misunderstand the tool: read the docs again.
 ### Experis
@@ -208,7 +208,7 @@ flowchart TD
 - `lacks(tool, y) ∧ needs(goal, y) ⇒ find(y) → install(y, official source) → SOT(y)`
   - `divergence = 0 → POE(y) → use(y)`
 - `output quality = full, install what it needs`
-- `¬exists(y) ⇒ tell the user`
+- `¬exists(y) ⇒ use the nearest step ∧ tell the user`
 - `first use ⇒ read(docs, live config)`
 - `understood ⇔ ∀ sample case: predicted output = real output`
 ### Imples
@@ -216,7 +216,7 @@ flowchart TD
 flowchart TD
   T[Tool] --> H{Has every capability the goal needs?}
   H -->|no| F[Find a tool or version that has it]
-  F -->|none exists| X["Tell the user; keep the output at full quality"]
+  F -->|none exists| X["Use the nearest step, tell the user; keep the output at full quality"]
   F --> I[Install from the official source, only what the goal needs + make it the 1 SOT] --> D
   H -->|yes| FU{First use?}
   FU -->|yes| D[Read docs + live config] --> P[Predict a few results] --> R[Run]

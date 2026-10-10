@@ -273,7 +273,7 @@ flowchart TD
 - Impact: each kept change beats its baseline, then becomes the next baseline.
 - Why: first state the PVI² {{north star, inspiration, purpose, value, impact}}, and keep its one direction.
   - To choose what to build, or between options that tie on evidence (§8), rate each part 0 to 5.
-  - Score = 20 × ⁵√(purpose × value × impact × certainty × ease), the mean of 3 raters, one per disjoint body (§13).
+  - Score = 20 × ⁵√(purpose × value × impact × certainty × ease). Take the mean of 3 raters, one per disjoint body (§13).
   - Certainty counts the bodies that agree on the impact (§13), up to 5. Below 4, the impact is a `<?>`.
   - Purpose or value 0: not now. Ease 0: record the blocker. Do the highest score first.
 - Goal: make it SMART: specific, measurable, achievable, relevant, and TTT (time to terminus).
@@ -537,7 +537,7 @@ stateDiagram-v2
 - Value: trust that does not rest on one source. A contradiction is certain; agreement only builds trust.
 - Impact: 3 or more bodies agree and 0 disagree. If each body is right 77% of the time (assumed, `<~>`), that is 97% trust, with a prior of 0.5.
 - A body is a disjoint system in its own world: a bank, a mailbox, a project tracker, a phone call.
-  - Bodies that share an origin count as one: copies or tool views of one source, or agents of one base model.
+  - Bodies with a shared origin count as one: copies or tool views of one source, agents of one base model.
   - A value read live from its SOT is the reference.
 - Count the bodies that agree now:
   - 1 body is an observation. Declare a `<?>` fragment.

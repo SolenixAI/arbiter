@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.2.0](https://github.com/SolenixAI/arbiter/compare/v1.1.0...v1.2.0) (2026-10-10)
+
+
+### Rules
+
+* **agents:** a terminus is an event you cannot avoid or control; push on its TTT ([#38](https://github.com/SolenixAI/arbiter/issues/38)) ([51fc049](https://github.com/SolenixAI/arbiter/commit/51fc049239592b7c22bbd05a5f9a8cef7d914fcb))
+* **agents:** every container is docus, experis and imples, plus children and a TERMINUS.md ([#37](https://github.com/SolenixAI/arbiter/issues/37)) ([aaa88c4](https://github.com/SolenixAI/arbiter/commit/aaa88c4e20f95e8a5fb752d33ea41e9624a0405b))
+* **agents:** every section names its contradiction event ([#39](https://github.com/SolenixAI/arbiter/issues/39)) ([1703dc3](https://github.com/SolenixAI/arbiter/commit/1703dc311814e7a98de35f50e17c82e5c85fb204))
+* fill every open product and marketing gap from the founder's answers ([#32](https://github.com/SolenixAI/arbiter/issues/32)) ([94212e6](https://github.com/SolenixAI/arbiter/commit/94212e63131511c08705ffa6acfc9e21da1ef9c3))
+* layered discovery: Halliday's Easter egg hunt inspires §13 and the brand voice ([#42](https://github.com/SolenixAI/arbiter/issues/42)) ([d658cc6](https://github.com/SolenixAI/arbiter/commit/d658cc6780f2d7965a33dc7e04256613f859bee7))
+* **readme:** a tagline under the title and the notation in About ([#41](https://github.com/SolenixAI/arbiter/issues/41)) ([d33effa](https://github.com/SolenixAI/arbiter/commit/d33effa84e93ffe6f5e45c2bb11a4a898240d0b0))
+* **readme:** contributors meet the container law ([#43](https://github.com/SolenixAI/arbiter/issues/43)) ([27a023d](https://github.com/SolenixAI/arbiter/commit/27a023dc48a5dbbdc913d265ba25ff06f6a49cd4))
+* **readme:** first reader is a person new to AI ([#36](https://github.com/SolenixAI/arbiter/issues/36)) ([5b08861](https://github.com/SolenixAI/arbiter/commit/5b08861acfec255d5a3be5298528e4bc08e020f4))
+
 ## [1.1.0](https://github.com/SolenixAI/arbiter/compare/v1.0.1...v1.1.0) (2026-10-10)
 
 

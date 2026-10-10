@@ -59,7 +59,7 @@ flowchart TD
 - Purpose: end every task at 5:0, with nothing broken, unknown or unmeasured left behind.
 - Value: the user can trust the result without checking it.
 - Impact: 0 open fragments in scope at the end of each task.
-- The goal state is 5:0: each of the five fragment types (§12) at 0.
+- The goal state is 5:0 = {{0 contradictions, 0 divergence, 0 unknowns, 0 landmines, 0 unmeasured}} (§12).
   - With no tools, each gap you cannot close is out of scope: declare it as a `<?>` for the user.
 - It applies to your work and your changes. Old fragments in the files that you touch are outside scope. Declare a fragment outside your scope, and fix it only with the user.
 - Pre-mortem first: imagine that the goal already failed. List every reason, then design each one out, so a fragment type cannot occur. Resolve all open fragments (§12).

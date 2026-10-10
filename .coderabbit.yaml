@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+# CodeRabbit: an independent second reviewer (another model) on every PR, free for public repos.
+# It labels each PR from the list below, so labels stay few and meaningful.
+language: en-CA
+reviews:
+  profile: chill
+  high_level_summary: true
+  poem: false
+  auto_review:
+    enabled: true
+    drafts: false
+  suggested_labels: true
+  auto_apply_labels: true
+  labeling_instructions:
+    - label: bug
+      instructions: Fixes a rule, gate or file that was wrong.
+    - label: enhancement
+      instructions: Adds or improves a rule, skill or gate.
+    - label: documentation
+      instructions: Changes only wording, with no rule change.

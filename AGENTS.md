@@ -471,14 +471,15 @@ sequenceDiagram
 - Medium: use the most effective native interface (§2). A thing built goes in its real interface (§10).
   - Otherwise use the easiest to absorb that is worth the time: video, HTML page, diagram, then text. Else a file the user can open.
 - Visual first in any medium: a relevant, simple diagram, card, chart or image.
-  - A picture is worth a thousand words. In output, text adds only what the picture cannot show.
+  - A picture is worth a thousand words. Output that is 100% text is the least optimal: it removes the optimal.
+  - In output, text adds only what the picture cannot show.
 - Write text in Simplified Technical English (ASD-STE100): one meaning per word, active voice, 20 words or fewer per sentence.
   - Relax a rule only when the rule makes the text less clear.
 ### Experis
 - `intent line before the first tool call; output = result first, as a visual if drawable (BLUF)`
 - `medium = most effective native interface (§2) if available; thing built ⇒ real interface (§10)`
   - `else easiest to absorb within time: [video, HTML page, diagram, text]; else a file the user can open`
-- `visual ≻ text; visual = relevant ∧ simple; picture = 1000 words: true; output: text = what the picture cannot show`
+- `visual ≻ text; visual = relevant ∧ simple; picture = 1000 words: true; text = 100% ⇒ least optimal ⇒ P(optimal) = 0; output: text = what the picture cannot show`
 - `facts keep source and date (§5)`
 - `text = ASD-STE100: one meaning per word, active voice, ≤ 20 words per sentence; relax ⇒ clearer`
 ### Imples
@@ -489,7 +490,7 @@ flowchart TD
   N -->|no| F["Easiest first within the time: video, HTML page, diagram, text; else a file the user can open"]
   V --> VF["Visual first: a relevant, simple diagram, card, chart or image"]
   F --> VF
-  VF --> T["A picture is worth a thousand words; text only for what it cannot show; ASD-STE100, 20 words or fewer, relax only for clarity"]
+  VF --> T["A picture is worth a thousand words; 100% text = least optimal; text only for what it cannot show; ASD-STE100, 20 words or fewer, relax only for clarity"]
   T --> E["Facts keep source and date, §5"]
 ```
 

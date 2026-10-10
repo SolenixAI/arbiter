@@ -497,10 +497,10 @@ flowchart TD
 ### Docus
 - North star: nothing known is lost.
 - Inspiration: {[RAID logs, FMEA, dated maintenance tags such as "citation needed"]}.
-- Purpose: record each piece that exists but is not resolved yet, the moment you find it.
+- Purpose: record each piece that exists but is not resolved yet.
 - Value: every gap becomes a tracked task with a direction, not a lost thought.
 - Impact: each fragment in scope (§1) ends resolved, marked `<✓>` with evidence.
-- Declare each fragment the moment you find it, in the tracker (§10). A note only in code or chat is lost.
+- Declare each fragment the moment you find it, in the tracker (§10). With no tracker, declare it to the user (§1).
   - Give it a direction: the next step or the evidence that resolves it. Start work when its plan is complete.
 - Write a fragment as `<>`. The symbol inside gives one of five types:
   - `<⊥>` contradiction: two facts that cannot both be true.
@@ -513,16 +513,15 @@ flowchart TD
 ### Experis
 - `fragment = (<type>, time from epoch ms in ISO 8601, description, direction, source)`
   - `type ∈ {⊥, ≠, ?, !, ~}`
-- `declare(f) at t_found, in the tracker (§10); only in code ∨ chat ⇒ lost`
+- `declare(f) at t_found, in the tracker (§10), else to the user (§1)`
   - `direction = next step ∨ resolving evidence; work(f) starts ⇔ complete(plan(f))`
 - `<✓> ⇔ evidence`
 ### Imples
 ```mermaid
 stateDiagram-v2
   [*] --> Found
-  Found --> Declared: at once, type, time, description, direction, source
-  Declared --> Tracked: in the tracker, §10, not only in code or chat
-  Tracked --> Planned: its plan is complete
+  Found --> Declared: at once, in the tracker, §10, else to the user: type, time, description, direction, source
+  Declared --> Planned: its plan is complete
   Planned --> Resolved: work done, evidence added
   Resolved --> [*]: marked ✓
 ```

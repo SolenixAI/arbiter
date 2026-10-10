@@ -163,7 +163,7 @@ flowchart TD
   - Layer 1 is now: where are we, and what must we know?
   - Read the open fragments first, then search in reverse chronology from now (§5).
 - Each part of the goal has many attempts that race toward it, like branches in a git graph. Use the attempt that is furthest along, and build only the missing 1%.
-- Discovery ends when each object has 5 sources with no shared origin, at least 3 in agreement and 0 against (§13).
+- Discovery ends when each object has 5 sources of separate origin: at least 3 agree, 0 against (§13).
   - Record them in the tracker (§10).
   - If the searches end with fewer than 5, declare a `<?>` that blocks the start of the work. When done, show the 5.
   - Then plan with sections 6 and 8.

@@ -9,7 +9,11 @@
 - Impact: work done right the first time, with 5:0: zero open fragments (§1, §12).
 - The agent and the creator, who is the user (§2), are a trusted pair. This file is the trusted third body (§13) and the general how.
 - The creator brings ideas, beautiful metaphors, intent and inspiration. The agent explores them with the creator to learn what to make.
-- Each section has three parts: Docu(Ω)s, Experi(Ω)s and Imple(Ω)s, where Ω = mentation.
+- Each section, and any container, has three parts: Docu(Ω)s, Experi(Ω)s and Imple(Ω)s, where Ω = mentation.
+  - Docus is documentation, Experis is experimentation, Imples is implementation: understand it, prove it, see that it exists.
+  - In a container such as a folder, repo or project, each part is terminal: files only, no folders.
+  - Put the rest in meaningful children that follow the same law. A TERMINUS.md file lists what others control.
+  - A container depends only on its own contents, so one level explains it. This turns OKF (§5) into the environment's shape.
   - Each Docus opens with its north star, inspiration, purpose, value and impact.
   - An inspiration is a well-known named exemplar outside this environment: a hyper-condensed form or standard. It is not rated.
   - The north star condenses purpose, value and impact.
@@ -28,6 +32,8 @@
 - `{[purpose, value, impact]}:<{[north star]}>`
   - `impact = 5:0 ⇔ open fragments in scope = 0 (§1, §12)`
 - `AGENTS.md = general how = trusted third body (§13); creator = user (§2)`
+  - `∀ container c: c = {{docus, experis, imples}} + children + TERMINUS.md; parts terminal: files only`
+  - `docus = documentation, experis = experimentation, imples = implementation; deps(c) ⊆ contents(c) ⇒ one level explains c`
   - `section = {{Docus, Experis, Imples}}, Ω = mentation; Docus opens with {{north star, inspiration, purpose, value, impact}}`
 - `creator = {[ideas, beautiful metaphors, intent, inspiration, real choices]}`
   - `agent = explore(creator, together) → what to make → every unit of work`
@@ -46,6 +52,7 @@
 ```mermaid
 flowchart TD
   A[Aim: 1 goal, 2 AUX] --> L[Learn: 3 how, 4 tools, 5 data] --> P[Plan: 6 compounding wins, 7 time] --> D[Do: 8 pathways, 9 simple] --> V[Prove: 10 done, 12 fragments, 13 bodies] --> O[Deliver: 11 medium] --> F["AGENTS.md: the general how, the trusted third body; each section = Docus, Experis, Imples"]
+  F --> CT["Any container: docus, experis, imples, files only; meaningful children; TERMINUS.md; depends only on its contents"]
   CR["Creator = the user, §2: ideas, metaphors, intent, inspiration, real choices"] --> AG[Agent: explores with the creator, learns what to make, does every unit of work]
   AG --> S[Arbitrary success]
   FS["Any frontier space: problem, solutions, goal"] --> S

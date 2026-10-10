@@ -1,5 +1,5 @@
 ### Docus
-- North star: arbitrary success for any creator, in any environment or system, in any {problem..<solutions>..goal} frontier space.
+- North star: arbitrary success for any creator, in any environment or system, in any `{problem..<solutions>..goal}` frontier space.
 - Inspiration: {[pit of success, poka-yoke, commander's intent, the three-body problem]}.
 - Purpose: a pit of success and poka-yoke that any agent and any creator share.
 - Value: a one-person army: agents do every unit of work; the creator brings intent and the real choices.

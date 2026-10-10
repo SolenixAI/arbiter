@@ -146,7 +146,7 @@ flowchart TD
 - Purpose: turn every problem into a learning-how problem before any work.
 - Value: almost everything already exists, at least in fragments, so the work becomes a step-by-step recipe. When the recipe is known, the failures are skipped.
 - Impact: each plan object has 5 independent sources before you build.
-- Learn from the best first: the inspiration (§6) and the best examples.
+- Learn from the best first: the section's inspiration and the best examples.
   - Enumerate every field, feature, option or object that applies.
   - Search the web, docs, live configurations, files, skills, plugins, connectors and data that the task names or needs.
 - Every task starts with at least 5 open web searches, each an open human question of 5 to 10 words.
@@ -272,33 +272,40 @@ flowchart TD
 - Value: progress compounds; nothing proven is lost.
 - Impact: each kept change beats its baseline, then becomes the next baseline.
 - Why: first state the PVI² {{north star, inspiration, purpose, value, impact}}, and keep its one direction.
-  - To choose, score each option: 20 × ⁵√(purpose × value × impact × certainty × ease), each part 0 to 5.
-  - Certainty counts agreeing bodies (§13). Do the highest score first; a 0 means not now.
+  - To choose what to build, or between options that tie on evidence (§8), rate each part 0 to 5.
+  - Score = 20 × ⁵√(purpose × value × impact × certainty × ease), the mean of 3 independent raters (§13).
+  - Certainty counts the bodies that agree on the impact (§13), up to 5. Below 4, the impact is a `<?>`.
+  - Purpose or value 0: not now. Ease 0: record the blocker. Do the highest score first.
 - Goal: make it SMART: specific, measurable, achievable, relevant, and TTT (time to terminus).
-  - TTT = {[expected execution time, predictions, dates]} to the goal, each predicted, then compared with the actual (§7).
-  - Fix the check before you build: metric, direction, next Fibonacci target.
+  - TTT = {[expected execution time, event dates]} to the goal, each predicted, then compared with the actual (§7).
+  - Fix the check (a pass or fail test) before you build, and the target: metric, direction, next Fibonacci number.
 - Loop: measure the baseline, build, measure again.
-  - Keep a change only if checks pass and it wins beyond noise, or is required or simpler within noise.
-  - Same input, different result: declare a `<~>` with its rate, and raise the rate first.
-- Lock: each kept win is the new baseline; revert the rest. After repeated reverts, change the approach.
+  - Keep a change only if checks pass and either it wins beyond noise, or is required or simpler (§9) within noise.
+  - Same input, different result: declare a `<~>` with its rate, and raise the rate until you can debug it.
+- Lock, the ratchet: each kept win is the new baseline and sets the next Fibonacci target. Revert the rest.
+  - After two reverts of one idea, change the approach, not the details.
 ### Experis
-- `{{why, goal, loop}}:<{[compounding wins]}>, lock = ratchet`
-- `why = PVI², one direction; choose ⇒ score = 20 · (P · V · I · C · E)^(1/5), C from §13, 0 ⇒ not now`
-- `goal = SMART, T = TTT (time to terminus) = {[expected execution time, predictions, dates]}, predicted → actual (§7)`
-  - `check(metric, direction, next Fibonacci target) fixed before build`
-- `keep ⇔ checks ∧ (Δ > noise ∨ ((required ∨ simpler) ∧ Δ ≥ −noise))`
-- `same input ∧ different result ⇒ <~>(rate), raise the rate`
-- `lock: kept ⇒ baseline := win; else revert; repeated reverts ⇒ new approach`
+- `{{why, goal, loop}}:<{[compounding wins]}>, lock = the ratchet`
+- `why = PVI², one direction`
+  - `choose(what to build) ∨ options tie on evidence (§8) ⇒ score = mean over 3 raters (§13) of 20 · (P · V · I · C · E)^(1/5)`
+  - `each part ∈ {0, …, 5}; C = bodies agreeing on impact (§13), C < 4 ⇒ impact is <?>; highest score first`
+  - `P = 0 ∨ V = 0 ⇒ not now; E = 0 ⇒ blocked, record it`
+- `goal = SMART, T = TTT = {[expected execution time, event dates]}, predicted → actual (§7)`
+  - `check = pass ∨ fail, fixed before build; target = next Fibonacci number of (metric, direction)`
+- `keep ⇔ checks pass ∧ (Δ > noise ∨ ((required ∨ simpler (§9)) ∧ Δ ≥ −noise))`
+  - `Δ = metric(change) − metric(baseline)`
+- `same input ∧ different result ⇒ <~>(rate), raise the rate until debuggable`
+- `lock: kept ⇒ baseline := win, target := next Fibonacci; else revert; 2 reverts of one idea ⇒ new approach`
 ### Imples
 ```mermaid
 flowchart TD
-  W["Why: PVI², one direction; to choose, score"] --> G["Goal: SMART, T = TTT (time to terminus), fixed check"]
+  W["Why: PVI², one direction; score to choose"] --> G["Goal: SMART with TTT; pass or fail check; Fibonacci target"]
   G --> B["Loop: baseline, build, measure"]
-  B --> K{"Checks pass and wins beyond noise, or required or simpler within noise?"}
-  K -->|yes| L["Lock: new baseline"]
-  L ==>|next Fibonacci target| G
-  K -->|no| R["Revert; repeated reverts: new approach"] --> B
-  B -.->|same input, different result| Z["~ with its rate"]
+  B --> K{"Checks pass, and a win beyond noise, or required or simpler within noise?"}
+  K -->|yes| L["Lock, the ratchet: new baseline, next target"]
+  L ==> G
+  K -->|no| R["Revert; 2 reverts of one idea: new approach"] --> B
+  B -.->|same input, different result| Z["~ with its rate; raise it"]
 ```
 
 ## 7. Time matters

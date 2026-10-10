@@ -273,7 +273,7 @@ flowchart TD
 - Impact: each kept change beats its baseline, then becomes the next baseline.
 - Why: first state the PVI² {{north star, inspiration, purpose, value, impact}}, and keep its one direction.
   - To choose what to build, or between options that tie on evidence (§8), rate each part 0 to 5.
-  - Score = 20 × ⁵√(purpose × value × impact × certainty × ease), the mean of 3 independent raters (§13).
+  - Score = 20 × ⁵√(purpose × value × impact × certainty × ease), the mean of 3 raters, one per disjoint body (§13).
   - Certainty counts the bodies that agree on the impact (§13), up to 5. Below 4, the impact is a `<?>`.
   - Purpose or value 0: not now. Ease 0: record the blocker. Do the highest score first.
 - Goal: make it SMART: specific, measurable, achievable, relevant, and TTT (time to terminus).
@@ -287,7 +287,7 @@ flowchart TD
 ### Experis
 - `{{why, goal, loop}}:<{[compounding wins]}>, lock = the ratchet`
 - `why = PVI², one direction`
-  - `choose(what to build) ∨ options tie on evidence (§8) ⇒ score = mean over 3 raters (§13) of 20 · (P · V · I · C · E)^(1/5)`
+  - `choose(what to build) ∨ options tie on evidence (§8) ⇒ score = mean over 3 raters, one per disjoint body (§13), of 20 · (P · V · I · C · E)^(1/5)`
   - `each part ∈ {0, …, 5}; C = bodies agreeing on impact (§13), C < 4 ⇒ impact is <?>; highest score first`
   - `P = 0 ∨ V = 0 ⇒ not now; E = 0 ⇒ blocked, record it`
 - `goal = SMART, T = TTT = {[expected execution time, event dates]}, predicted → actual (§7)`
@@ -481,7 +481,7 @@ sequenceDiagram
 - `medium = most effective native interface (§2) if available; thing built ⇒ real interface (§10)`
   - `else easiest to absorb within time: [video, HTML page, diagram, text]; else a file the user can open`
 - `user's native interfaces = {{sight, hearing, touch, smell, taste}}; text = serial ⇒ hard to understand by design`
-- `visual ≻ text; visual = relevant ∧ simple; picture = 1000 words: true; text = 100% ⇒ least optimal ⇒ P(optimal) = 0; output: text = what the picture cannot show`
+- `visual ≻ text; visual = relevant ∧ simple; picture = 1000 words: true; text = 100% ⇒ least optimal ⇒ optimal flattened to 0; output: text = what the picture cannot show`
 - `facts keep source and date (§5)`
 - `text = ASD-STE100: one meaning per word, active voice, ≤ 20 words per sentence; relax ⇒ clearer`
 ### Imples
@@ -532,39 +532,39 @@ stateDiagram-v2
 ## 13. The three-body problem
 ### Docus
 - North star: every fact that you act on is trusted truth: every available body agrees, in real time.
-- Inspiration: {[triangulation, triple modular redundancy, Bayes' theorem, falsification]}.
+- Inspiration: {[triangulation, triple modular redundancy, Bayes' theorem, Popper's falsification]}.
 - Purpose: turn each discovery into trusted truth through disjoint bodies that agree.
 - Value: trust that does not rest on one source. A contradiction is certain; agreement only builds trust.
 - Impact: 3 or more bodies agree and 0 disagree. If each body is right 77% of the time (assumed, `<~>`), that is 97% trust, with a prior of 0.5.
 - A body is a disjoint system in its own world: a bank, a mailbox, a project tracker, a phone call.
-  - Bodies that share an origin count as one: copies of one source, one tool, or one base model.
+  - Bodies that share an origin count as one: copies or tool views of one source, or agents of one base model.
   - A value read live from its SOT is the reference.
 - Count the bodies that agree now:
   - 1 body is an observation. Declare a `<?>` fragment.
   - 2 bodies are good, but not trust yet. Find a third.
   - 3 bodies are the minimum for trust. Each body after 3 adds confidence.
 - Two or more bodies in agreement and one or more against is a contradiction event: declare a `<⊥>`.
-  - Fix the body that is wrong, or declare it.
+  - Find the wrong body and fix it there. The `<⊥>` stays open until fixed.
   - No two in agreement: declare a `<?>`.
   - A body with no record of the fact is a missing agreement: record it there, or declare it.
 - To discover, use bodies as probes: the answer is where they meet. This file states each rule three ways: text, formula and diagram. A fresh reviewer confirms that they agree.
 ### Experis
-- `n = |{disjoint bodies that hold fact f, now}|; shared origin (source, tool, base model) ⇒ 1 body`
+- `n = |{disjoint bodies that hold fact f, now}|; bodies with a shared origin (source, base model) = 1 body`
   - `the SOT value is the reference`
 - `P(true | n agree) = pⁿ / (pⁿ + (1 − p)ⁿ), prior 0.5, independent bodies`
 - `p = 0.77 (assumed, <~>) ⇒ n = 2: 92%, 3: 97%, 4: 99.2%, 5: 99.8%`
 - `n = 1 ⇒ ?, n = 2 ⇒ find a third`
 - `trust ⇔ n ≥ 3 ∧ against = 0`
-- `n ≥ 2 ∧ against ≥ 1 ⇒ ⊥ (certain) ⇒ fix ∨ declare the wrong body; agreement ⇒ trust only`
+- `n ≥ 2 ∧ against ≥ 1 ⇒ ⊥ (certain); find the wrong body, fix it, then ✓; agreement ⇒ trust only`
 - `no 2 agree ⇒ ?`
 - `silent body ⇒ missing agreement: record or declare`
 - `goal: n = |bodies|, concurrently`
 ### Imples
 ```mermaid
 flowchart TD
-  F[Fact] --> B["Read every disjoint body, each in its own world, now; a shared origin, tool or base model = 1 body; the SOT value is the reference"]
+  F[Fact] --> B["Read every disjoint body, each in its own world, now; a shared origin or base model = 1 body; the SOT value is the reference"]
   B --> D{Do bodies differ?}
-  D -->|2 or more agree, 1 or more against| C["Contradiction event, certain: declare ⊥, fix or declare the wrong body"]
+  D -->|2 or more agree, 1 or more against| C["Contradiction event, certain: declare ⊥, find the wrong body, fix it"]
   D -->|no 2 agree| U["Unknown: declare ?"]
   D -->|no| N{How many agree?}
   N -->|1| O["Observation: declare ?"]

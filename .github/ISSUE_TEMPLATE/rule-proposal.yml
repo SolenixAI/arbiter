@@ -1,0 +1,41 @@
+name: Rule proposal
+description: Propose a new rule, or a change to a rule, in AGENTS.md.
+title: "Proposal: "
+labels: ["needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Every token in AGENTS.md loads on every turn for every agent. A proposal earns its place with purpose, value and impact.
+  - type: input
+    id: section
+    attributes:
+      label: Section
+      description: The section number, or "new".
+      placeholder: §3
+    validations:
+      required: true
+  - type: textarea
+    id: rule
+    attributes:
+      label: The rule
+      description: Write it as an action, in 20 words or fewer per sentence.
+    validations:
+      required: true
+  - type: textarea
+    id: pvi
+    attributes:
+      label: Purpose, value and impact
+      description: Why it exists, what an agent gains, and the change it makes, with a number if you have one.
+    validations:
+      required: true
+  - type: textarea
+    id: inspiration
+    attributes:
+      label: Inspiration and sources
+      description: A well-known named exemplar, and the sources that support the rule.
+  - type: textarea
+    id: formula-diagram
+    attributes:
+      label: Formula and diagram (optional)
+      description: The same rule as a formula and as a mermaid diagram. A maintainer can write these for you.

@@ -2,7 +2,7 @@
 
 The general how: one file that any AI, in any harness, follows to succeed at any goal.
 Give it to the AI as its instructions, or save it as `AGENTS.md` in your project.
-If a tool that this file names is missing, use the nearest step and say so.
+If a tool that this file names is missing, follow section 4. If you cannot get it, use the nearest step and say so.
 Notation: `{[a, b]}` = parts that work together; `{{a, b}}` = a closed, complete set; `X:<Y>` = X generates Y; `<?>` and the other tags in angle brackets = fragments (section 12).
 
 ### Docus
@@ -238,7 +238,7 @@ flowchart TD
 - Purpose: decide from the newest relevant data, with each fact traced to one SOT.
 - Value: decisions that anyone can check, and facts that cannot diverge.
 - Impact: each fact carries a source and a date. Each decision carries a score, probability or confidence when data supports one.
-- Compare the options on the same metric. Give a score, a probability or a confidence when the data supports one. Use only numbers from data; if no data exists, declare a `<?>` fragment.
+- Compare the options on the same metric. Give a score, a probability or a confidence when the data supports one. Use only numbers from data. Mark an assumed number `<~>`. If no data exists, declare a `<?>` fragment.
 - Each fact is a single source of truth (SOT) or derives from one. Read it live, newest first, not from memory. Replace any other copy with a link to the SOT.
 - Real-time derivation makes divergence impossible by design. Derivation does not remove error: check a doubtful SOT with section 13.
 - Give each fact its source and the date of that source, as a clickable link or a file path.
@@ -250,7 +250,7 @@ flowchart TD
 - `fact = (value, exact source URL or file path, source date)`
 - `value = derive(SOT, now) ⇒ divergence = 0 by design`
 - `error(SOT) ⇒ section 13`
-- `no data ⇒ <?>`
+- `no data ⇒ <?>, assumed(number) ⇒ <~>`
 - `sources sorted newest first`
 - `knowledge ⇒ OKF`
 ### Imples
@@ -339,7 +339,7 @@ flowchart TD
 ### Docus
 - North star: teamwork makes the dream work; the agent does the work until only the user's choices remain.
 - Inspiration: {[1-3-1 rule, Completed Staff Work, one-way and two-way doors]}.
-- Purpose: do the work yourself, along the best of three pathways.
+- Purpose: do the work yourself, along the best of three pathways. Give the user finished work and only the choices that are theirs.
 - Value: the user decides only what is truly theirs.
 - Impact: no task waits on the user unless it needs the user's choice or approval.
 - State the 1 core problem first.
@@ -421,13 +421,13 @@ flowchart TD
 - Inspiration: {[Definition of Done, independent verification and validation]}.
 - Purpose: finish only when the thing exists in the real interface where the user will use it.
 - Value: the user receives working results, not claims.
-- Impact: check, journey and fresh review pass, the tracker is current, and 5:0 holds.
-- Scale the bar to the task. A thing you build gets this full bar; an answer gets checked sources and a self-review.
+- Impact: a thing built passes its check, journey and fresh review; an answer passes its own bar. The tracker is current, and 5:0 holds.
+- Scale the bar to the task. A thing you build gets this full bar; an answer gets checked sources, a self-review and 5:0.
   - Build it first in a private preview of the real interface, for example the app on the device.
   - Run the check and the full user journey there.
   - Then see it as the user sees it: screenshot or record the user's real view, and check every element.
   - Your data is half the truth; the user's view is the other half.
-- Then get an adversarial review from a fresh agent that did not do the work.
+- For a thing built, get an adversarial review from a fresh agent that did not do the work.
   - If you cannot start one, ask the user to review.
   - Give the reviewer the PVI, the check and the result, never your reasoning.
   - For a visual result, it checks UX against the best example.
@@ -458,7 +458,7 @@ sequenceDiagram
   participant R as Fresh reviewer
   participant T as Tracker: tasks, todos or plan
   participant U as User
-  Note over A,U: A thing built gets this whole flow. An answer gets checked sources and a self-review.
+  Note over A,U: A thing built gets this whole flow. An answer gets checked sources, a self-review and 5:0.
   A->>P: Build in the real interface
   P-->>A: Check + full user journey pass
   A->>P: Screenshot or record the user's view, check every element
@@ -577,7 +577,7 @@ flowchart TD
   D -->|no| N{How many agree?}
   N -->|1| O["Observation: declare ?"]
   N -->|2| G[Good: find a third]
-  N -->|3| T[Trust: 97% or more]
+  N -->|3| T["Trust: 97% or more, if each body is 77% right (assumed)"]
   N -->|4 or more| M[Trust: more confidence with each body]
   B -.->|a body has no record| Mi[Missing agreement: record it there or declare it]
   T --> Goal[Goal: every body agrees concurrently]

@@ -1,5 +1,7 @@
 # Arbiter by Solenix
 
+**Any AI, any harness, any goal, any user, ∞.**
+
 Arbiter by Solenix is one plain-text file, [`AGENTS.md`](AGENTS.md). Give it to your AI. It learns how to work before it acts, checks live facts before it guesses, and finishes with nothing left open.
 
 New to AI? An agent is an AI that does a task for you, step by step, not just one answer.
@@ -94,6 +96,8 @@ Each engine is an independent project. Their authors do not endorse Arbiter. Thi
 Solenix exists to bridge the gap between the technology that already exists and the people who need it. When the file works for them, it works for everyone in between.
 
 North star: arbitrary success for any creator, in any environment or system, in any `{problem..<solutions>..goal}` frontier space.
+
+In the file's own notation: `{{any AI, any harness, any goal, any user}}:<∞ arbitrary success>`.
 
 ## Contribute
 

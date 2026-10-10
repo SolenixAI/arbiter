@@ -89,7 +89,7 @@ flowchart TD
 - Show each change where the user already looks.
   - Act on each correction in the same turn, and predict the next step before the user asks.
   - Measure each step's latency in Unix epoch ms, and minimize it for a correct result (section 7).
-  - Show progress on any step over 400 ms.
+  - The goal is real-time feedback and 0 latency. Show live progress on any step that is not instant.
 - Before you build, draw the journey as a Mermaid `journey`: each stage, step and feeling from 1 to 5. Remove no-value steps and raise low feelings.
 - Native first, at every surface: the host app and its panes, each tool, service and environment.
   - Each native feature exists because it has purpose, value and impact.
@@ -104,7 +104,8 @@ flowchart TD
   - `next step predicted before the ask`
 - `latency(step) = t_end − t_start in Unix epoch ms`
   - `minimize latency(correct result) (section 7)`
-  - `latency(step) > 400 ms ⇒ progress shown`
+  - `goal: latency → 0, real-time feedback at every step`
+  - `latency(step) > 0 ⇒ live progress shown`
 - `journey(medium) drawn before plan ∧ build`
 - `∀ step: value(step) > 0, feeling(step) maximized`
 - `visual ⇒ mode(surface) ∈ {persuade, operate, read, experience}, critique(Impeccable Design, mode)`
@@ -128,7 +129,7 @@ journey
   section Together
     Each change live where the user looks: 5: Agent, User
     Next step predicted before the ask: 5: Agent
-    Latency in epoch ms, minimized, progress after 400 ms: 5: User
+    Real-time feedback, latency toward 0, live progress: 5: User
   section Judge
     User judges, the user's judgment is final: 5: User
 ```

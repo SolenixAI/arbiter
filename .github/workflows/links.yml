@@ -1,0 +1,36 @@
+name: links
+
+on:
+  pull_request:
+  schedule:
+    - cron: "0 7 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read # checkout only
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lychee:
+    name: no broken links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
+        with:
+          # Links to this repo's own main branch are checked against the files in this change, so a
+          # change that adds a file and links to it passes before it is merged.
+          # The action runs args through `eval` under `set -u`, so the capture reference must be
+          # escaped as \$1 or the shell fails with "$1: unbound variable" before lychee starts.
+          args: >-
+            --no-progress --max-retries 3
+            --remap "https://github.com/SolenixAI/arbiter/blob/main/(.*) file://${{ github.workspace }}/\$1"
+            --remap "https://raw.githubusercontent.com/SolenixAI/arbiter/main/(.*) file://${{ github.workspace }}/\$1"
+            "./**/*.md" "./**/*.json"
+          fail: true

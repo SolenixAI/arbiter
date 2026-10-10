@@ -92,8 +92,8 @@ flowchart TD
 
 ## 2. Optimal user experience
 ### Docus
-- North star: the user and the agent work as one team, live, with trust both ways.
-- Inspiration: {[Apple, user journey mapping, Doherty threshold, Nielsen's limits, Kano model]}.
+- North star: an optimal user experience, built live as one team, with trust both ways.
+- Inspiration: {[Apple, user journey mapping, real-time feedback loops, Nielsen's limits, Kano model]}.
 - Purpose: every task gives the best possible user journey, from the first moment to the result.
 - Value: an interface that fits its job: it wows where it persuades, and it is effortless where it operates.
 - Impact: each visual result gets its critique and audit, and the user approves.

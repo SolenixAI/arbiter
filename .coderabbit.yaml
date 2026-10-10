@@ -18,3 +18,5 @@ reviews:
       instructions: Adds or improves a rule, skill or gate.
     - label: documentation
       instructions: Changes only wording, with no rule change.
+  mutually_exclusive_groups:
+    change_type: [bug, enhancement, documentation]

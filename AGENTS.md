@@ -376,32 +376,33 @@ flowchart TD
 - Purpose: start from what correct looks like, not from the error.
 - Value: small, safe changes that are easy to review and undo.
 - Impact: every part of the change is needed, and the check passes.
-- Backcast: write the native, correct end state first. Keep only steps that the next step needs.
+- Backcast: write the native, correct end state first.
   - Offer the fewest native steps as a candidate pathway (§8).
-- Simplify, in order: question each requirement, delete, simplify, speed up, automate last.
+- Minimize, in this order: question each requirement, delete, simplify, speed up, automate last.
   - Change only what you must, and keep edge cases and their checks. An old fragment in anything you touch is a must (§1).
-  - Read your whole change, and drop what the task did not need. §6 keeps or reverts it.
-- Fix the cause: remove a wrong copy or layer instead of guarding it. For a cause outside your control, tell the user (§10).
+  - Read your whole change, and drop what the task did not need. §6 keeps or reverts the change.
+- Fix the cause: remove a wrong copy or layer instead of guarding it. For a cause outside your control, tell the user and do not work around it (§10).
   - Ask first when the removal is a one-way door (§8).
-- Error-proof: put each rule where the work is born, in the template, schema, form or default. Enforce it.
+- Error-proof: put each rule where the work is born, in the template, schema, form or default that every agent touches. No agent can miss it.
 ### Experis
-- `end = native correct state, written first; keep step ⇔ the next step needs it`
+- `end = native correct state, written first`
 - `fewest native steps(now → end) ⇒ a candidate pathway (§8)`
 - `order: question → delete → simplify → accelerate → automate`
-- `minimize size(change) s.t. check (§6) passes ∧ edge cases kept ∧ old fragments in scope fixed (§1)`
-- `wrong copy ∨ wrong layer ⇒ remove, not guard; cause outside control ⇒ tell the user (§10)`
+- `minimize size(change), subject to: check (§6) passes ∧ edge cases kept ∧ old fragments in scope fixed (§1)`
+- `wrong copy ∨ wrong layer ⇒ remove, not guard; cause outside control ⇒ tell the user ∧ ¬work around (§10)`
   - `one-way(remove) ⇒ ask first (§8)`
-- `rule ∈ template ∨ schema ∨ form ∨ default, enforced ⇒ ∀ agent: cannot miss(rule)`
+- `rule ∈ template ∨ schema ∨ form ∨ default ⇒ ∀ agent: cannot miss(rule)`
 ### Imples
 ```mermaid
 flowchart TD
-  P[Problem] --> E["Backcast: native end state; keep steps the next one needs"] --> N["Fewest native steps: a candidate pathway, §8"]
-  E --> RB["Error-proof: the rule in the template, schema, form or default, enforced"]
+  P[Problem] --> E["Backcast: native end state"] --> N["Fewest native steps: a candidate pathway, §8"]
+  E --> RB["Error-proof: the rule in the template, schema, form or default every agent touches"]
   N --> W{Wrong copy or layer in the way?}
+  W -->|yes, outside your control| TU["Tell the user, do not work around it, §10"]
   W -->|yes| O{"One-way door? §8"}
   O -->|yes| AS["Ask the user first, §8"] -->|approved| X
-  O -->|no| X["Remove it, do not guard it; outside your control: tell the user, §10"] --> M
-  W -->|no| M["Simplify: question, delete, simplify, speed up, automate last"] --> D["Read the whole change: keep edge cases and old-fragment fixes, §1; drop the rest"] --> C{Check passes?}
+  O -->|no| X["Remove it, do not guard it"] --> M
+  W -->|no| M["Minimum change: question, delete, simplify, speed up, automate last"] --> D["Read the whole change: keep edge cases and old-fragment fixes, §1; drop the rest"] --> C{Check passes?}
   C -->|no| M
 ```
 

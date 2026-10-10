@@ -182,7 +182,7 @@ journey
 ### Imples
 ```mermaid
 flowchart TD
-  G[Goal] --> L[Learn how: inspiration, the tool's own way, enumerate] --> F1["L1 = now: where are we? open fragments"] --> Q["At least 5 open searches; hard problem: Fib3 tree, spawns 2 then 3; only new gaps grow"] --> S[Search what the task names or needs: web, docs, config, files, skills, data]
+  G[Goal] --> L[Learn how: inspiration, best examples, enumerate] --> F1["L1 = now: where are we? open fragments"] --> Q["At least 5 open searches; hard problem: Fib3 tree, spawns 2 then 3; only new gaps grow"] --> S[Search what the task names or needs: web, docs, config, files, skills, data]
   S --> A[Answers + sources] -->|something found| N{Every object has 5 sources, 3 in agreement, 0 against?}
   N -->|no, searches not done| Q
   N -->|no, searches done| X3["Declare ?, which blocks the start"]
@@ -387,6 +387,7 @@ flowchart TD
 - Before you act, write the end state: correct, with the tool or system set up the native way.
   - Example: "one ffmpeg, with all features, on every path".
   - Take the fewest native steps there.
+  - Offer this path as a candidate pathway (§8).
 - Remove a wrong copy or a wrong layer, instead of a guard around it.
   - Ask first when the removal is a one-way door (§8).
   - Put each rule where the work is born: in the template, schema, form or default that every agent touches.
@@ -445,7 +446,7 @@ flowchart TD
 - `no fresh agent ⇒ the user reviews`
 - `reviewer input = (PVI, check, result, diff or spec), never your reasoning`
 - `review problems ⇒ fix in one batch, unless the brief or the user decides otherwise (§8)`
-- `done ⇒ deliver, then the user judges`
+- `done ⇒ deliver and show what now exists (visible to others ⇒ ask, §8), then the user judges`
 - `impossible ∨ wrong check ⇒ tell the user`
 - `checked ⇔ read(own data) ∧ seen(user's view: screenshot or recording)`
 ### Imples
@@ -461,11 +462,11 @@ sequenceDiagram
   P-->>A: Check + full user journey pass
   A->>P: Screenshot or record the user's view, check every element
   A->>R: PVI + check + result + diff or spec, never the reasoning
-  R-->>A: Problems, or pass (visual: Impeccable critique)
+  R-->>A: Problems, or pass (visual: §2 critique and audit)
   Note over A,R: No fresh agent: the user reviews. The brief or the user can keep a finding (§8)
   A->>A: Fix all problems, then confirm 5:0
   A->>T: Dated update on each touched object and each parent to the root
-  A->>U: Deliver in the real interface, ask before anything other people can see
+  A->>U: Deliver in the real interface, show what now exists, ask before anything other people can see
   U-->>A: Judges the result
   Note over A,U: Impossible or wrong check: tell the user
 ```
@@ -496,7 +497,7 @@ sequenceDiagram
 ### Imples
 ```mermaid
 flowchart TD
-  IL[First: one-line intent] --> O[Output] --> N{Native pane, widget or artifact?}
+  IL[First: one-line intent] --> O[Output] --> N{Native interface, §2?}
   N -->|yes| V["Deliver there; a thing built: its real interface, §10"]
   N -->|no| F["Easiest first: video, HTML page, diagram, text; else a file"]
   V --> VF["Visual first: diagram, card, chart, image; text only if it cannot be drawn"]

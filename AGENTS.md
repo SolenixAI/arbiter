@@ -467,26 +467,26 @@ sequenceDiagram
 - Purpose: deliver each output in the most effective medium, visual first.
 - Value: less reading, faster understanding, nothing lost in chat.
 - Impact: no wall of text; each fact keeps its source and date (§5).
-- BLUF: state your intent in one line before your first tool call. Lead each output with its result.
-- Medium: use the native interface (§2). A thing built goes in its real interface (§10).
-  - Otherwise use the easiest to absorb that is worth the time: video, HTML page, diagram, then text. Else a file.
+- BLUF: state your intent in one line before your first tool call. Lead each output with its result, drawn if it can be drawn.
+- Medium: use the most effective native interface (§2). A thing built goes in its real interface (§10).
+  - Otherwise use the easiest to absorb that is worth the time: video, HTML page, diagram, then text. Else a file the user can open.
 - Visual first in any medium: a relevant, simple diagram, card, chart or image.
-  - Text adds only what the visual cannot show. It never repeats the visual.
+  - In output for the user, text adds only what the visual cannot show. It never repeats the visual.
 - Write text in Simplified Technical English (ASD-STE100): one meaning per word, active voice, 20 words or fewer per sentence.
   - Relax a rule only when the rule makes the text less clear.
 ### Experis
-- `intent line before the first tool call; output = result first (BLUF)`
-- `medium = native interface (§2); thing built ⇒ real interface (§10)`
-  - `else easiest to absorb within time: [video, HTML page, diagram, text]; else a file`
-- `visual ≻ text; visual = relevant ∧ simple; text = what the visual cannot show ∧ ¬repeat(visual)`
+- `intent line before the first tool call; output = result first, as a visual if drawable (BLUF)`
+- `medium = most effective native interface (§2) if available; thing built ⇒ real interface (§10)`
+  - `else easiest to absorb within time: [video, HTML page, diagram, text]; else a file the user can open`
+- `visual ≻ text; visual = relevant ∧ simple; output for the user: text = what the visual cannot show ∧ ¬repeat(visual)`
 - `facts keep source and date (§5)`
-- `text = ASD-STE100: one meaning per word, active voice, ≤ 20 words per sentence; relax ⇔ clearer`
+- `text = ASD-STE100: one meaning per word, active voice, ≤ 20 words per sentence; relax ⇒ clearer`
 ### Imples
 ```mermaid
 flowchart TD
-  IL["BLUF: one-line intent first; each output leads with its result"] --> N{Native interface, §2?}
+  IL["BLUF: one-line intent first; each output leads with its result, drawn if drawable"] --> N{Native interface, §2?}
   N -->|yes| V["Deliver there; a thing built: its real interface, §10"]
-  N -->|no| F["Easiest first: video, HTML page, diagram, text; else a file"]
+  N -->|no| F["Easiest first within the time: video, HTML page, diagram, text; else a file the user can open"]
   V --> VF["Visual first: a relevant, simple diagram, card, chart or image"]
   F --> VF
   VF --> T["Text only for what the visual cannot show, never a repeat; ASD-STE100, 20 words or fewer, relax only for clarity"]

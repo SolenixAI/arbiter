@@ -24,4 +24,4 @@ The source of this layout is the founder's theory of recursive completeness.
 - `scripts/unlock-skills.sh` moved to `imples/unlock-skills.sh`. CI runs it from there.
 - `experis/checks.md` lists the checks that the repo runs.
 - The root shows 9 visible children: AGENTS.md, LICENSE, README.md, PRODUCT.md, release-please-config.json, skills-lock.json, docus, experis and imples. The level is full. A tenth visible child needs a decision first.
-- The viewer tooling moves into `imples/` and `experis/` in a later pull request.
+- The viewer tooling lives in `imples/`: `measure.py`, `pvi.py` and `AGENTS.html`. Its local state (ratings, checkpoints, measurements) is made on each machine and is not committed.

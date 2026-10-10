@@ -6,3 +6,11 @@
 
 # Personal Claude Code settings, never committed.
 .claude/settings.local.json
+
+# The viewer's local state: ratings, checkpoints and measurements made on one machine.
+imples/*.json
+imples/checkpoints/
+imples/body-ratings/
+imples/gates/
+imples/decide.py
+imples/__pycache__/

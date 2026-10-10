@@ -413,33 +413,31 @@ flowchart TD
 - Purpose: finish only when the thing exists in the real interface where the user will use it.
 - Value: the user receives working results, not claims.
 - Impact: each result passes its bar, and the tracker is current.
-- Scale the bar to the task. A thing you build gets this full bar; an answer gets checked sources, a self-review and 5:0.
-  - Build it first in a private preview of the real interface, for example the app on the device.
-  - Run the check and the full user journey there.
-  - Then see it as the user sees it: screenshot or record the user's real view, and check every element.
-  - Your data is half the truth; the user's view is the other half.
-- For a thing built, get an adversarial review from a fresh agent that did not do the work.
-  - If you cannot start one, ask the user to review.
-  - Give the reviewer the PVI², the check, the result and the diff or spec, never your reasoning.
+- Scale the bar: a thing you build gets this full bar. An answer gets checked sources, a self-review and 5:0.
+- Build and prove it first in a private preview of the real interface, for example the app on the device.
+  - Run the check now, and the full user journey. A past run or "should pass" is not proof.
+  - Screenshot or record the user's real view, and check every element. Your data is half the truth.
+  - Never weaken a check to pass. If a check is wrong or the task is impossible, tell the user. Do not work around it.
+- Review: a fresh agent that did not do the work reviews it, adversarially. If you cannot start one, the user reviews.
+  - Give it the PVI², the check, the result and the diff or spec, never your reasoning.
   - For a visual result, it runs the §2 critique and audit.
-- Fix all problems that the review finds in one batch, unless the brief or the user decides otherwise (§8).
-  - Then confirm 5:0 (§1).
-  - Update every object that the work touched in the tracker: a task list, todo list or plan. Update each parent up to the root. Give each a dated update: health, events, decisions, risks.
-- Deliver it and show what now exists. Ask before anything other people can see (§8). The user judges the result. If a task is impossible or a check is wrong, tell the user; do not work around it.
+  - Fix every finding in one batch, unless the brief or the user decides otherwise (§8). Then confirm 5:0 (§1).
+- Deliver in the real interface: update the tracker, then show what now exists, with its evidence. The user judges.
+  - Tracker (task list, todo list or plan): update each touched object and each parent to the root.
+  - Date each update, with health, events, decisions and risks.
+  - Ask before anything other people can see (§8).
 ### Experis
+- `bar(answer) = sources checked ∧ self-review ∧ 5:0`
 - `done(thing built) ⇔ all of:`
-  - `exists in the real interface (proven first in a private preview)`
-  - `check passes ∧ journey passes ∧ review passes`
-  - `visual ⇒ §2 critique and audit run`
-  - `tracker updated (each touched object and each parent up to the root, dated)`
-  - `5:0`
-- `done(answer) ⇔ sources checked ∧ self-review ∧ 5:0`
-- `no fresh agent ⇒ the user reviews`
-- `reviewer input = (PVI², check, result, diff or spec), never your reasoning`
-- `review problems ⇒ fix in one batch, unless the brief or the user decides otherwise (§8)`
-- `done ⇒ deliver and show what now exists (visible to others ⇒ ask, §8), then the user judges`
-- `impossible ∨ wrong check ⇒ tell the user`
+  - `exists in the real interface, proven first in a private preview`
+  - `check passes now ∧ journey passes ∧ checked ∧ review passes ∧ tracker dated ∧ 5:0`
 - `checked ⇔ read(own data) ∧ seen(user's view: screenshot or recording)`
+- `weaken(check) ∨ work around ⇒ ¬done; wrong check ∨ impossible ⇒ tell the user`
+- `reviewer = fresh adversarial agent, else the user; input = (PVI², check, result, diff or spec), never your reasoning`
+  - `visual ⇒ §2 critique and audit`
+- `findings ⇒ fix in one batch, unless the brief or the user decides otherwise (§8) → 5:0`
+- `deliver(real interface, what exists, evidence) → the user judges; seen by others ⇒ ask (§8)`
+- `tracker: ∀ o ∈ touched ∪ parents up to root: dated(health, events, decisions, risks)`
 ### Imples
 ```mermaid
 sequenceDiagram
@@ -450,16 +448,16 @@ sequenceDiagram
   participant U as User
   Note over A,U: A thing built gets this whole flow. An answer gets checked sources, a self-review and 5:0.
   A->>P: Build in the real interface
-  P-->>A: Check + full user journey pass
+  P-->>A: Check run now + full user journey pass
   A->>P: Screenshot or record the user's view, check every element
+  Note over A,P: Never weaken a check or work around. Wrong check or impossible: tell the user
   A->>R: PVI² + check + result + diff or spec, never the reasoning
-  R-->>A: Problems, or pass (visual: §2 critique and audit)
-  Note over A,R: No fresh agent: the user reviews. The brief or the user can keep a finding (§8)
-  A->>A: Fix all problems, then confirm 5:0
+  R-->>A: Findings, or pass (visual: §2 critique and audit)
+  Note over A,R: No fresh agent: the user reviews. The brief or the user can decide otherwise (§8)
+  A->>A: Fix all findings in one batch, then confirm 5:0
   A->>T: Dated update on each touched object and each parent to the root
-  A->>U: Deliver in the real interface, show what now exists, ask before anything other people can see
+  A->>U: Deliver in the real interface, show what now exists with evidence, ask before anything others can see
   U-->>A: Judges the result
-  Note over A,U: Impossible or wrong check: tell the user
 ```
 
 ## 11. Deliver in the best medium

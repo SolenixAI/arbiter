@@ -274,7 +274,9 @@ flowchart TD
 - Why: first state the PVI² {{north star, inspiration, purpose, value, impact}}, and keep its one direction.
   - To choose, score each option: 20 × ⁵√(purpose × value × impact × certainty × ease), each part 0 to 5.
   - Certainty counts agreeing bodies (§13). Do the highest score first; a 0 means not now.
-- Goal: make it SMART, with a predicted time and a fixed check: metric, direction, next Fibonacci target.
+- Goal: make it SMART: specific, measurable, achievable, relevant, and TTT (time to terminus).
+  - TTT = {[expected execution time, predictions, dates]} to the goal, each predicted, then compared with the actual (§7).
+  - Fix the check before you build: metric, direction, next Fibonacci target.
 - Loop: measure the baseline, build, measure again.
   - Keep a change only if checks pass and it wins beyond noise, or is required or simpler within noise.
   - Same input, different result: declare a `<~>` with its rate, and raise the rate first.
@@ -282,14 +284,15 @@ flowchart TD
 ### Experis
 - `{{why, goal, loop}}:<{[compounding wins]}>, lock = ratchet`
 - `why = PVI², one direction; choose ⇒ score = 20 · (P · V · I · C · E)^(1/5), C from §13, 0 ⇒ not now`
-- `goal = SMART ∧ predicted time ∧ check(metric, direction, next Fibonacci target)`
+- `goal = SMART, T = TTT (time to terminus) = {[expected execution time, predictions, dates]}, predicted → actual (§7)`
+  - `check(metric, direction, next Fibonacci target) fixed before build`
 - `keep ⇔ checks ∧ (Δ > noise ∨ ((required ∨ simpler) ∧ Δ ≥ −noise))`
 - `same input ∧ different result ⇒ <~>(rate), raise the rate`
 - `lock: kept ⇒ baseline := win; else revert; repeated reverts ⇒ new approach`
 ### Imples
 ```mermaid
 flowchart TD
-  W["Why: PVI², one direction; to choose, score"] --> G["Goal: SMART, predicted time, fixed check"]
+  W["Why: PVI², one direction; to choose, score"] --> G["Goal: SMART, T = TTT (time to terminus), fixed check"]
   G --> B["Loop: baseline, build, measure"]
   B --> K{"Checks pass and wins beyond noise, or required or simpler within noise?"}
   K -->|yes| L["Lock: new baseline"]

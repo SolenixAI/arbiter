@@ -13,7 +13,8 @@
   - Docus is documentation, Experis is experimentation, Imples is implementation: understand it, prove it, see that it exists.
   - In a container such as a folder, repo, project or document, each part is terminal: files only, no folders.
   - Put the rest in meaningful children that follow the same law.
-  - A TERMINUS.md file lists what others control there, such as .github, harness folders and files a tool requires.
+  - A TERMINUS.md file lists each terminus there: unavoidable, uncontrollable, unpredictable (§7).
+  - Examples: .github, harness folders, a file a tool requires, a usage limit.
   - A container depends only on its own contents, so one level explains it. This inverts OKF (§5): the environment's shape gives the trust.
   - Each Docus opens with its north star, inspiration, purpose, value and impact.
   - An inspiration is a well-known named exemplar outside this environment: a hyper-condensed form or standard. It is not rated.
@@ -34,7 +35,7 @@
   - `impact = 5:0 ⇔ open fragments in scope = 0 (§1, §12)`
 - `AGENTS.md = general how = trusted third body (§13); creator = user (§2)`
   - `∀ container c: c = {{docus, experis, imples}} + children + TERMINUS.md; parts terminal: files only; ∀ child ∈ children(c): child is a container`
-  - `docus = documentation → understand; experis = experimentation → prove; imples = implementation → see it exists; deps(c) ⊆ contents(c) ⇒ one level explains c`
+  - `docus = documentation → understand; experis = experimentation → prove; imples = implementation → see it exists; deps(c) ⊆ contents(c) ⇒ one level explains c; TERMINUS.md = {terminus in c} (§7)`
   - `section = {{Docus, Experis, Imples}}, Ω = mentation; Docus opens with {{north star, inspiration, purpose, value, impact}}`
 - `creator = {[ideas, beautiful metaphors, intent, inspiration, real choices]}`
   - `agent = explore(creator, together) → what to make → every unit of work`
@@ -53,7 +54,7 @@
 ```mermaid
 flowchart TD
   A[Aim: 1 goal, 2 AUX] --> L[Learn: 3 how, 4 tools, 5 data] --> P[Plan: 6 compounding wins, 7 time] --> D[Do: 8 pathways, 9 simple] --> V[Prove: 10 done, 12 fragments, 13 bodies] --> O[Deliver: 11 medium] --> F["AGENTS.md: the general how, the trusted third body; each section = Docus, Experis, Imples"]
-  F --> CT["Any container: docus (understand), experis (prove), imples (exists), files only; children follow the same law; TERMINUS.md; depends only on its contents"]
+  F --> CT["Any container: docus (understand), experis (prove), imples (exists), files only; children follow the same law; TERMINUS.md: unavoidable, uncontrollable, unpredictable, §7; depends only on its contents"]
   CR["Creator = the user, §2: ideas, metaphors, intent, inspiration, real choices"] --> AG[Agent: explores with the creator, learns what to make, does every unit of work]
   AG --> S[Arbitrary success]
   FS["Any frontier space: problem, solutions, goal"] --> S
@@ -304,7 +305,7 @@ flowchart TD
   - Certainty counts the bodies that agree on the impact (§13), up to 5. Below 4, the impact is a `<?>`.
   - Purpose or value 0: not now. Ease 0: record the blocker. Do the highest score first.
 - Goal: make it SMART: specific, measurable, achievable, relevant, and TTT (time to terminus).
-  - TTT = {[expected execution time, event dates]} to the goal, each predicted, then compared with the actual (§7).
+  - TTT = {[expected execution time, event dates]} to the goal or a terminus (§7), predicted, then compared with the actual.
   - Fix the check (a pass or fail test) before you build, and the target: metric, direction, next Fibonacci number.
 - Loop: measure the baseline, build, measure again.
   - Keep a change only if checks pass, and it wins beyond noise or is required or simpler (§9) within noise.
@@ -317,7 +318,7 @@ flowchart TD
   - `choose(what to build) ∨ options tie on evidence (§8) ⇒ score = mean over 3 raters, one per disjoint body (§13), of 20 · (P · V · I · C · E)^(1/5)`
   - `each part ∈ {0, …, 5}; C = bodies agreeing on impact (§13), C < 4 ⇒ impact is <?>; highest score first`
   - `P = 0 ∨ V = 0 ⇒ not now; E = 0 ⇒ blocked, record it`
-- `goal = SMART, T = TTT = {[expected execution time, event dates]}, predicted → actual (§7)`
+- `goal = SMART, T = TTT = {[expected execution time, event dates]} to the goal ∨ a terminus (§7), predicted → actual`
   - `check = pass ∨ fail, fixed before build; target = next Fibonacci number of (metric, direction)`
 - `keep ⇔ checks pass ∧ (Δ > noise ∨ ((required ∨ simpler (§9)) ∧ Δ ≥ −noise))`
   - `Δ = metric(change) − metric(baseline)`
@@ -344,11 +345,14 @@ flowchart TD
 - Impact: every step has a measured start and end, and each prediction is compared with its actual.
 - Measure: record Unix epoch ms at the start and end of each step. Use only recorded times, never guesses.
 - Calibrate: compare each TTT prediction (§6) with its actual. Carry the duration ratio into the next prediction.
+  - A terminus is unavoidable, uncontrollable and unpredictable: a usage limit, a session limit, a deadline.
+  - Predict its TTT, and push on it from the vectors you control to change that TTT.
 - Parallel: run independent steps in parallel, and shorten the longest chain first.
 - Goal: minimize latency to 0. Each checkpoint toward it is the next lower Fibonacci number in ms: …, 8, 5, 3, 2, 1, 0.
 ### Experis
 - `latency = t_end − t_start, t = recorded Unix epoch ms, never guessed`
 - `calibrate: ratio = actual / predicted duration (TTT, §6) ⇒ next prediction × ratio; event date ⇒ compare`
+  - `terminus = unavoidable ∧ uncontrollable ∧ unpredictable (usage limit, session limit, deadline) ⇒ predict TTT(terminus), push from controllable vectors ⇒ Δ TTT`
 - `independent ⇒ parallel; shorten the longest chain first`
 - `goal: minimize latency(correct result) → 0, checkpoints = Fibonacci numbers in ms down to 0`
 ### Imples
@@ -356,6 +360,7 @@ flowchart TD
 flowchart TD
   S["Start: epoch ms"] --> P["Independent steps in parallel, longest chain first"] --> R["Correct result: epoch ms"] --> L["Latency = end − start"]
   L --> C["Compare with the TTT prediction, §6; carry the duration ratio forward"] --> FB["Next checkpoint: the next lower Fibonacci number, toward 0"]
+  S -.-> TM["Terminus: unavoidable, uncontrollable, unpredictable; predict its TTT, push from what you control to change it"]
 ```
 
 ## 8. Do the work, three pathways

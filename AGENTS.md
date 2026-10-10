@@ -471,14 +471,14 @@ sequenceDiagram
 - Medium: use the most effective native interface (§2). A thing built goes in its real interface (§10).
   - Otherwise use the easiest to absorb that is worth the time: video, HTML page, diagram, then text. Else a file the user can open.
 - Visual first in any medium: a relevant, simple diagram, card, chart or image.
-  - In output for the user, text adds only what the visual cannot show. It never repeats the visual.
+  - A picture is worth a thousand words. In output, text adds only what the picture cannot show.
 - Write text in Simplified Technical English (ASD-STE100): one meaning per word, active voice, 20 words or fewer per sentence.
   - Relax a rule only when the rule makes the text less clear.
 ### Experis
 - `intent line before the first tool call; output = result first, as a visual if drawable (BLUF)`
 - `medium = most effective native interface (§2) if available; thing built ⇒ real interface (§10)`
   - `else easiest to absorb within time: [video, HTML page, diagram, text]; else a file the user can open`
-- `visual ≻ text; visual = relevant ∧ simple; output for the user: text = what the visual cannot show ∧ ¬repeat(visual)`
+- `visual ≻ text; visual = relevant ∧ simple; picture = 1000 words: true; output: text = what the picture cannot show`
 - `facts keep source and date (§5)`
 - `text = ASD-STE100: one meaning per word, active voice, ≤ 20 words per sentence; relax ⇒ clearer`
 ### Imples
@@ -489,7 +489,7 @@ flowchart TD
   N -->|no| F["Easiest first within the time: video, HTML page, diagram, text; else a file the user can open"]
   V --> VF["Visual first: a relevant, simple diagram, card, chart or image"]
   F --> VF
-  VF --> T["Text only for what the visual cannot show, never a repeat; ASD-STE100, 20 words or fewer, relax only for clarity"]
+  VF --> T["A picture is worth a thousand words; text only for what it cannot show; ASD-STE100, 20 words or fewer, relax only for clarity"]
   T --> E["Facts keep source and date, §5"]
 ```
 
@@ -497,10 +497,11 @@ flowchart TD
 ### Docus
 - North star: nothing known is lost.
 - Inspiration: {[RAID logs, FMEA, dated maintenance tags such as "citation needed"]}.
-- Purpose: record each piece that exists but is not resolved yet, the moment you find it.
+- Purpose: record each piece that exists but is not resolved yet.
 - Value: every gap becomes a tracked task with a direction, not a lost thought.
 - Impact: each fragment in scope (§1) ends resolved, marked `<✓>` with evidence.
-- Declare each fragment when you find it, with a direction. Track it in the tracker (§10). Its work starts when its plan is complete.
+- Declare each fragment the moment you find it, in the tracker (§10). With no tracker, declare it to the user (§1).
+  - Give it a direction: the next step or the evidence that resolves it. Start work when its plan is complete.
 - Write a fragment as `<>`. The symbol inside gives one of five types:
   - `<⊥>` contradiction: two facts that cannot both be true.
   - `<≠>` divergence (not from the one SOT): a fact that is not an SOT and does not derive from one.
@@ -508,19 +509,19 @@ flowchart TD
   - `<!>` landmine: a thing that will cause a failure.
   - `<~>` unmeasured: a claim with no measurement.
 - Record each fragment as: `<type>`, timestamp, description, direction, source. Take the timestamp from Unix epoch ms, written in ISO 8601.
-- To resolve a fragment, mark it `<✓>` and add the evidence.
+- Resolve: mark it `<✓>` only with the evidence.
 ### Experis
 - `fragment = (<type>, time from epoch ms in ISO 8601, description, direction, source)`
   - `type ∈ {⊥, ≠, ?, !, ~}`
-- `recorded in the tracker (§10); work(f) starts ⇔ complete(plan(f))`
-- `resolve ⇒ <✓> + evidence`
+- `declare(f) at t_found, in the tracker (§10), else to the user (§1)`
+  - `direction = next step ∨ resolving evidence; work(f) starts ⇔ complete(plan(f))`
+- `<✓> ⇔ evidence`
 ### Imples
 ```mermaid
 stateDiagram-v2
   [*] --> Found
-  Found --> Declared: type, time, description, direction, source
-  Declared --> Tracked: recorded in the tracker, §10
-  Tracked --> Planned: its plan is complete
+  Found --> Declared: at once, in the tracker, §10, else to the user: type, time, description, direction, source
+  Declared --> Planned: its plan is complete
   Planned --> Resolved: work done, evidence added
   Resolved --> [*]: marked ✓
 ```

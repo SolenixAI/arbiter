@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """AGENTS.md gates: the poka-yoke that every pull request must pass.
 
-  python3 imples/gates.py              # check AGENTS.md, exit 1 on any failure
-  python3 imples/gates.py --mermaid D  # also write each diagram to D/NN.mmd for the render check
+  python3 experis/gates.py              # check AGENTS.md, exit 1 on any failure
+  python3 experis/gates.py --mermaid D  # also write each diagram to D/NN.mmd for the render check
 
 Stdlib only, so it runs anywhere with no install.
 """
@@ -66,6 +66,17 @@ for label, quote in re.findall(r"(?m)^\*{0,2}(Text \(Docus\)|Formula \(Experis\)
     if q not in md:
         fails.append(f"README quote drifted from AGENTS.md: {label}: {q[:60]}…")
 
+# Container law: docus, experis and imples hold files only, and the root lists its terminus.
+import subprocess
+root = SRC.parent
+tracked = subprocess.run(["git", "-C", str(root), "ls-files"], capture_output=True, text=True).stdout.split()
+for f in tracked:
+    head, _, rest = f.partition("/")
+    if head in ("docus", "experis", "imples") and "/" in rest:
+        fails.append(f"container law: {head}/ holds files only, found {f}")
+if tracked and "TERMINUS.md" not in tracked:
+    fails.append("container law: the root has no TERMINUS.md")
+
 # The file stays universal: no private tracker ids.
 for hit in re.findall(r"\b[A-Z]{2,5}-\d{2,5}\b", md):
     fails.append(f"private id: {hit}")
@@ -79,4 +90,4 @@ sentences = sum(len(SPLIT.split(l.lstrip()[2:])) for l in md.splitlines() if l.l
 print(f"{len(numbers)} sections + root · {sentences} sentences · {md.count('```mermaid')} diagrams")
 if fails:
     print("\n".join(f"FAIL {f}" for f in fails)); sys.exit(1)
-print("PASS: STE, triplets, 9-slot, PVI², pointers, no private ids")
+print("PASS: STE, triplets, 9-slot, PVI², pointers, README quote, container law, no private ids")

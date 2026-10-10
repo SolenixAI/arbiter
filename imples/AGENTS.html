@@ -1,0 +1,142 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Cache-Control" content="no-store">
+<title>AGENTS.md</title>
+<style>
+:root{--bg:#fbfaf7;--card:#ffffff;--ink:#1b1a18;--mute:#6b6a65;--rule:#e6e4de;--accent:#2a6fdb;--code:#f2f1ec}
+@media (prefers-color-scheme: dark){:root{--bg:#151514;--card:#1e1e1c;--ink:#efeee9;--mute:#a3a29b;--rule:#33332f;--accent:#6aa5ff;--code:#262624}}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Inter",sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 64px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr));gap:14px}
+section{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:16px 18px;min-width:0}
+section.wide{grid-column:1/-1}
+h2{margin:0 0 8px;font-size:17px;font-weight:600} ul{margin:0;padding-left:1.1em} li{margin:3px 0}
+p > code:only-child{display:block;background:var(--code);border-radius:8px;padding:8px 10px;font:13px/1.5 ui-monospace,Menlo,monospace;color:var(--accent);margin:10px 0;white-space:pre-wrap}
+code{font:0.88em ui-monospace,Menlo,monospace;background:var(--code);padding:1px 5px;border-radius:4px}
+table{border-collapse:collapse;font:12px ui-monospace,Menlo,monospace;color:var(--mute);margin-top:10px} th,td{border:1px solid var(--rule);padding:4px 8px;text-align:left;font-weight:400}
+.mermaid{background:var(--code);border-radius:8px;padding:8px;margin-top:8px;overflow-x:auto;text-align:center}
+.journey{background:var(--code);border-radius:8px;padding:10px 14px;margin-top:8px}
+.journey h4{margin:0 0 6px;font-size:14px}
+.journey .stage{margin:8px 0 2px;font:600 12px ui-monospace,Menlo,monospace;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+.journey .step{display:grid;grid-template-columns:28px 1fr auto;align-items:center;gap:8px;padding:5px 0 5px 10px;border-left:2px solid var(--rule);margin-left:6px}
+.journey .face{font-size:18px;line-height:1}
+.journey .who{font:11px ui-monospace,Menlo,monospace;color:var(--mute)}
+.journey .bar{height:4px;border-radius:2px;background:var(--accent);margin-top:3px}
+.tlabel{font:600 10px ui-monospace,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:10px 0 -6px}
+p.formula{background:var(--code);border-radius:8px;padding:8px 10px;margin:10px 0;display:grid;gap:4px}
+p.formula code{background:none;padding:0;font:13px/1.5 ui-monospace,Menlo,monospace;color:var(--accent);white-space:pre-wrap}
+p.formula code b{color:var(--ink);font-weight:600}
+ul.formula{background:var(--code);border-radius:8px;padding:8px 10px 8px 26px;margin:10px 0}
+ul.formula ul{padding-left:18px;margin:2px 0}
+ul.formula li{margin:3px 0;color:var(--mute)}
+ul.formula code{background:none;padding:0;font:13px/1.5 ui-monospace,Menlo,monospace;color:var(--accent);white-space:pre-wrap}
+ul.formula code b{color:var(--ink);font-weight:600}
+mark.chg{background:rgba(245,158,11,.22);color:inherit;border-radius:4px;box-shadow:0 0 0 3px rgba(245,158,11,.22);padding:0 2px}
+.chg-block{outline:2px solid rgba(245,158,11,.65);outline-offset:6px;border-radius:12px;margin:18px 0}
+.chg-cap{display:grid;gap:4px;margin-top:10px;font-size:13px}.chg-cap b{color:#f59e0b}.chg-cap code{background:rgba(245,158,11,.14);padding:2px 6px;border-radius:4px}
+.chg-bar{position:sticky;top:0;z-index:9;padding:10px 16px;background:rgba(245,158,11,.16);backdrop-filter:blur(12px);border-bottom:1px solid rgba(245,158,11,.45);font:14px system-ui}.chg-bar b{color:#f59e0b}.chg-bar a{color:#fbbf24;margin-left:6px}
+</style></head><body>
+<main id="out"></main>
+<script src="https://cdn.jsdelivr.net/npm/marked@14/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>
+(async () => {
+const raw = await (await fetch('../AGENTS.md?t=' + Date.now(), {cache: 'no-store'})).text();
+// Review mode: every line that differs from the last sealed version (checkpoints/sealed.md) is
+// highlighted; measurement-table rows are skipped because measure.py rewrites them on every write.
+const base = await fetch('checkpoints/sealed.md?t=' + Date.now(), {cache: 'no-store'}).then(r => r.ok ? r.text() : null, () => null);
+const fenceAdds = []; let added = 0, removed = 0;
+let md = raw;
+if (base) {
+  const B = new Set(base.split('\n')), L = raw.split('\n'), C = new Set(L);
+  let fence = -1, inFence = false;
+  for (let i = 0; i < L.length; i++) {
+    const l = L[i];
+    if (/^```/.test(l)) { inFence = !inFence; if (inFence) { fence++; fenceAdds[fence] = []; } continue; }
+    if (!l.trim() || l.startsWith('|') || B.has(l)) continue;
+    added++;
+    if (inFence) { fenceAdds[fence].push(l.trim()); continue; }
+    L[i] = /^\s*[-*] /.test(l) ? l.replace(/^(\s*[-*] )(.*)$/, '$1<mark class="chg">$2</mark>') : '<mark class="chg">' + l + '</mark>';
+  }
+  removed = base.split('\n').filter(l => l.trim() && !l.startsWith('|') && !C.has(l)).length;
+  md = L.join('\n');
+}
+const renderer = new marked.Renderer();
+const esc = t => t.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const faces = ['', '😞', '🙁', '😐', '🙂', '😄'];
+const journey = text => {
+  let h = '<div class="journey">';
+  for (const raw of text.split('\n').slice(1)) {
+    const l = raw.trim(); if (!l) continue;
+    if (l.startsWith('title ')) h += '<h4>' + esc(l.slice(6)) + '</h4>';
+    else if (l.startsWith('section ')) h += '<div class="stage">' + esc(l.slice(8)) + '</div>';
+    else { const m = l.match(/^(.*):\s*(\d)\s*:\s*(.*)$/); if (!m) continue;
+      const n = +m[2]; h += '<div class="step"><span class="face">' + faces[n] + '</span><span>' + esc(m[1]) + '<div class="bar" style="width:' + n * 20 + '%"></div></span><span class="who">' + esc(m[3]) + '</span></div>'; }
+  }
+  return h + '</div>';
+};
+renderer.code = ({text, lang}) => lang === 'mermaid' ? '<pre class="mermaid">' + text + '</pre>' : '<pre><code>' + text + '</code></pre>';
+const out = document.getElementById('out');
+const meas = await fetch('measurements.json?t=' + Date.now(), {cache: 'no-store'}).then(r => r.ok ? r.json() : {}, () => ({}));
+for (let p of md.split(/^(?=## )/m).filter(s => s.trim())) {
+  const sec = document.createElement('section');
+  const n = (p.match(/^## (\d+)\./) || [])[1];
+  if (!n) sec.className = 'wide';
+  const tbl = n ? meas.sections?.[n] : (!p.startsWith('## ') ? meas.file : null);
+  if (tbl) p = p.trimEnd() + '\n\n' + tbl;
+  sec.innerHTML = marked.parse(p, {renderer});
+  sec.querySelectorAll('p').forEach(el => {
+    const kids = [...el.childNodes].filter(n => !(n.nodeType === 3 && !n.textContent.trim()));
+    if (kids.length > 1 && kids.every(n => n.nodeName === 'CODE' || (n.nodeName === 'MARK' && n.querySelector('code')))) {
+      el.className = 'formula';
+      kids.forEach(c => { const k = c.nodeName === 'MARK' ? c.querySelector('code') : c; k.innerHTML = k.innerHTML.replace(/^([a-z][a-z ]*):/, '<b>$1:</b>'); });
+    }
+  });
+  sec.querySelectorAll('h3').forEach(x => { if (x.innerText.trim().toLowerCase() !== 'experis') return;
+    const ul = x.nextElementSibling; if (!ul || ul.tagName !== 'UL') return;
+    ul.className = 'formula';
+    ul.querySelectorAll('code').forEach(k => { k.innerHTML = k.innerHTML.replace(/^([a-z][a-z ]*):/, '<b>$1:</b>'); }); });
+  const ts = [...sec.querySelectorAll('table')].filter(t => t.querySelector('th')?.innerText === 'tokens');
+  const names = /^## \d+\./.test(p) ? ts.map(() => 'section') : ['document'];
+  ts.forEach((t, i) => { const l = document.createElement('div'); l.className = 'tlabel'; l.textContent = names[i] || ''; t.before(l); });
+  out.appendChild(sec);
+}
+const br = await (await fetch('bodies-render.json?t=' + Date.now(), {cache: 'no-store'})).json().catch(() => ({}));
+const mk = (name, b) => { const w = document.createElement('div'); w.innerHTML = '<div class="tlabel">' + name + '</div><table><tr><th>tokens</th><th>%</th><th>PVI</th><th>Δ PVI</th><th>' + b.v + '</th></tr><tr><td>' + b.tokens + '</td><td>' + b.pct + '%</td><td>' + (b.pvi ?? '–') + '</td><td>' + (b.delta == null ? '–' : (b.delta > 0 ? '+' : '') + b.delta) + '</td><td>' + b.at + '</td></tr></table>'; return w; };
+document.querySelectorAll('#out section').forEach(sec => {
+  const h = sec.querySelector('h1, h2'); if (!h) return;
+  const num = h.tagName === 'H1' ? '0' : (h.innerText.match(/^(\d+)\./) || [])[1]; const b = br[num]; if (!b) return;
+  const h3 = [...sec.querySelectorAll('h3')].filter(x => ['docus', 'experis', 'imples'].includes(x.innerText.trim().toLowerCase()));
+  if (h3.length) {
+    h3.forEach((x, i) => { const k = x.innerText.trim().toLowerCase(); if (!b[k]) return; const t = mk(x.innerText.trim(), b[k]); const target = h3[i + 1] || sec.querySelector(':scope > .tlabel'); target ? target.before(t) : sec.append(t); });
+  } else {
+    const f = sec.querySelector('p.formula, ul.formula') || [...sec.querySelectorAll('p')].find(p => p.querySelector('code:only-child'));
+    const d = sec.querySelector('pre.mermaid');
+    if (b.docus && f) f.before(mk('docus', b.docus));
+    if (b.experis && f) f.after(mk('experis', b.experis));
+    if (b.imples && d) d.after(mk('imples', b.imples));
+  }
+});
+if (base) {
+  let fi = 0;
+  document.querySelectorAll('pre.mermaid, pre:not(.mermaid) > code').forEach(el => {
+    const pre = el.closest('pre') || el, adds = fenceAdds[fi++] || [];
+    if (!adds.length) return;
+    const box = document.createElement('div'); box.className = 'chg-block';
+    pre.replaceWith(box); box.append(pre);
+    const cap = document.createElement('div'); cap.className = 'chg-cap';
+    cap.innerHTML = '<b>' + adds.length + ' changed line' + (adds.length > 1 ? 's' : '') + ' in this diagram</b>' + adds.map(a => '<code>' + esc(a) + '</code>').join('');
+    box.append(cap);
+  });
+  const marks = [...document.querySelectorAll('mark.chg, .chg-block')];
+  const bar = document.createElement('div'); bar.className = 'chg-bar';
+  bar.innerHTML = added || removed ? '<b>' + added + ' new or changed, ' + removed + ' removed</b> since the last seal · <a href="#">next ↓</a>' : 'No changes since the last seal';
+  let k = 0; bar.querySelector('a')?.addEventListener('click', e => { e.preventDefault(); marks[k++ % marks.length]?.scrollIntoView({block: 'center'}); });
+  document.body.prepend(bar);
+}
+mermaid.initialize({startOnLoad: false, theme: matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'neutral'});
+await mermaid.run({querySelector: '.mermaid'});
+document.querySelectorAll('.mermaid svg[aria-roledescription="journey"]').forEach(svg => {
+  const b = svg.getBBox();
+  svg.setAttribute('viewBox', `${b.x - 8} ${b.y - 8} ${b.width + 16} ${b.height + 16}`);
+  svg.setAttribute('width', Math.ceil(b.width + 16)); svg.setAttribute('height', Math.ceil(b.height + 16)); svg.style.maxWidth = 'none';
+});
+})();
+</script></body></html>

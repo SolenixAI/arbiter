@@ -1,6 +1,6 @@
 # ADR 0004: The repo is Docus, Experis and Imples
 
-Status: accepted, 2026-10-09.
+Status: accepted, 2026-10-09. Amended 2026-10-10 by the container law in the AGENTS.md root.
 
 ## Context
 
@@ -10,18 +10,19 @@ AGENTS.md has three parts in each section: Docus (what is known and why), Experi
 
 The repo root holds three terminal folders:
 
-- `docus/`: what is known and why.
-- `experis/`: experiments: proofs and checks.
-- `imples/`: implementation: tooling and code.
+- `docus/`: documentation. Understand it.
+- `experis/`: experimentation. Prove it: the gates, the measurements, the checks.
+- `imples/`: implementation. See that it exists: the tools that run.
 
-Terminal folders are flat. They have no subfolders, and every file has a self-describing name. Every level has at most 9 visible children. Dot-folders that tools require do not count, and AGENTS.md is exempt.
+Terminal folders hold files only, and every file has a self-describing name. A container depends only on its own contents, so one level explains it. Everything that other tools control is a terminus, listed in `TERMINUS.md` at the root.
 
 The source of this layout is the founder's theory of recursive completeness.
 
 ## Consequences
 
 - Engine conventions map into `docus/` with flat names: `docus/agents-*.md` and `docus/adr-NNNN-*.md`. `docus/agents-domain.md` records the map, so the skills find the files.
-- `scripts/unlock-skills.sh` moved to `imples/unlock-skills.sh`. CI runs it from there.
-- `experis/checks.md` lists the checks that the repo runs.
-- The root shows 9 visible children: AGENTS.md, LICENSE, README.md, PRODUCT.md, release-please-config.json, skills-lock.json, docus, experis and imples. The level is full. A tenth visible child needs a decision first.
-- The viewer tooling moves into `imples/` and `experis/` in a later pull request.
+- `experis/` holds the proofs: `gates.py` (the CI gates), `measure.py` and `pvi.py` (token counts, ratings, checkpoints) and `checks.md`.
+- `imples/` holds the tools that run: `AGENTS.html` (the viewer) and `unlock-skills.sh`.
+- The root holds `docus/`, `experis/`, `imples/` and `TERMINUS.md`. Every other root file is a terminus, listed with the tool that requires it.
+- Local state (ratings, checkpoints, measurements) is made on each machine and ignored by git.
+- `experis/gates.py` checks the law on every pull request: terminal folders hold files only, and `TERMINUS.md` exists.

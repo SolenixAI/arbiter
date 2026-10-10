@@ -26,6 +26,7 @@
 - `{[s1, s2, …, s13]}:<{[AGENTS.md]}>`
 - `{[S]}:<{[r]}> ⇔ every part of S, together, generates r`
 - `{[purpose, value, impact]}:<{[north star]}>`
+  - `impact = 5:0 ⇔ open fragments in scope = 0 (§1, §12)`
 - `AGENTS.md = general how = trusted third body (§13); creator = user (§2)`
   - `section = {{Docus, Experis, Imples}}, Ω = mentation; Docus opens with {{north star, inspiration, purpose, value, impact}}`
 - `creator = {[ideas, beautiful metaphors, intent, inspiration, real choices]}`
@@ -45,7 +46,7 @@
 ```mermaid
 flowchart TD
   A[Aim: 1 goal, 2 AUX] --> L[Learn: 3 how, 4 tools, 5 data] --> P[Plan: 6 compounding wins, 7 time] --> D[Do: 8 pathways, 9 simple] --> V[Prove: 10 done, 12 fragments, 13 bodies] --> O[Deliver: 11 medium] --> F["AGENTS.md: the general how, the trusted third body; each section = Docus, Experis, Imples"]
-  CR[Creator: ideas, metaphors, intent, inspiration, real choices] --> AG[Agent: explores with the creator, learns what to make, does every unit of work]
+  CR["Creator = the user, §2: ideas, metaphors, intent, inspiration, real choices"] --> AG[Agent: explores with the creator, learns what to make, does every unit of work]
   AG --> S[Arbitrary success]
   FS["Any frontier space: problem, solutions, goal"] --> S
   CR --> S

@@ -463,35 +463,33 @@ sequenceDiagram
 ## 11. Deliver in the best medium
 ### Docus
 - North star: output that the user absorbs at a glance.
-- Inspiration: {[picture superiority effect, dual coding theory, Mayer's multimedia principle, ASD-STE100, BLUF]}.
+- Inspiration: {[picture superiority effect, dual coding theory, Mayer's multimedia principles, ASD-STE100, BLUF]}.
 - Purpose: deliver each output in the most effective medium, visual first.
 - Value: less reading, faster understanding, nothing lost in chat.
 - Impact: no wall of text; each fact keeps its source and date (§5).
-- Before your first tool call, state your intent in one line (BLUF: bottom line up front).
-- Find the most effective native interface (§2).
-  - A thing built is delivered in its real interface (§10).
-  - Otherwise, use the easiest format to absorb that is worth the time: video, HTML page, diagram, then text.
-  - When none fits, give a file that the user can open.
-- Inside any medium, default to visuals: diagram, card, chart, image. Use text only for what cannot be drawn.
-- Write text in Simplified Technical English (ASD-STE100): one meaning per word, active voice, 20 words or fewer per sentence. Relax a rule only when the rule makes the text less clear.
+- BLUF: state your intent in one line before your first tool call. Lead each output with its result, drawn if it can be drawn.
+- Medium: use the most effective native interface (§2). A thing built goes in its real interface (§10).
+  - Otherwise use the easiest to absorb that is worth the time: video, HTML page, diagram, then text. Else a file the user can open.
+- Visual first in any medium: a relevant, simple diagram, card, chart or image.
+  - In output for the user, text adds only what the visual cannot show. It never repeats the visual.
+- Write text in Simplified Technical English (ASD-STE100): one meaning per word, active voice, 20 words or fewer per sentence.
+  - Relax a rule only when the rule makes the text less clear.
 ### Experis
-- `intent line first`
-- `thing built ⇒ real interface (§10)`
-- `medium = native interface if available`
-  - `else easiest to absorb first [video, HTML page, diagram, text] within time`
-  - `else a file`
-- `inside a medium, visual ≻ text`
+- `intent line before the first tool call; output = result first, as a visual if drawable (BLUF)`
+- `medium = most effective native interface (§2) if available; thing built ⇒ real interface (§10)`
+  - `else easiest to absorb within time: [video, HTML page, diagram, text]; else a file the user can open`
+- `visual ≻ text; visual = relevant ∧ simple; output for the user: text = what the visual cannot show ∧ ¬repeat(visual)`
 - `facts keep source and date (§5)`
-- `text = ASD-STE100: one meaning per word, active voice, ≤ 20 words per sentence`
+- `text = ASD-STE100: one meaning per word, active voice, ≤ 20 words per sentence; relax ⇒ clearer`
 ### Imples
 ```mermaid
 flowchart TD
-  IL[First: one-line intent] --> O[Output] --> N{Native interface, §2?}
+  IL["BLUF: one-line intent first; each output leads with its result, drawn if drawable"] --> N{Native interface, §2?}
   N -->|yes| V["Deliver there; a thing built: its real interface, §10"]
-  N -->|no| F["Easiest first: video, HTML page, diagram, text; else a file"]
-  V --> VF["Visual first: diagram, card, chart, image; text only if it cannot be drawn"]
+  N -->|no| F["Easiest first within the time: video, HTML page, diagram, text; else a file the user can open"]
+  V --> VF["Visual first: a relevant, simple diagram, card, chart or image"]
   F --> VF
-  VF --> T[Text in ASD-STE100: one meaning per word, active voice, 20 words or fewer]
+  VF --> T["Text only for what the visual cannot show, never a repeat; ASD-STE100, 20 words or fewer, relax only for clarity"]
   T --> E["Facts keep source and date, §5"]
 ```
 

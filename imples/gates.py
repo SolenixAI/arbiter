@@ -59,6 +59,13 @@ for ref in sorted({int(x) for x in re.findall(r"§(\d+)", md)}):
     if ref not in numbers:
         fails.append(f"pointer: §{ref} does not exist")
 
+# The README quotes one rule. The quote must match the file word for word, so it cannot drift.
+readme = (SRC.parent / "README.md").read_text() if (SRC.parent / "README.md").exists() else ""
+for label, quote in re.findall(r"(?m)^\*{0,2}(Text \(Docus\)|Formula \(Experis\))\*{0,2}:\*{0,2}\s*(.+)$", readme):
+    q = quote.strip().strip("`")
+    if q not in md:
+        fails.append(f"README quote drifted from AGENTS.md: {label}: {q[:60]}…")
+
 # The file stays universal: no private tracker ids.
 for hit in re.findall(r"\b[A-Z]{2,5}-\d{2,5}\b", md):
     fails.append(f"private id: {hit}")

@@ -52,7 +52,7 @@ flowchart TD
 
 ## The 13 sections
 
-The sections run in six phases. The table below gives each section's name and north star. Each north star states the section's aim.
+The sections run in six phases. Each name links to its section in the file.
 
 ```mermaid
 flowchart TD
@@ -61,27 +61,27 @@ flowchart TD
 
 Text version of the phases: Aim 1–2, Learn 3–5, Plan 6–7, Do 8–9, Prove 10, 12, 13, Deliver 11.
 
-| § | Section | North star |
-|---|---|---|
-| 1 | Goal state | No open fragment in scope: work that is right the first time. |
-| 2 | Optimal AUX (agent-user experience) | An optimal agent-user experience, built live as one team, with trust both ways. |
-| 3 | Learn how before doing | Use what already exists; learn how first. |
-| 4 | Install, use, configure, understand | Every tool is used correctly, and no missing capability limits the result. |
-| 5 | Decide from data | Every decision comes from live data, never from a guess. |
-| 6 | Compounding wins | Every measured win becomes the floor for the next one. |
-| 7 | Time matters | A correct result, as soon as possible. |
-| 8 | Do the work, three pathways | The agent does the work until only the user's choices remain. |
-| 9 | Simple and surgical | The native end state, reached in the fewest steps. |
-| 10 | Done means it exists for the user | Done means it exists for the user, proven. |
-| 11 | Deliver in the best medium | Output that the user absorbs at a glance. |
-| 12 | Fragments | Nothing known is lost. |
-| 13 | The three-body problem | Every fact you act on is trusted truth: every available body agrees, in real time. |
+| § | Section |
+|---|---|
+| 1 | [Goal state](AGENTS.md#1-goal-state) |
+| 2 | [Optimal AUX (agent-user experience)](AGENTS.md#2-optimal-aux) |
+| 3 | [Learn how before doing](AGENTS.md#3-learn-how-before-doing) |
+| 4 | [Install, use, configure, understand](AGENTS.md#4-install-use-configure-understand) |
+| 5 | [Decide from data](AGENTS.md#5-decide-from-data) |
+| 6 | [Compounding wins](AGENTS.md#6-compounding-wins) |
+| 7 | [Time matters](AGENTS.md#7-time-matters) |
+| 8 | [Do the work, three pathways](AGENTS.md#8-do-the-work-three-pathways) |
+| 9 | [Simple and surgical](AGENTS.md#9-simple-and-surgical) |
+| 10 | [Done means it exists for the user](AGENTS.md#10-done-means-it-exists-for-the-user) |
+| 11 | [Deliver in the best medium](AGENTS.md#11-deliver-in-the-best-medium) |
+| 12 | [Fragments](AGENTS.md#12-fragments) |
+| 13 | [The three-body problem](AGENTS.md#13-the-three-body-problem) |
 
 ## Three engines
 
-Every result has three sides. The file names one open-source engine for each side:
+Every result has three dimensions. The file names one open-source engine for each dimension:
 
-| Side | Engine | License |
+| Dimension | Engine | License |
 |---|---|---|
 | Design, for the experience | [Impeccable Design](https://github.com/pbakaus/impeccable), by Paul Bakaus | Apache-2.0 |
 | Engineering, for the function | [Matt's Engineering](https://github.com/mattpocock/skills), by Matt Pocock | MIT |

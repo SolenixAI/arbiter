@@ -1,6 +1,6 @@
 # Product Marketing Context
 
-**Document version:** v2
+**Document version:** v3
 **Last updated:** 2026-10-10
 
 ## Product Overview
@@ -82,6 +82,7 @@ Skipped: the product is for individuals (B2C).
 **Tone:** Plain and direct.
 **Style:** Simplified Technical English (ASD-STE100): one meaning per word, active voice, 20 words or fewer per sentence.
 **Personality:** Plain, exact, ambitious, warm.
+**Layered depth:** Plain on top, deeper for whoever looks, like the Easter egg hunt in *Ready Player One* or the truths spread across *Silo*. Each layer rewards the reader who reaches it: the README for newcomers, the notation for insiders, the file for agents.
 
 ## Proof Points
 **Metrics:** No public metric yet.
@@ -107,5 +108,6 @@ Skipped: the product is for individuals (B2C).
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v3 (2026-10-10) — Layered depth added to the brand voice, from the founder.
 - v2 (2026-10-10) — Every open gap filled from the founder's answers: first reader, business model, buyer, alternatives, use cases, voice, success bar. Gaps that need real users now say "none yet".
 - v1 (2026-10-09) — Initial context, drafted from AGENTS.md, README.md and the founder's decisions for the launch.

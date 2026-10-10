@@ -605,7 +605,7 @@ stateDiagram-v2
 ## 13. The three-body problem
 ### Docus
 - North star: every fact that you act on is trusted truth: every available body agrees, in real time.
-- Inspiration: {[triangulation, triple modular redundancy, Bayes' theorem, Popper's falsification]}.
+- Inspiration: {[triangulation, triple modular redundancy, Bayes' theorem, Popper's falsification, Halliday's Easter egg hunt]}.
 - Purpose: turn each discovery into trusted truth through disjoint bodies that agree.
 - Value: trust that does not rest on one source. A contradiction is certain; agreement only builds trust.
 - Impact: 3 or more bodies agree and 0 disagree. If each body is right 77% of the time (assumed, `<~>`), that is 97% trust, with a prior of 0.5.

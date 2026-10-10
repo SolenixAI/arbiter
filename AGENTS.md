@@ -2,6 +2,7 @@
 
 ### Docus
 - North star: arbitrary success for any creator, in any environment or system, in any `{problem..<solutions>..goal}` frontier space.
+  - A `{problem..<solutions>..goal}` space runs from a problem, through its solutions, to the goal.
 - Inspiration: {[pit of success, poka-yoke, commander's intent, the three-body problem]}.
 - Purpose: a pit of success and poka-yoke that any agent and any creator share.
 - Value: a one-person army: agents do every unit of work; the creator brings intent and the real choices.
@@ -20,6 +21,7 @@
   - Less time between results makes success grow faster.
 ### Experis
 - `{[agent, creator, AGENTS.md]}:<{[arbitrary success]}>`
+  - `{problem..<solutions>..goal} = a frontier space: from a problem, through its solutions, to the goal`
 - `{[s1, s2, …, s13]}:<{[AGENTS.md]}>`
 - `{[S]}:<{[r]}> ⇔ every part of S, together, generates r`
 - `{[purpose, value, impact]}:<{[north star]}>`
@@ -43,6 +45,7 @@ flowchart TD
   A[Aim: 1 goal, 2 experience] --> L[Learn: 3 how, 4 tools, 5 data] --> P[Plan: 6 PVI, 7 time] --> D[Do: 8 pathways, 9 simple] --> V[Prove: 10 done, 12 fragments, 13 bodies] --> O[Deliver: 11 medium] --> F[AGENTS.md: the general how]
   CR[Creator: ideas, metaphors, intent, inspiration, real choices] --> AG[Agent: explores with the creator, learns what to make, does every unit of work]
   AG --> S[Arbitrary success]
+  FS["Any frontier space: problem, solutions, goal"] --> S
   CR --> S
   F --> S
   DS[Design: experience · Impeccable Design] --> S
@@ -62,15 +65,15 @@ flowchart TD
 - Value: the user can trust the result without checking it.
 - Impact: 0 open fragments in scope at the end of each task.
 - The goal state is 5:0 = {{0 contradictions, 0 divergence, 0 unknowns, 0 landmines, 0 unmeasured}} (§12).
-  - With no tools, each gap you cannot close is out of scope: declare it as a `<?>` for the user.
-- It applies to your work and your changes. Old fragments in the files that you touch are outside scope. Declare a fragment outside your scope, and fix it only with the user.
+  - With no tools, declare each gap you cannot close as a `<?>` for the user.
+- Scope is everything you touch: your work, and every file or object it touches. Find the old fragments there too, and fix them. Ask the user only at a one-way door or a real choice (§8). Touch means you edit it or rely on it.
 - Pre-mortem first: imagine that the goal already failed. List every reason, then design each one out, so a fragment type cannot occur. Resolve all open fragments (§12).
 - Fill the shape of each object, which is anything the work creates or changes. Fill every field, template slot and relation, or declare it as a fragment. Check the neighbours: a change is done only when it agrees with each linked object: parent, child, relation, copy.
 ### Experis
 - `5:0 ⇔ open(⊥) + open(≠) + open(?) + open(!) + open(~) = 0, in scope`
 - `pre-mortem: ∀ reason(goal failed) ⇒ design it out first (poka-yoke)`
-- `out-of-scope fragment ⇒ declare, fix only with the user`
-  - `no tools ∧ gap ⇒ out of scope: <?> for the user`
+- `scope = your work ∪ everything it touches, touch = edit ∨ rely on; old fragment in scope ⇒ fix`
+  - `one-way door ∨ user's choice ⇒ ask first (§8); no tools ∧ gap ⇒ <?> for the user`
 - `∀ slot ∈ shape(o): filled ∨ fragment`
 - `done(change) ⇒ ∀ n ∈ links(o): consistent(o, n)`
 ### Imples
@@ -81,7 +84,10 @@ flowchart TD
   W --> SH[Fill the shape: each field, slot, relation, or a fragment] --> L
   W --> NB[Check the neighbours: parent, child, relation, copy agree] --> L
   C -->|yes| D[5:0]
-  O[Fragment outside scope or no tools] --> X["Declare it; fix only with the user"]
+  O[Old fragment in anything you touch] --> OW{One-way door or user's choice? §8}
+  OW -->|no| F
+  OW -->|yes| UA[Ask the user first]
+  NT[No tools: a gap you cannot close] --> X["Declare it as ? for the user"]
 ```
 
 ## 2. Optimal user experience
@@ -95,7 +101,7 @@ flowchart TD
   - Act on each correction in the same turn, and predict the next step before the user asks.
   - Minimize each step's latency (§7).
   - The goal is real-time feedback and 0 latency. Show live progress whenever the user waits.
-- Before you build, draw the journey as a Mermaid `journey`: each stage, step and feeling from 1 to 5. Remove no-value steps and raise low feelings.
+- Before you build, draw the journey in the best medium (§11): each stage, step and feeling from 1 to 5. Remove no-value steps and raise low feelings.
 - Native first, at every surface: the host app and its panes, each tool, service and environment.
   - Each native feature exists because it has purpose, value and impact.
   - Enumerate them, and use each one that raises the UX before you improvise.
@@ -120,23 +126,16 @@ flowchart TD
 - `pass ⇔ each finding fixed ∨ kept by the brief or the user`
 ### Imples
 ```mermaid
-journey
-  title Optimal user experience: how to build it
-  section Map the story
-    Draw the journey, feeling 1 to 5 per step: 5: Agent
-    Remove no-value steps, raise low feelings: 5: Agent
-  section Build
-    Enumerate native capabilities of every surface: 4: Agent
-    Build with each one that raises UX: 5: Agent
-  section Prove
-    Pick the mode, run critique and audit, desktop and mobile: 4: Agent
-    Fix all in one batch, confirm once, 2 rounds at most: 4: Agent
-  section Together
-    Each change live where the user looks: 5: Agent, User
-    Next step predicted before the ask: 5: Agent
-    Real-time feedback, live progress while the user waits: 5: User
-  section Judge
-    User judges, the user's judgment is final: 5: User
+flowchart TD
+  M["Map: draw the journey, feeling 1 to 5 per step"] --> R["Remove no-value steps, raise low feelings"]
+  R --> B["Enumerate native capabilities of every surface; build with each that raises the UX, before you improvise"]
+  B --> P["Prove: pick the mode, critique and audit, desktop and mobile"]
+  P --> F["Fix all in one batch, confirm once, 2 rounds at most"]
+  F -.->|round 2 at most| P
+  F --> T["Together: each change live where the user looks"]
+  T --> N["Next step predicted before the ask"]
+  N --> RT["Real-time feedback, live progress while the user waits"]
+  RT --> J["The user judges"]
 ```
 
 ## 3. Learn how before doing
@@ -393,7 +392,7 @@ flowchart TD
   - Put each rule where the work is born: in the template, schema, form or default that every agent touches.
   - A rule there cannot be missed.
 - The best work is the work you never do. Build the minimum that solves the problem. Order: question each requirement, delete, simplify, speed up, and automate last.
-- Change only what you must; §6 keeps or reverts it. Before you finish, read your whole change and remove changes that the task did not need.
+- Change only what you must; §6 keeps or reverts it. An old fragment in anything you touch is a must (§1). Before you finish, read your whole change and remove changes that the task did not need.
 ### Experis
 - `end = native correct state, written first`
 - `fewest native steps(now → end) ⇒ a candidate pathway (§8)`
@@ -401,7 +400,7 @@ flowchart TD
 - `rule ∈ template(object) ⇒ ∀ agent: sees(rule)`
 - `order: question → delete → simplify → accelerate → automate`
 - `one-way(remove) ⇒ ask first (§8)`
-- `minimize size(change), subject to: check (§6) passes`
+- `minimize size(change), subject to: check (§6) passes ∧ old fragments in scope fixed (§1)`
 ### Imples
 ```mermaid
 flowchart TD
@@ -411,7 +410,7 @@ flowchart TD
   E --> RB[Put each rule where the work is born: template, schema, form, default]
   O -->|yes| AS[Ask the user first, §8] -->|approved| X
   O -->|no| X[Remove it, do not guard it] --> M
-  W -->|no| M[Minimum change: question, delete, simplify, then speed up, automate last] --> D[Read the whole change] --> R[Remove unneeded changes] --> C{Check passes?}
+  W -->|no| M[Minimum change: question, delete, simplify, then speed up, automate last] --> D[Read the whole change] --> R["Remove unneeded changes; keep old-fragment fixes, §1"] --> C{Check passes?}
   C -->|no| M
 ```
 
@@ -512,7 +511,7 @@ flowchart TD
 - Inspiration: {[RAID logs, FMEA, dated maintenance tags such as "citation needed"]}.
 - Purpose: record each piece that exists but is not resolved yet, the moment you find it.
 - Value: every gap becomes a tracked task with a direction, not a lost thought.
-- Impact: each fragment in scope ends resolved, marked `<✓>` with evidence. Out-of-scope fragments follow §1.
+- Impact: each fragment in scope (§1) ends resolved, marked `<✓>` with evidence.
 - Declare each fragment when you find it, with a direction. Track it in the tracker (§10). Its work starts when its plan is complete.
 - Write a fragment as `<>`. The symbol inside gives one of five types:
   - `<⊥>` contradiction: two facts that cannot both be true.

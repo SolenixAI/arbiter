@@ -1,0 +1,32 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  skills:
+    name: every skill is model-invocable and matches the commit
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read # checkout only
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      # Upstream skill packs mark some skills user-only. This restores them to model-invocable and
+      # fails if any stays locked.
+      - name: Unlock skills
+        run: scripts/unlock-skills.sh
+
+      # Fails if the unlock changed a tracked skill: the committed files must already be unlocked.
+      - name: Committed skills match the unlock
+        run: git diff --exit-code .agents .claude

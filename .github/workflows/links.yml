@@ -28,9 +28,12 @@ jobs:
           # change that adds a file and links to it passes before it is merged.
           # The action runs args through `eval` under `set -u`, so the capture reference must be
           # escaped as \$1 or the shell fails with "$1: unbound variable" before lychee starts.
+          # The skills installed by the engines (.agents, .claude, .cursor, .codex) are third-party
+          # files: their links are not this repo's to fix, so they are excluded by path.
           args: >-
             --no-progress --max-retries 3
             --remap "https://github.com/SolenixAI/arbiter/blob/main/(.*) file://${{ github.workspace }}/\$1"
             --remap "https://raw.githubusercontent.com/SolenixAI/arbiter/main/(.*) file://${{ github.workspace }}/\$1"
+            --exclude-path '(^|/)\.(agents|claude|cursor|codex)/'
             "./**/*.md" "./**/*.json"
           fail: true

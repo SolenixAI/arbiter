@@ -41,6 +41,8 @@ Each engine is an independent project by its own author. This repo installs all 
 
 Issues and pull requests are welcome. Each change keeps the text, the formula and the diagram of a rule in agreement.
 
+For agents working on this repo, read [`docus/`](docus/) (the repo's agent config, glossary and decision records). [`experis/checks.md`](experis/checks.md) lists the checks that the repo runs.
+
 ## License
 
 [MIT](LICENSE) © Solenix. The engines keep their own licenses: Apache-2.0, MIT and MIT.

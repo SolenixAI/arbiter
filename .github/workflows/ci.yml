@@ -25,7 +25,7 @@ jobs:
       # Upstream skill packs mark some skills user-only. This restores them to model-invocable and
       # fails if any stays locked.
       - name: Unlock skills
-        run: scripts/unlock-skills.sh
+        run: imples/unlock-skills.sh
 
       # Fails if the unlock changed a tracked skill: the committed files must already be unlocked.
       - name: Committed skills match the unlock

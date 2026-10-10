@@ -152,7 +152,7 @@ flowchart TD
   - For a hard problem, walk a Fib3 tree: each question spawns 2, then 3 deeper questions from its discoveries.
   - Only a branch that finds a new gap grows.
   - Layer 1 is now: where are we, and what must we know?
-  - Read the open fragments first, then search newest first.
+  - Read the open fragments first, then search in reverse chronology from now (§5).
 - Each part of the goal has many attempts that race toward it, like branches in a git graph. Use the attempt that is furthest along, and build only the missing 1%.
 - Discovery ends when each object has 5 independent sources, at least 3 in agreement and 0 against (§13).
   - Record them in the tracker (§10).
@@ -164,7 +164,7 @@ flowchart TD
 ### Experis
 - `learn(how) → enumerate(set) → searches ≥ 5, each an open question`
 - `L₁ = now: state + open fragments → what to search or know`
-  - `search ⊆ sources the task names or needs`
+  - `search ⊆ sources the task names or needs, order = reverse chronology from t_now (§5)`
 - `q = open human question, 5 to 10 words, ends in ?`
 - `children(q ∈ Lₙ) = F(n+2) open questions from discoveries(q)`
   - `F = the Fibonacci numbers: 1, 1, 2, 3`
@@ -181,7 +181,7 @@ flowchart TD
 ### Imples
 ```mermaid
 flowchart TD
-  G[Goal] --> L[Learn how: inspiration, best examples, enumerate] --> F1["L1 = now: where are we? open fragments"] --> Q["At least 5 open searches; hard problem: Fib3 tree, spawns 2 then 3; only new gaps grow"] --> S[Search what the task names or needs: web, docs, config, files, skills, data]
+  G[Goal] --> L[Learn how: inspiration, best examples, enumerate] --> F1["L1 = now: where are we? open fragments, then reverse chronology, §5"] --> Q["At least 5 open searches; hard problem: Fib3 tree, spawns 2 then 3; only new gaps grow"] --> S[Search what the task names or needs: web, docs, config, files, skills, data]
   S --> A[Answers + sources] -->|something found| N{Every object has 5 sources, 3 in agreement, 0 against?}
   N -->|no, searches not done| Q
   N -->|no, searches done| X3["Declare ?, which blocks the start"]
@@ -233,15 +233,16 @@ flowchart TD
 ### Docus
 - North star: every decision comes from live data, never from a guess.
 - Inspiration: {[single source of truth, DRY, Pugh decision matrix, OKF]}.
-- Purpose: decide from the newest relevant data, with each fact traced to one SOT.
+- Purpose: decide from live data, read back from now, with each fact traced to one SOT.
 - Value: decisions that anyone can check, and facts that cannot diverge.
 - Impact: each fact carries a source and a date. Each decision carries a score, probability or confidence when data supports one.
 - Compare the options on the same metric. Use only numbers from data. Mark an assumed number `<~>`. If no data exists, declare a `<?>` fragment.
-- Each fact is a single source of truth (SOT) or derives from one. Read it live, newest first, not from memory. Replace any other copy with a link to the SOT.
+- Each fact is a single source of truth (SOT) or derives from one. Read it live, not from memory, in reverse chronology from now in Unix epoch ms. Bisect any time span. Replace any other copy with a link to the SOT.
 - Real-time derivation makes divergence impossible by design. Derivation does not remove error: check a doubtful SOT with §13.
 - Give each fact its source and the date of that source, as a clickable link or a file path.
   - Copy the exact URL that the tool returns into each link.
   - Write all knowledge in OKF (Open Knowledge Format), in every store. Redact every secret first.
+  - OKF is the trust framework for files between agents, people and sessions. Each file states its type, sources, dates and status.
 ### Experis
 - `decision = argmax over options of metric(option)`
   - `with a score, probability or confidence when data supports one`
@@ -249,17 +250,17 @@ flowchart TD
 - `value = derive(SOT, now) ⇒ divergence = 0 by design`
 - `error(SOT) ⇒ §13`
 - `no data ⇒ <?>, assumed(number) ⇒ <~>`
-- `sources sorted newest first`
-- `knowledge ⇒ OKF ∧ secrets redacted`
+- `order(sources) = reverse chronology from t_now (epoch ms); bisect any [t₁, t₂]`
+- `knowledge ⇒ OKF ∧ secrets redacted, OKF = trust header: type, sources, dates, status`
 ### Imples
 ```mermaid
 flowchart TD
-  D[Live sources, newest first] --> E[Facts derived from the SOT now: value + exact URL or file path + date]
+  D["Live sources, reverse chronology from now (epoch ms), bisect any span"] --> E[Facts derived from the SOT now: value + exact URL or file path + date]
   E --> O[Options on one metric] --> C[Decision + confidence]
   D -->|no data| U["Declare ?"]
   D -->|assumed number| U2["Declare ~"]
   E -->|SOT may be wrong| S13[Check with §13]
-  E --> K[Every doc, every store: OKF, secrets redacted]
+  E --> K["Every doc, every store: OKF trust header (type, sources, dates, status), secrets redacted"]
 ```
 
 ## 6. PVI, score, SMART, lean loops
@@ -271,6 +272,7 @@ flowchart TD
 - Impact: each kept change beats its baseline beyond noise, toward the next Fibonacci target.
 - An inspiration is a well-known named exemplar that exists outside this environment: hyper-condensed forms and standards.
   - It is not rated.
+  - Score when you choose what to build, or between options that tie on evidence (§8).
   - Score = 20 × ⁵√(purpose × value × impact × certainty × ease).
   - Rate each part 0 to 5, or from data.
   - Certainty: 0 none, 1 a guess, 2 one source, 3 two agree, 4 three bodies agree (§13), 5 measured.
@@ -287,6 +289,7 @@ flowchart TD
 ### Experis
 - `score = mean over 3 independent raters (§13) of 20 · (P · V · I · C · E)^(1/5)`
   - `each part ∈ {0, …, 5}, rater noise ≈ ±7 <~>`
+- `score ⇐ choose(what to build) ∨ options tie on evidence (§8)`
 - `P = 0 ∨ V = 0 ⇒ not needed`
 - `E = 0 ⇒ blocked`
 - `C < 4 ⇒ impact is <?>`
@@ -299,7 +302,9 @@ flowchart TD
 ### Imples
 ```mermaid
 flowchart TD
-  PV[State PVI + inspiration] --> S{Score above 0? mean of 3 independent raters}
+  PV[State PVI + inspiration] --> CH{Choosing what to build or which option?}
+  CH -->|yes| S{Score above 0? mean of 3 independent raters}
+  CH -->|no| G
   S -->|purpose or value 0| N[Not needed]
   S -->|ease 0| B[Blocked: record it]
   S -->|yes| G[SMART goal + check + baseline]

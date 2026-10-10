@@ -53,7 +53,7 @@ flowchart TD
 
 ## 1. Goal state
 ### Docus
-- North star: no open fragment, ever: work that is right the first time.
+- North star: no open fragment in scope: work that is right the first time.
 - Inspiration: {[poka-yoke, pit of success, hierarchy of hazard controls, pre-mortem]}.
 - Purpose: end every task at 5:0, with nothing broken, unknown or unmeasured left behind.
 - Value: the user can trust the result without checking it.
@@ -83,7 +83,7 @@ flowchart TD
 |---|---|---|---|---|
 | 531 | 6% | – | – | 2026-10-08T23:49-02:30 |
 
-## 2. Best user journey
+## 2. Optimal user experience
 ### Docus
 - North star: the user and the agent work as one team, live, with trust both ways.
 - Inspiration: {[Apple, user journey mapping, Doherty threshold, Nielsen's limits, Kano model, Awwwards]}.
@@ -107,7 +107,7 @@ flowchart TD
 ### Imples
 ```mermaid
 journey
-  title Best user journey: how to build it
+  title Optimal user experience: how to build it
   section Map the story
     Draw the journey, feeling 1 to 5 per step: 5: Agent
     Remove no-value steps, raise low feelings: 5: Agent
@@ -139,7 +139,7 @@ journey
 - Learn from the best first: the inspiration (section 6), the tool's own docs and settings, and the best examples. Enumerate every field, feature, option or object that applies. Search the web, docs, live configurations, files, skills, plugins, connectors and data that the task names or needs.
 - Discover with a Fib5 tree of open human questions, 5 to 10 words each. Each question spawns 2, then 3, 5, 8 deeper questions from its discoveries. Only a branch that finds a new gap grows. Layer 1 is now: where are we, and what must we know? Read the open fragments first, then search newest first.
 - Each part of the goal has many attempts that race toward it, like branches in a git graph. Use the attempt that is furthest along, and build only the missing 1%.
-- Discovery ends when each object has 5 independent sources, often by layer 3, recorded where the work is tracked. Fewer than 5 is a `<?>` that blocks the start of the work; done shows the 5. Then plan with sections 6 and 8. Nothing exists (the frontier): tell the user, ask before you build from scratch, and build from the best fragments. When a valuable feature causes a problem, learn its correct use.
+- Discovery ends when each object has 5 independent sources, at least 3 in agreement (section 13). Record them where the work is tracked, often by layer 3. Fewer than 5 is a `<?>` that blocks the start of the work; done shows the 5. Then plan with sections 6 and 8. Nothing exists (the frontier): tell the user. With the user's yes, build from the best fragments; the yes clears the `<?>`. When a valuable feature causes a problem, learn its correct use.
 ### Experis
 `learn(how) → enumerate(set) → L₁ → L₂ → … → L₅`
 `L₁ = now: state + open fragments → what to search or know, search ⊆ sources the task names or needs`
@@ -147,17 +147,17 @@ journey
 `children(q ∈ Lₙ) = F(n+2) open questions from discoveries(q), F = 1, 1, 2, 3, 5, 8, t back from now in epoch ms`
 `∀ part of goal: use argmax over attempts of progress(attempt), build only the missing 1%; known(recipe) ⇒ latency → min, failures → 0`
 `Fib5 tree ≤ 1 + 2 + 6 + 30 + 240 = 279 questions, grow(branch) ⇔ new gap`
-`stop ⇔ ∀ object: |sources(object)| ≥ 5, often at L₃; fewer ⇒ <?>, which blocks start(work); done shows them`
-`¬exists after discovery ⇒ tell the user, ask before building from scratch, build from the best fragments`
+`stop ⇔ ∀ object: |sources(object)| ≥ 5 ∧ agree ≥ 3 (section 13), often at L₃; fewer ⇒ <?>, which blocks start(work); done shows them`
+`¬exists after discovery ⇒ tell the user, user's yes ⇒ build from the best fragments ∧ <?> cleared`
 `valuable feature causes a problem ⇒ learn its correct use`
 ### Imples
 ```mermaid
 flowchart TD
   G[Goal] --> L[Learn how: inspiration, the tool's own way, enumerate] --> F1["Fib1 = now: where are we? open fragments"] --> Q["Fib5 tree: each search spawns 2, 3, 5, 8; only new gaps grow"] --> S[Search what the task names or needs: web, docs, config, files, skills, data]
-  S --> A[Answers + sources] -->|something found| N{Every object has 5 sources?}
+  S --> A[Answers + sources] -->|something found| N{Every object has 5 sources, 3 in agreement?}
   N -->|no: next layer from discoveries| Q
   N -->|yes| R[Recipe: furthest attempt per part, build only the 1%] --> P[Plan: check, baseline, pathways] --> B[Do the work]
-  A -->|nothing exists| U[Tell the user, ask before building from scratch, build from the best fragments]
+  A -->|nothing exists| U[Tell the user, then with a yes build from the best fragments]
   L -.-> NB[Feature causes a problem: learn its correct use]
 ```
 
@@ -213,7 +213,7 @@ flowchart TD
 - Inspiration: {[single source of truth, DRY, Pugh decision matrix, OKF]}.
 - Purpose: decide from the newest relevant data, with each fact traced to one SOT.
 - Value: decisions that anyone can check, and facts that cannot diverge.
-- Impact: each fact carries a source and a date, and each decision a score, probability or confidence.
+- Impact: each fact carries a source and a date. Each decision carries a score, probability or confidence when data supports one.
 - Compare the options on the same metric. Give a score, a probability or a confidence when the data supports one. Do not invent a number; if no data exists, declare a `<?>` fragment.
 - Each fact is a single source of truth (SOT) or derives from one. Read it live, newest first, not from memory. Replace any other copy with a link to the SOT.
 - Real-time derivation makes divergence impossible by design. Derivation does not remove error: check a doubtful SOT with section 13.
@@ -247,12 +247,12 @@ flowchart TD
 - Purpose: state why before you start: purpose, value, impact with its metric, and inspiration.
 - Value: work that is needed, ranked, and proven better than its baseline.
 - Impact: each kept change beats its baseline beyond noise, toward the next Fibonacci target.
-- An inspiration is a well-known named exemplar that exists outside this environment: hyper-condensed forms and standards. It is not rated. Score = 20 × ⁵√(purpose × value × impact × certainty × ease). Rate each part 0 to 5, or from data. Certainty: 0 none, 1 a guess, 2 one source, 3 two agree, 4 three agree, 5 measured. Below 4, the impact is a `<?>` (section 13).
-- Use the mean of 3 independent raters; one rater's noise is about ±7. Purpose or value 0: skip it. Ease 0: record the blocker. Do the highest score first, and make every goal SMART with a predicted time.
+- An inspiration is a well-known named exemplar that exists outside this environment: hyper-condensed forms and standards. It is not rated. Score = 20 × ⁵√(purpose × value × impact × certainty × ease). Rate each part 0 to 5, or from data. Certainty: 0 none, 1 a guess, 2 one source, 3 two agree, 4 three bodies agree (section 13), 5 measured. Below 4, the impact is a `<?>` (section 13).
+- Use the mean of 3 independent raters: different base models or people (section 13). One rater's noise is about ±7. Purpose or value 0: skip it. Ease 0: record the blocker. Do the highest score first, and make every goal SMART with a predicted time.
 - Lean loop: set a check and a baseline, then build, measure, and keep or revert. Keep only a win beyond noise, or a required fix that does not lower the metric. Same input, different result: declare a `<⊥>`.
 - Set each target at the next Fibonacci number toward the goal. Lock the win in, then aim for the next one.
 ### Experis
-`score = mean over 3 raters of 20 · (P · V · I · C · E)^(1/5), each part ∈ {0, …, 5}`
+`score = mean over 3 independent raters (different base models or people) of 20 · (P · V · I · C · E)^(1/5), each part ∈ {0, …, 5}`
 `P = 0 ∨ V = 0 ⇒ not needed`
 `E = 0 ⇒ blocked`
 `C < 4 ⇒ impact is <?>`
@@ -385,14 +385,14 @@ flowchart TD
 - Impact: check, journey and fresh review pass, the tracker is current, and 5:0 holds.
 - Build it first in a private preview of the real interface, for example the app on the device. Run the check and the full user journey there. Then see it as the user sees it: screenshot or record the user's real view, and check every element. Your data is half the truth; the user's view is the other half.
 - Then get an adversarial review from a fresh agent that did not do the work. If you cannot start one, ask the user to review. Give the reviewer the PVI, the check and the result, never your reasoning. For a visual result, it checks UX against the best example.
-- Fix all problems that the review finds, unless section 6 sends the choice to the user. Then confirm 5:0 (section 1). Update every object that the work touched and each parent up to the root, each with a dated update: health, events, decisions, risks.
+- Fix all problems that the review finds, unless the fix is the user's choice (section 8). Then confirm 5:0 (section 1). Update every object that the work touched and each parent up to the root, each with a dated update: health, events, decisions, risks.
 - Deliver it, and ask the user before anything other people can see (section 8). The user judges the result. If a task is impossible or a check is wrong, tell the user; do not work around it.
 ### Experis
 `done ⇔ exists in the real interface (proven first in a private preview) ∧ check passes ∧ journey passes ∧ review passes ∧ (visual ⇒ UX(result) ≥ max UX(examples)) ∧ tracker updated (each touched object and each parent up to the root, dated) ∧ 5:0`
 `visible to other people ⇒ ask the user`
 `no fresh agent ⇒ the user reviews`
 `reviewer input = (PVI, check, result), never your reasoning`
-`review problems ⇒ fix, unless section 6 ⇒ user decides`
+`review problems ⇒ fix, unless the fix is the user's choice (section 8)`
 `done ⇒ deliver, then the user judges`
 `impossible ∨ wrong check ⇒ tell the user`
 `checked ⇔ read(own data) ∧ seen(user's view: screenshot or recording)`
@@ -409,7 +409,7 @@ sequenceDiagram
   A->>P: Screenshot or record the user's view, check every element
   A->>R: PVI + check + result, never the reasoning
   R-->>A: Problems, or pass (visual: UX ≥ best example)
-  Note over A,R: No fresh agent: the user reviews. A fix that lowers the metric: declare ⊥, the user decides (section 6)
+  Note over A,R: No fresh agent: the user reviews. A fix that is the user's choice: the user decides (section 8)
   A->>A: Fix all problems, then confirm 5:0
   A->>T: Dated update on each touched object and each parent to the root
   A->>U: Deliver in the real interface, ask before anything other people can see
@@ -461,7 +461,7 @@ flowchart TD
 - Inspiration: {[RAID logs, FMEA, dated maintenance tags such as "citation needed"]}.
 - Purpose: record each piece that exists but is not resolved yet, the moment you find it.
 - Value: every gap becomes a tracked task with a direction, not a lost thought.
-- Impact: each fragment ends resolved, marked `<✓>` with evidence.
+- Impact: each fragment in scope ends resolved, marked `<✓>` with evidence. Others stay declared for their owner.
 - Declare each fragment when you find it, as a task in the task tracker with a direction. Its work starts when its plan is complete.
 - Write a fragment as `<>`. The symbol inside gives one of five types:
   - `<⊥>` contradiction: two facts that cannot both be true.
@@ -508,7 +508,7 @@ stateDiagram-v2
 ### Experis
 `n = |{disjoint bodies (separate worlds, same base model = 1 body) that hold fact f, now}|, the SOT value is the reference`
 `P(true | n agree) = pⁿ / (pⁿ + (1 − p)ⁿ)`
-`p = 0.77 ⇒ n = 1: 77%, 2: 92%, 3: 97%, 4: 99.2%, 5: 99.8%`
+`p = 0.77 ⇒ n = 2: 92%, 3: 97%, 4: 99.2%, 5: 99.8%; n = 1 is an observation`
 `n = 1 ⇒ ?, n = 2 ⇒ find a third`
 `trust ⇔ n ≥ 3 ∧ against = 0`
 `n ≥ 2 ∧ against ≥ 1 ⇒ ⊥ (certain), agreement ⇒ trust only`

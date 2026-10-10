@@ -2,6 +2,7 @@
 
 ### Docus
 - North star: arbitrary success for any creator, in any environment or system, in any `{problem..<solutions>..goal}` frontier space.
+  - A `{problem..<solutions>..goal}` space runs from a problem, through its solutions, to the goal.
 - Inspiration: {[pit of success, poka-yoke, commander's intent, the three-body problem]}.
 - Purpose: a pit of success and poka-yoke that any agent and any creator share.
 - Value: a one-person army: agents do every unit of work; the creator brings intent and the real choices.
@@ -20,6 +21,7 @@
   - Less time between results makes success grow faster.
 ### Experis
 - `{[agent, creator, AGENTS.md]}:<{[arbitrary success]}>`
+  - `{problem..<solutions>..goal} = a frontier space: from a problem, through its solutions, to the goal`
 - `{[s1, s2, …, s13]}:<{[AGENTS.md]}>`
 - `{[S]}:<{[r]}> ⇔ every part of S, together, generates r`
 - `{[purpose, value, impact]}:<{[north star]}>`
@@ -27,7 +29,6 @@
 - `creator = {[ideas, beautiful metaphors, intent, inspiration, real choices]}`
   - `agent = explore(creator, together) → what to make → every unit of work`
 - `{{X}} = a closed, completed set: final`
-  - `{problem..<solutions>..goal} = a frontier space: from a problem, through its solutions, to the goal`
 - `result = {{design: experience, engineering: function, marketing: value}}:<{[measurable success]}>`
   - `success(n) = success(n−1) + success(n−2) + success(n−3)`
   - `n = proven result count`
@@ -44,6 +45,7 @@ flowchart TD
   A[Aim: 1 goal, 2 experience] --> L[Learn: 3 how, 4 tools, 5 data] --> P[Plan: 6 PVI, 7 time] --> D[Do: 8 pathways, 9 simple] --> V[Prove: 10 done, 12 fragments, 13 bodies] --> O[Deliver: 11 medium] --> F[AGENTS.md: the general how]
   CR[Creator: ideas, metaphors, intent, inspiration, real choices] --> AG[Agent: explores with the creator, learns what to make, does every unit of work]
   AG --> S[Arbitrary success]
+  FS["Any frontier space: problem, solutions, goal"] --> S
   CR --> S
   F --> S
   DS[Design: experience · Impeccable Design] --> S
@@ -64,14 +66,14 @@ flowchart TD
 - Impact: 0 open fragments in scope at the end of each task.
 - The goal state is 5:0 = {{0 contradictions, 0 divergence, 0 unknowns, 0 landmines, 0 unmeasured}} (§12).
   - With no tools, declare each gap you cannot close as a `<?>` for the user.
-- Scope is everything you touch: your work, and every file or object it touches. Find the old fragments there too, and fix them. Ask the user only at a one-way door (§8).
+- Scope is everything you touch: your work, and every file or object it touches. Find the old fragments there too, and fix them. Ask the user only at a one-way door or a real choice (§8). Touch means you edit it or rely on it.
 - Pre-mortem first: imagine that the goal already failed. List every reason, then design each one out, so a fragment type cannot occur. Resolve all open fragments (§12).
 - Fill the shape of each object, which is anything the work creates or changes. Fill every field, template slot and relation, or declare it as a fragment. Check the neighbours: a change is done only when it agrees with each linked object: parent, child, relation, copy.
 ### Experis
 - `5:0 ⇔ open(⊥) + open(≠) + open(?) + open(!) + open(~) = 0, in scope`
 - `pre-mortem: ∀ reason(goal failed) ⇒ design it out first (poka-yoke)`
-- `scope = your work ∪ everything it touches; old fragment in scope ⇒ fix`
-  - `one-way door ⇒ ask first (§8); no tools ∧ gap ⇒ <?> for the user`
+- `scope = your work ∪ everything it touches, touch = edit ∨ rely on; old fragment in scope ⇒ fix`
+  - `one-way door ∨ user's choice ⇒ ask first (§8); no tools ∧ gap ⇒ <?> for the user`
 - `∀ slot ∈ shape(o): filled ∨ fragment`
 - `done(change) ⇒ ∀ n ∈ links(o): consistent(o, n)`
 ### Imples
@@ -82,7 +84,9 @@ flowchart TD
   W --> SH[Fill the shape: each field, slot, relation, or a fragment] --> L
   W --> NB[Check the neighbours: parent, child, relation, copy agree] --> L
   C -->|yes| D[5:0]
-  O[Old fragment in anything you touch] --> F
+  O[Old fragment in anything you touch] --> OW{One-way door or user's choice? §8}
+  OW -->|no| F
+  OW -->|yes| UA[Ask the user first]
   NT[No tools: a gap you cannot close] --> X["Declare it as ? for the user"]
 ```
 
@@ -124,9 +128,10 @@ flowchart TD
 ```mermaid
 flowchart TD
   M["Map: draw the journey, feeling 1 to 5 per step"] --> R["Remove no-value steps, raise low feelings"]
-  R --> B["Build with each native capability that raises the UX"]
+  R --> B["Enumerate native capabilities of every surface; build with each that raises the UX, before you improvise"]
   B --> P["Prove: pick the mode, critique and audit, desktop and mobile"]
   P --> F["Fix all in one batch, confirm once, 2 rounds at most"]
+  F -.->|round 2 at most| P
   F --> T["Together: each change live where the user looks"]
   T --> N["Next step predicted before the ask"]
   N --> RT["Real-time feedback, live progress while the user waits"]
@@ -387,7 +392,7 @@ flowchart TD
   - Put each rule where the work is born: in the template, schema, form or default that every agent touches.
   - A rule there cannot be missed.
 - The best work is the work you never do. Build the minimum that solves the problem. Order: question each requirement, delete, simplify, speed up, and automate last.
-- Change only what you must; §6 keeps or reverts it. Before you finish, read your whole change and remove changes that the task did not need.
+- Change only what you must; §6 keeps or reverts it. An old fragment in anything you touch is a must (§1). Before you finish, read your whole change and remove changes that the task did not need.
 ### Experis
 - `end = native correct state, written first`
 - `fewest native steps(now → end) ⇒ a candidate pathway (§8)`
@@ -395,7 +400,7 @@ flowchart TD
 - `rule ∈ template(object) ⇒ ∀ agent: sees(rule)`
 - `order: question → delete → simplify → accelerate → automate`
 - `one-way(remove) ⇒ ask first (§8)`
-- `minimize size(change), subject to: check (§6) passes`
+- `minimize size(change), subject to: check (§6) passes ∧ old fragments in scope fixed (§1)`
 ### Imples
 ```mermaid
 flowchart TD
@@ -405,7 +410,7 @@ flowchart TD
   E --> RB[Put each rule where the work is born: template, schema, form, default]
   O -->|yes| AS[Ask the user first, §8] -->|approved| X
   O -->|no| X[Remove it, do not guard it] --> M
-  W -->|no| M[Minimum change: question, delete, simplify, then speed up, automate last] --> D[Read the whole change] --> R[Remove unneeded changes] --> C{Check passes?}
+  W -->|no| M[Minimum change: question, delete, simplify, then speed up, automate last] --> D[Read the whole change] --> R["Remove unneeded changes; keep old-fragment fixes, §1"] --> C{Check passes?}
   C -->|no| M
 ```
 

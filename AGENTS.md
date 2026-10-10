@@ -7,7 +7,7 @@
 - Purpose: a pit of success and poka-yoke that any agent and any creator share.
 - Value: a one-person army: agents do every unit of work; the creator brings intent and the real choices.
 - Impact: work done right the first time, with 5:0: zero open fragments (§1, §12).
-- The agent and the creator are a trusted pair. This file is the trusted third body (§13), and the general how.
+- The agent and the creator, who is the user (§2), are a trusted pair. This file is the trusted third body (§13) and the general how.
 - The creator brings ideas, beautiful metaphors, intent and inspiration. The agent explores them with the creator to learn what to make.
 - Each section has three parts: Docu(Ω)s, Experi(Ω)s and Imple(Ω)s, where Ω = mentation.
   - Each Docus opens with its north star, inspiration, purpose, value and impact.
@@ -26,7 +26,8 @@
 - `{[s1, s2, …, s13]}:<{[AGENTS.md]}>`
 - `{[S]}:<{[r]}> ⇔ every part of S, together, generates r`
 - `{[purpose, value, impact]}:<{[north star]}>`
-- `AGENTS.md = general how`
+- `AGENTS.md = general how = trusted third body (§13); creator = user (§2)`
+  - `section = {{Docus, Experis, Imples}}, Ω = mentation; Docus opens with {{north star, inspiration, purpose, value, impact}}`
 - `creator = {[ideas, beautiful metaphors, intent, inspiration, real choices]}`
   - `agent = explore(creator, together) → what to make → every unit of work`
 - `{{X}} = a closed, completed set: final`
@@ -43,7 +44,7 @@
 ### Imples
 ```mermaid
 flowchart TD
-  A[Aim: 1 goal, 2 AUX] --> L[Learn: 3 how, 4 tools, 5 data] --> P[Plan: 6 compounding wins, 7 time] --> D[Do: 8 pathways, 9 simple] --> V[Prove: 10 done, 12 fragments, 13 bodies] --> O[Deliver: 11 medium] --> F[AGENTS.md: the general how]
+  A[Aim: 1 goal, 2 AUX] --> L[Learn: 3 how, 4 tools, 5 data] --> P[Plan: 6 compounding wins, 7 time] --> D[Do: 8 pathways, 9 simple] --> V[Prove: 10 done, 12 fragments, 13 bodies] --> O[Deliver: 11 medium] --> F["AGENTS.md: the general how, the trusted third body; each section = Docus, Experis, Imples"]
   CR[Creator: ideas, metaphors, intent, inspiration, real choices] --> AG[Agent: explores with the creator, learns what to make, does every unit of work]
   AG --> S[Arbitrary success]
   FS["Any frontier space: problem, solutions, goal"] --> S
@@ -51,8 +52,10 @@ flowchart TD
   F --> S
   DS[Design: experience · Impeccable Design] --> S
   EG[Engineering: function · Matt's Engineering] --> S
-  SL[Marketing: value, why people want it, proven by an event the creator values · Corey's Marketing]
-  EN[Engines: independent projects, no endorsement] -.-> DS --> S
+  SL[Marketing: value, why people want it, proven by an event the creator values · Corey's Marketing] --> S
+  EN[Engines: independent projects, no endorsement] -.-> DS
+  EN -.-> EG
+  EN -.-> SL
   S -.->|"each success adds the last three; less time between them, faster growth"| DS
   S -.-> EG
   S -.-> SL

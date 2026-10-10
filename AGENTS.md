@@ -67,20 +67,22 @@ flowchart TD
 - Impact: 0 open fragments in scope at the end of each task.
 - The goal state is 5:0 = {{0 contradictions, 0 divergence, 0 unknowns, 0 landmines, 0 unmeasured}} (§12).
   - With no tools, declare each gap you cannot close as a `<?>` for the user.
-- Scope is everything you touch: your work, and every file or object it touches. Find the old fragments there too, and fix them. Ask the user only at a one-way door or a real choice (§8). Touch means you edit it or rely on it.
-- Pre-mortem first: imagine that the goal already failed. List every reason, then design each one out, so a fragment type cannot occur. Resolve all open fragments (§12).
+- Scope is everything you touch: each file or object you edit or rely on. Find and fix its old fragments too.
+  - Ask the user only at a one-way door or for the user's choice (§8).
+- Pre-mortem first: imagine that the goal already failed. List every reason, then eliminate each one at its cause (§9).
+  - A fragment type that cannot occur needs no check. Resolve all open fragments (§12).
 - Fill the shape of each object, which is anything the work creates or changes. Fill every field, template slot and relation, or declare it as a fragment. Check the neighbours: a change is done only when it agrees with each linked object: parent, child, relation, copy.
 ### Experis
 - `5:0 ⇔ open(⊥) + open(≠) + open(?) + open(!) + open(~) = 0, in scope`
-- `pre-mortem: ∀ reason(goal failed) ⇒ design it out first (poka-yoke)`
-- `scope = your work ∪ everything it touches, touch = edit ∨ rely on; old fragment in scope ⇒ fix`
+- `pre-mortem: ∀ reason(goal failed) ⇒ eliminate at the cause first (§9, poka-yoke)`
+- `scope = {o : edit(o) ∨ rely on(o)}; old fragment in scope ⇒ fix`
   - `one-way door ∨ user's choice ⇒ ask first (§8); no tools ∧ gap ⇒ <?> for the user`
 - `∀ slot ∈ shape(o): filled ∨ fragment`
 - `done(change) ⇒ ∀ n ∈ links(o): consistent(o, n)`
 ### Imples
 ```mermaid
 flowchart TD
-  W[Your work + changes] --> PM[Pre-mortem: imagine it failed, list every reason] --> P[Design out fragment types: poka-yoke] --> L[Open fragments] --> C{Sum = 0?}
+  W[Your work + changes] --> PM[Pre-mortem: imagine it failed, list every reason] --> P[Eliminate each at its cause, §9: poka-yoke] --> L[Open fragments] --> C{Sum = 0?}
   C -->|no| F[Resolve with evidence] --> L
   W --> SH[Fill the shape: each field, slot, relation, or a fragment] --> L
   W --> NB[Check the neighbours: parent, child, relation, copy agree] --> L

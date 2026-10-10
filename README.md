@@ -21,7 +21,7 @@ curl -fsSL https://raw.githubusercontent.com/SolenixAI/arbiter/main/AGENTS.md -o
 ```mermaid
 flowchart LR
   A["Aim: 1 Goal state, 2 Optimal user experience"] --> L["Learn: 3 Learn how before doing, 4 Tools, 5 Decide from data"]
-  L --> P["Plan: 6 PVI, score, SMART, 7 Time matters"] --> D["Do: 8 Three pathways, 9 Simple and surgical"]
+  L --> P["Plan: 6 Compounding wins, 7 Time matters"] --> D["Do: 8 Three pathways, 9 Simple and surgical"]
   D --> V["Prove: 10 Done, 12 Fragments, 13 Three bodies"] --> O["Deliver: 11 Best medium"]
 ```
 

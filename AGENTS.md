@@ -11,6 +11,7 @@
 - The creator brings ideas, beautiful metaphors, intent and inspiration. The agent explores them with the creator to learn what to make.
 - Each section has three parts: Docu(Ω)s, Experi(Ω)s and Imple(Ω)s, where Ω = mentation.
   - Each Docus opens with its north star, inspiration, purpose, value and impact.
+  - An inspiration is a well-known named exemplar outside this environment: a hyper-condensed form or standard. It is not rated.
   - The north star condenses purpose, value and impact.
 - Every result has three sides: design for the experience, engineering for the function, and marketing for the value.
   - Marketing is the psychology of value: why {a person} wants {a thing}, for {reasons}, to solve {their problems}.
@@ -42,7 +43,7 @@
 ### Imples
 ```mermaid
 flowchart TD
-  A[Aim: 1 goal, 2 experience] --> L[Learn: 3 how, 4 tools, 5 data] --> P[Plan: 6 PVI, 7 time] --> D[Do: 8 pathways, 9 simple] --> V[Prove: 10 done, 12 fragments, 13 bodies] --> O[Deliver: 11 medium] --> F[AGENTS.md: the general how]
+  A[Aim: 1 goal, 2 experience] --> L[Learn: 3 how, 4 tools, 5 data] --> P[Plan: 6 compounding wins, 7 time] --> D[Do: 8 pathways, 9 simple] --> V[Prove: 10 done, 12 fragments, 13 bodies] --> O[Deliver: 11 medium] --> F[AGENTS.md: the general how]
   CR[Creator: ideas, metaphors, intent, inspiration, real choices] --> AG[Agent: explores with the creator, learns what to make, does every unit of work]
   AG --> S[Arbitrary success]
   FS["Any frontier space: problem, solutions, goal"] --> S
@@ -145,7 +146,7 @@ flowchart TD
 - Purpose: turn every problem into a learning-how problem before any work.
 - Value: almost everything already exists, at least in fragments, so the work becomes a step-by-step recipe. When the recipe is known, the failures are skipped.
 - Impact: each plan object has 5 independent sources before you build.
-- Learn from the best first: the inspiration (§6) and the best examples.
+- Learn from the best first: the section's inspiration and the best examples.
   - Enumerate every field, feature, option or object that applies.
   - Search the web, docs, live configurations, files, skills, plugins, connectors and data that the task names or needs.
 - Every task starts with at least 5 open web searches, each an open human question of 5 to 10 words.
@@ -263,58 +264,48 @@ flowchart TD
   E --> K["Every doc, every store: OKF trust header (type, sources, dates, status), secrets redacted"]
 ```
 
-## 6. PVI, score, SMART, lean loops
+## 6. Compounding wins
 ### Docus
-- North star: build only what has purpose and value, highest score first, and keep only measured wins.
-- Inspiration: {[Start With Why, ICE, RICE, Confidence Meter, Lean Startup, PDCA, first principles]}.
-- Purpose: state why before you start, as PVI²: purpose, value, impact with its metric, and inspiration.
-- Value: work that is needed and ranked.
-- Impact: each kept change beats its baseline beyond noise, toward the next Fibonacci target.
-- An inspiration is a well-known named exemplar that exists outside this environment: hyper-condensed forms and standards.
-  - It is not rated.
-  - Score when you choose what to build, or between options that tie on evidence (§8).
-  - Score = 20 × ⁵√(purpose × value × impact × certainty × ease).
-  - Rate each part 0 to 5, or from data.
-  - Certainty: 0 none, 1 a guess, 2 one source, 3 two agree, 4 three bodies agree (§13), 5 measured.
-  - Below 4, the impact is a `<?>` (§13).
-- Use the mean of 3 independent raters (§13).
-  - One rater's noise is about ±7, still unmeasured: `<~>`.
-  - Purpose or value 0: skip it.
-  - Ease 0: record the blocker.
-  - Do the highest score first. Make every goal SMART (specific, measurable, achievable, relevant, time-bound), with a predicted time.
-- Lean loop: set a check (a pass or fail test) and a baseline. Then build, measure, and keep or revert.
-  - Keep a win only when it beats the baseline beyond noise. Keep a required fix when its drop stays within noise.
-  - Same input, different result: declare a `<~>` with its rate, then raise the rate until you can debug it.
-- Set each target at the next Fibonacci number toward the goal. Lock the win in, then aim for the next one.
+- North star: every measured win becomes the floor for the next one.
+- Inspiration: {[Start With Why, kaizen, the flywheel, Lean Startup, SMART goals, ICE]}.
+- Purpose: point all work one way, prove each step, and lock it in.
+- Value: progress compounds; nothing proven is lost.
+- Impact: each kept change beats its baseline, then becomes the next baseline.
+- Why: first state the PVI² {{north star, inspiration, purpose, value, impact}}, and keep its one direction.
+  - To choose what to build, or between options that tie on evidence (§8), rate each part 0 to 5.
+  - Score = 20 × ⁵√(purpose × value × impact × certainty × ease), the mean of 3 independent raters (§13).
+  - Certainty counts the bodies that agree on the impact (§13), up to 5. Below 4, the impact is a `<?>`.
+  - Purpose or value 0: not now. Ease 0: record the blocker. Do the highest score first.
+- Goal: make it SMART: specific, measurable, achievable, relevant, and TTT (time to terminus).
+  - TTT = {[expected execution time, event dates]} to the goal, each predicted, then compared with the actual (§7).
+  - Fix the check (a pass or fail test) before you build, and the target: metric, direction, next Fibonacci number.
+- Loop: measure the baseline, build, measure again.
+  - Keep a change only if checks pass and either it wins beyond noise, or is required or simpler (§9) within noise.
+  - Same input, different result: declare a `<~>` with its rate, and raise the rate until you can debug it.
+- Lock, the ratchet: each kept win is the new baseline and sets the next Fibonacci target. Revert the rest.
+  - After two reverts of one idea, change the approach, not the details.
 ### Experis
-- `score = mean over 3 independent raters (§13) of 20 · (P · V · I · C · E)^(1/5)`
-  - `each part ∈ {0, …, 5}, rater noise ≈ ±7 <~>`
-- `score ⇐ choose(what to build) ∨ options tie on evidence (§8)`
-- `P = 0 ∨ V = 0 ⇒ not needed`
-- `E = 0 ⇒ blocked`
-- `C < 4 ⇒ impact is <?>`
-- `keep ⇔ Δ > noise ∨ (required fix ∧ Δ ≥ −noise)`
+- `{{why, goal, loop}}:<{[compounding wins]}>, lock = the ratchet`
+- `why = PVI², one direction`
+  - `choose(what to build) ∨ options tie on evidence (§8) ⇒ score = mean over 3 raters (§13) of 20 · (P · V · I · C · E)^(1/5)`
+  - `each part ∈ {0, …, 5}; C = bodies agreeing on impact (§13), C < 4 ⇒ impact is <?>; highest score first`
+  - `P = 0 ∨ V = 0 ⇒ not now; E = 0 ⇒ blocked, record it`
+- `goal = SMART, T = TTT = {[expected execution time, event dates]}, predicted → actual (§7)`
+  - `check = pass ∨ fail, fixed before build; target = next Fibonacci number of (metric, direction)`
+- `keep ⇔ checks pass ∧ (Δ > noise ∨ ((required ∨ simpler (§9)) ∧ Δ ≥ −noise))`
   - `Δ = metric(change) − metric(baseline)`
-- `target(x) = next Fibonacci number from x toward the goal`
-  - `e.g. 4892 ms → 4181 ms`
-  - `score 63 → 89`
-- `same input ∧ different result ⇒ <~>(rate), raise the rate`
+- `same input ∧ different result ⇒ <~>(rate), raise the rate until debuggable`
+- `lock: kept ⇒ baseline := win, target := next Fibonacci; else revert; 2 reverts of one idea ⇒ new approach`
 ### Imples
 ```mermaid
 flowchart TD
-  PV[State PVI + inspiration] --> CH{Choosing what to build or which option?}
-  CH -->|yes| S{Score above 0? mean of 3 independent raters}
-  CH -->|no| G
-  S -->|purpose or value 0| N[Not needed]
-  S -->|ease 0| B[Blocked: record it]
-  S -->|yes| G[SMART goal + check + baseline]
-  G --> T[Target: next Fibonacci number toward the goal] --> BU[Build] --> M[Measure]
-  M --> K{Beats baseline beyond noise?}
-  K -->|yes| L[Lock in the win] --> T
-  K -->|no| RF{Required fix, drop within noise?}
-  RF -->|yes| L
-  RF -->|no| R[Revert + learn] --> BU
-  M -.->|same input, different result| Z["Declare ~ with its rate, then raise the rate"]
+  W["Why: PVI², one direction; score to choose"] --> G["Goal: SMART with TTT; pass or fail check; Fibonacci target"]
+  G --> B["Loop: baseline, build, measure"]
+  B --> K{"Checks pass, and a win beyond noise, or required or simpler within noise?"}
+  K -->|yes| L["Lock, the ratchet: new baseline, next target"]
+  L ==> G
+  K -->|no| R["Revert; 2 reverts of one idea: new approach"] --> B
+  B -.->|same input, different result| Z["~ with its rate; raise it"]
 ```
 
 ## 7. Time matters
@@ -433,7 +424,7 @@ flowchart TD
   - Your data is half the truth; the user's view is the other half.
 - For a thing built, get an adversarial review from a fresh agent that did not do the work.
   - If you cannot start one, ask the user to review.
-  - Give the reviewer the PVI, the check, the result and the diff or spec, never your reasoning.
+  - Give the reviewer the PVI², the check, the result and the diff or spec, never your reasoning.
   - For a visual result, it runs the §2 critique and audit.
 - Fix all problems that the review finds in one batch, unless the brief or the user decides otherwise (§8).
   - Then confirm 5:0 (§1).
@@ -448,7 +439,7 @@ flowchart TD
   - `5:0`
 - `done(answer) ⇔ sources checked ∧ self-review ∧ 5:0`
 - `no fresh agent ⇒ the user reviews`
-- `reviewer input = (PVI, check, result, diff or spec), never your reasoning`
+- `reviewer input = (PVI², check, result, diff or spec), never your reasoning`
 - `review problems ⇒ fix in one batch, unless the brief or the user decides otherwise (§8)`
 - `done ⇒ deliver and show what now exists (visible to others ⇒ ask, §8), then the user judges`
 - `impossible ∨ wrong check ⇒ tell the user`
@@ -465,7 +456,7 @@ sequenceDiagram
   A->>P: Build in the real interface
   P-->>A: Check + full user journey pass
   A->>P: Screenshot or record the user's view, check every element
-  A->>R: PVI + check + result + diff or spec, never the reasoning
+  A->>R: PVI² + check + result + diff or spec, never the reasoning
   R-->>A: Problems, or pass (visual: §2 critique and audit)
   Note over A,R: No fresh agent: the user reviews. The brief or the user can keep a finding (§8)
   A->>A: Fix all problems, then confirm 5:0

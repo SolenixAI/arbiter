@@ -6,3 +6,10 @@
 
 # Personal Claude Code settings, never committed.
 .claude/settings.local.json
+
+# Local state made on each machine: ratings, checkpoints and measurements. Never committed.
+experis/*.json
+experis/body-ratings/
+imples/*.json
+imples/checkpoints/
+**/__pycache__/

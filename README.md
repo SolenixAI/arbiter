@@ -103,7 +103,7 @@ In the file's own notation: `{{any AI, any harness, any goal, any user}}:<∞ ar
 
 Issues and pull requests are welcome. Each change keeps the text, the formula and the diagram of a rule in agreement.
 
-For agents working on this repo, read [`docus/`](docus/), which holds the repo's agent config, glossary and decision records. Each term in [`docus/glossary.md`](docus/glossary.md) has one meaning. [`experis/checks.md`](experis/checks.md) lists the checks that the repo runs.
+The repo follows the file's container law. [`docus/`](docus/) holds documentation, [`experis/`](experis/) holds the proofs and the CI gates ([`checks.md`](experis/checks.md)), and [`imples/`](imples/) holds the tools. [`TERMINUS.md`](TERMINUS.md) lists what other tools control. Each term in [`docus/glossary.md`](docus/glossary.md) links to its rule.
 
 ## License
 

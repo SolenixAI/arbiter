@@ -36,6 +36,7 @@
 - `{{Impeccable Design, Matt's Engineering, Corey's Marketing}}:<{[design, engineering, marketing]}>`
   - `marketing = why(person wants thing, reasons, problems)`
   - `proof(value) = an event the creator values: payment ∨ use ∨ reply ∨ win`
+  - `∀ engine: independent ∧ ¬endorses(author, Arbiter)`
 ### Imples
 ```mermaid
 flowchart TD
@@ -46,7 +47,8 @@ flowchart TD
   F --> S
   DS[Design: experience · Impeccable Design] --> S
   EG[Engineering: function · Matt's Engineering] --> S
-  SL[Marketing: value, why people want it, proven by an event the creator values · Corey's Marketing] --> S
+  SL[Marketing: value, why people want it, proven by an event the creator values · Corey's Marketing]
+  EN[Engines: independent projects, no endorsement] -.-> DS --> S
   S -.->|"each success adds the last three; less time between them, faster growth"| DS
   S -.-> EG
   S -.-> SL
@@ -100,8 +102,8 @@ flowchart TD
 - For a visual result, use Impeccable Design (the `impeccable` skill).
   - Pick the mode from the surface: persuade, operate, read or experience.
   - Run its critique and audit on the live result, desktop and mobile together.
-  - Fix every finding in one batch, then confirm once.
-  - The brief and the user outrank a finding (§10).
+  - Fix every finding in one batch, then confirm once. Use at most 2 rounds.
+  - The brief and the user outrank a finding (§8).
 ### Experis
 - `one team (user, agent), live, each change visible where the user looks`
 - `correction acted on in the same turn`
@@ -111,7 +113,7 @@ flowchart TD
   - `user waits ⇒ live progress shown`
 - `journey(medium) drawn before plan ∧ build`
 - `∀ step: value(step) > 0, feeling(step) maximized`
-- `visual ⇒ mode(surface) ∈ {persuade, operate, read, experience}, critique ∧ audit (Impeccable Design)`
+- `visual ⇒ mode(surface) ∈ {persuade, operate, read, experience}, critique ∧ audit on desktop ∧ mobile (Impeccable Design)`
 - `∀ surface s: used ⊇ {c ∈ native(s) : c raises the UX}`
   - `before improvise`
 - `rounds ≤ 2: critique → fix all in one batch → confirm once`
@@ -127,8 +129,8 @@ journey
     Enumerate native capabilities of every surface: 4: Agent
     Build with each one that raises UX: 5: Agent
   section Prove
-    Pick the mode, run critique and audit: 4: Agent
-    Fix all in one batch, confirm once: 4: Agent
+    Pick the mode, run critique and audit, desktop and mobile: 4: Agent
+    Fix all in one batch, confirm once, 2 rounds at most: 4: Agent
   section Together
     Each change live where the user looks: 5: Agent, User
     Next step predicted before the ask: 5: Agent
@@ -153,7 +155,7 @@ journey
   - Layer 1 is now: where are we, and what must we know?
   - Read the open fragments first, then search newest first.
 - Each part of the goal has many attempts that race toward it, like branches in a git graph. Use the attempt that is furthest along, and build only the missing 1%.
-- Discovery ends when each object has 5 independent sources, at least 3 in agreement (§13).
+- Discovery ends when each object has 5 independent sources, at least 3 in agreement and 0 against (§13).
   - Record them where the work is tracked.
   - If the searches end with fewer than 5, declare a `<?>` that blocks the start of the work. When done, show the 5.
   - Then plan with sections 6 and 8.
@@ -172,7 +174,7 @@ journey
   - `failures → 0`
 - `hard ⇒ Fib3 tree ≤ 1 + 2 + 6 = 9 questions`
   - `grow(branch) ⇔ new gap`
-- `stop ⇔ ∀ object: |sources(object)| ≥ 5 ∧ agree ≥ 3 (§13)`
+- `stop ⇔ ∀ object: |sources(object)| ≥ 5 ∧ agree ≥ 3 ∧ against = 0 (§13)`
   - `searches done ∧ fewer ⇒ <?>, which blocks start(work)`
   - `done ⇒ show the 5`
 - `¬exists after discovery ⇒ tell the user`
@@ -182,11 +184,11 @@ journey
 ```mermaid
 flowchart TD
   G[Goal] --> L[Learn how: inspiration, the tool's own way, enumerate] --> F1["L1 = now: where are we? open fragments"] --> Q["At least 5 open searches; hard problem: Fib3 tree, spawns 2 then 3; only new gaps grow"] --> S[Search what the task names or needs: web, docs, config, files, skills, data]
-  S --> A[Answers + sources] -->|something found| N{Every object has 5 sources, 3 in agreement?}
+  S --> A[Answers + sources] -->|something found| N{Every object has 5 sources, 3 in agreement, 0 against?}
   N -->|no, searches not done| Q
   N -->|no, searches done| X3["Declare ?, which blocks the start"]
   N -->|yes| R[Recipe: furthest attempt per part, build only the 1%] --> P[Plan: check, baseline, pathways] --> B[Do the work]
-  A -->|nothing exists| U[Tell the user, then with a yes build from the best fragments]
+  A -->|nothing exists| U["Tell the user; with a yes, build from the best fragments; the yes is the evidence that resolves the ?"]
   L -.-> NB[Feature causes a problem: learn its correct use]
 ```
 
@@ -200,7 +202,7 @@ flowchart TD
 - When a tool does not have a capability that the goal needs, do these steps:
   1. Find a tool, or a version of the tool, that has the capability.
   2. Install it from its official source. Install only what the goal needs.
-  3. Make it the 1 SOT (§5).
+  3. Make it the 1 SOT, with 0 divergence (§5).
   4. Prove it with POE.
   5. Use it.
 - Keep the output at full quality: install what it needs. If no tool or version has the capability, use the nearest step and tell the user.
@@ -220,7 +222,7 @@ flowchart TD
   T[Tool] --> H{Has every capability the goal needs?}
   H -->|no| F[Find a tool or version that has it]
   F -->|none exists| X["Use the nearest step, tell the user; keep the output at full quality"]
-  F --> I[Install from the official source, only what the goal needs + make it the 1 SOT] --> D
+  F --> I[Install from the official source, only what the goal needs + make it the 1 SOT, 0 divergence] --> D
   H -->|yes| FU{First use?}
   FU -->|yes| D[Read docs + live config] --> P[Predict a few results] --> R[Run]
   FU -->|no| P
@@ -257,6 +259,7 @@ flowchart TD
   D[Live sources, newest first] --> E[Facts derived from the SOT now: value + exact URL or file path + date]
   E --> O[Options on one metric] --> C[Decision + confidence]
   D -->|no data| U["Declare ?"]
+  D -->|assumed number| U2["Declare ~"]
   E -->|SOT may be wrong| S13[Check with §13]
   E --> K[Every doc, every store: OKF, secrets redacted]
 ```
@@ -285,7 +288,7 @@ flowchart TD
 - Set each target at the next Fibonacci number toward the goal. Lock the win in, then aim for the next one.
 ### Experis
 - `score = mean over 3 independent raters (different base models or people) of 20 · (P · V · I · C · E)^(1/5)`
-  - `each part ∈ {0, …, 5}`
+  - `each part ∈ {0, …, 5}, rater noise ≈ ±7 <~>`
 - `P = 0 ∨ V = 0 ⇒ not needed`
 - `E = 0 ⇒ blocked`
 - `C < 4 ⇒ impact is <?>`
@@ -308,7 +311,7 @@ flowchart TD
   K -->|no| RF{Required fix, drop within noise?}
   RF -->|yes| L
   RF -->|no| R[Revert + learn] --> BU
-  M -.->|same input, different result| Z["Declare ~ with its rate"]
+  M -.->|same input, different result| Z["Declare ~ with its rate, then raise the rate"]
 ```
 
 ## 7. Time matters
@@ -321,11 +324,11 @@ flowchart TD
 - Record a real Unix epoch timestamp in milliseconds at the start and the end of each step. Use only recorded durations.
 - Compare §6 time predictions with the recorded times.
 - Run independent steps in parallel.
-- The goal is 0 latency. Each checkpoint toward it is the next lower Fibonacci number: …, 8, 5, 3, 2, 1, 0.
+- The goal is 0 latency. Each checkpoint toward it is the next lower Fibonacci number in ms: …, 8, 5, 3, 2, 1, 0.
 ### Experis
 - `latency = t_end − t_start, t in Unix epoch ms`
 - `minimize latency(correct result)`
-- `goal: latency = 0, checkpoints = Fibonacci numbers down to 0`
+- `goal: latency = 0, checkpoints = Fibonacci numbers in ms down to 0`
 - `independent steps ⇒ parallel`
 - `t recorded, never guessed`
 - `compare predictions (§6) with recorded t`
@@ -431,7 +434,7 @@ flowchart TD
   - If you cannot start one, ask the user to review.
   - Give the reviewer the PVI, the check, the result and the diff or spec, never your reasoning.
   - For a visual result, it runs Impeccable Design's critique for the mode (§2).
-- Fix all problems that the review finds in one batch, unless the fix is the user's choice (§8).
+- Fix all problems that the review finds in one batch, unless the brief or the user decides otherwise (§8).
   - Then confirm 5:0 (§1).
   - Update every object that the work touched. Update each parent up to the root. Give each a dated update: health, events, decisions, risks.
 - Deliver it, and ask the user before anything other people can see (§8). The user judges the result. If a task is impossible or a check is wrong, tell the user; do not work around it.
@@ -446,7 +449,7 @@ flowchart TD
 - `visible to other people ⇒ ask the user`
 - `no fresh agent ⇒ the user reviews`
 - `reviewer input = (PVI, check, result, diff or spec), never your reasoning`
-- `review problems ⇒ fix in one batch, unless the fix is the user's choice (§8)`
+- `review problems ⇒ fix in one batch, unless the brief or the user decides otherwise (§8)`
 - `done ⇒ deliver, then the user judges`
 - `impossible ∨ wrong check ⇒ tell the user`
 - `checked ⇔ read(own data) ∧ seen(user's view: screenshot or recording)`
@@ -464,7 +467,7 @@ sequenceDiagram
   A->>P: Screenshot or record the user's view, check every element
   A->>R: PVI + check + result + diff or spec, never the reasoning
   R-->>A: Problems, or pass (visual: Impeccable critique)
-  Note over A,R: No fresh agent: the user reviews. A fix that is the user's choice: the user decides (§8)
+  Note over A,R: No fresh agent: the user reviews. The brief or the user can keep a finding (§8)
   A->>A: Fix all problems, then confirm 5:0
   A->>T: Dated update on each touched object and each parent to the root
   A->>U: Deliver in the real interface, ask before anything other people can see
@@ -500,7 +503,7 @@ sequenceDiagram
 ```mermaid
 flowchart TD
   IL[First: one-line intent] --> O[Output] --> N{Native pane, widget or artifact?}
-  N -->|yes| V[Deliver there; a thing built: its real interface, §10]
+  N -->|yes| V["Deliver there; a thing built: its real interface, §10"]
   N -->|no| F["Easiest first: video, HTML page, diagram, text; else a file"]
   V --> VF["Visual first: diagram, card, chart, image; text only if it cannot be drawn"]
   F --> VF
@@ -546,7 +549,7 @@ stateDiagram-v2
 - Inspiration: {[triangulation, triple modular redundancy, Bayes' theorem]}.
 - Purpose: turn each discovery into trusted truth through disjoint bodies that agree.
 - Value: trust that does not rest on one source. A contradiction is certain; agreement only builds trust.
-- Impact: 3 or more bodies agree and 0 disagree. If each body is right 77% of the time (assumed, `<~>`), that is 97% trust.
+- Impact: 3 or more bodies agree and 0 disagree. If each body is right 77% of the time (assumed, `<~>`), that is 97% trust, with a prior of 0.5.
 - A body is a disjoint system in its own world: a bank, a mailbox, a project tracker, a phone call. Models on the same base model count as one body. A value read live from its SOT is the reference.
 - Count the bodies that agree now:
   - 1 body is an observation. Declare a `<?>` fragment.
@@ -579,7 +582,7 @@ flowchart TD
   D -->|no| N{How many agree?}
   N -->|1| O["Observation: declare ?"]
   N -->|2| G[Good: find a third]
-  N -->|3| T["Trust: 97% or more, if each body is 77% right (assumed)"]
+  N -->|3| T["Trust: 97% or more, if each body is 77% right (assumed), prior 0.5"]
   N -->|4 or more| M[Trust: more confidence with each body]
   B -.->|a body has no record| Mi[Missing agreement: record it there or declare it]
   T --> Goal[Goal: every body agrees concurrently]

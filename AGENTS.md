@@ -267,51 +267,61 @@ flowchart TD
 ## 6. Compounding wins
 ### Docus
 - North star: every measured win locks in, and the next one starts from it.
-- Inspiration: {[Start With Why, SMART goals, Lean Startup, PDCA, ratchet, compound interest, ICE, RICE, first principles]}.
+- Inspiration: {[Start With Why, SMART goals, Lean Startup, PDCA, ratchet, compound interest, ICE, RICE, Confidence Meter, first principles]}.
 - Purpose: turn each piece of work into a win that holds and compounds.
 - Value: progress never slides back, so each result starts from the last one.
 - Impact: each kept change beats its baseline beyond noise, toward the next Fibonacci target.
-- The ratchet is a three-body generator: {{why, SMART goal, lean loop}}. Each body needs the other two.
-- Why: before you start, state the closed vector {{north star, inspiration, purpose, value, impact}}, the PVI². The impact carries its metric.
-  - To choose what to build, or between options that tie on evidence (§8), score them.
-  - Score = 20 × ⁵√(purpose × value × impact × certainty × ease), from 0 to 100.
-  - Rate each part 0 to 5, or from data, as the mean of 3 independent raters (§13).
+- The three-body ratchet: {{why, SMART goal, lean loop}}. Each body needs the other two, and each turn locks a win.
+- Body 1, why: state the PVI², the closed vector {{north star, inspiration, purpose, value, impact}}. The impact carries the metric.
+  - The why also ranks work. Score it when you choose what to build, or between options that tie on evidence (§8).
+  - Score = 20 × ⁵√(purpose × value × impact × certainty × ease), from 0 to 100. Do the highest first.
+  - Rate each part 0 to 5, or from data, as the mean of 3 independent raters (§13). Rater noise is about ±7, still unmeasured: `<~>`.
   - Certainty: 0 none, 1 a guess, 2 one source, 3 two agree, 4 three bodies agree (§13), 5 measured.
   - Purpose or value 0: not needed. Ease 0: record the blocker. Certainty below 4: the impact is a `<?>`.
-  - One rater's noise is about ±7, still unmeasured: `<~>`. Do the highest score first.
-- SMART goal: specific, measurable, achievable, relevant and time-bound, with a predicted time.
+- Body 2, SMART goal: specific, measurable, achievable, relevant and time-bound, with a predicted time.
   - Its target is the next Fibonacci number toward the goal.
-- Lean loop: set a check (a pass or fail test) and a baseline. Then build, measure, and keep or revert.
+- Body 3, lean loop: set a check (a pass or fail test) and the baseline. Then build, measure, and keep or revert.
   - Keep a win only when it beats the baseline beyond noise. Keep a required fix when its drop stays within noise.
-  - Lock each kept win in: it is the new baseline. Then aim for the next target.
   - Same input, different result: declare a `<~>` with its rate, then raise the rate until you can debug it.
+  - The ratchet turns: each kept win becomes the new baseline, and the next target follows.
 ### Experis
 - `{{why, SMART goal, lean loop}}:<{[compounding wins]}>`
-- `why = PVI² = {{north star, inspiration, purpose, value, impact}}, impact has a metric`
-- `score ⇐ choose(what to build) ∨ options tie on evidence (§8)`
-  - `score = mean over 3 independent raters (§13) of 20 · (P · V · I · C · E)^(1/5) ∈ [0, 100]`
+- `why = PVI² = {{north star, inspiration, purpose, value, impact}}, impact has the metric`
+  - `rank ⇐ choose(what to build) ∨ options tie on evidence (§8)`
+  - `score = mean over 3 independent raters (§13) of 20 · (P · V · I · C · E)^(1/5) ∈ [0, 100], highest first`
   - `each part ∈ {0, …, 5}, rater noise ≈ ±7 <~>`
-- `P = 0 ∨ V = 0 ⇒ not needed, E = 0 ⇒ blocked, C < 4 ⇒ impact is <?>`
-- `goal = SMART ∧ predicted time, target(x) = next Fibonacci number from x toward the goal`
-  - `e.g. 4892 ms → 4181 ms, score 63 → 89`
-- `keep ⇔ Δ > noise ∨ (required fix ∧ Δ ≥ −noise), Δ = metric(change) − metric(baseline)`
-- `kept win ⇒ baseline := win (ratchet)`
-- `same input ∧ different result ⇒ <~>(rate), raise the rate`
+  - `P = 0 ∨ V = 0 ⇒ not needed, E = 0 ⇒ blocked, C < 4 ⇒ impact is <?>`
+- `goal = SMART ∧ predicted time`
+  - `target(x) = next Fibonacci number from x toward the goal, e.g. 4892 ms → 4181 ms, score 63 → 89`
+- `loop = check ∧ baseline → build → measure → keep ∨ revert`
+  - `keep ⇔ Δ > noise ∨ (required fix ∧ Δ ≥ −noise), Δ = metric(change) − metric(baseline)`
+  - `same input ∧ different result ⇒ <~>(rate), raise the rate`
+- `ratchet: kept win ⇒ baseline := win, then the next target`
 ### Imples
 ```mermaid
 flowchart TD
-  PV["Why: north star, inspiration, purpose, value, impact"] --> CH{Choosing what to build or which option?}
-  CH -->|yes| S{Score above 0? mean of 3 independent raters}
+  subgraph WHY["Body 1: why"]
+    PV["PVI²: north star, inspiration, purpose, value, impact"] --> CH{Choosing what to build or which option?}
+    CH -->|yes| S{Score above 0? mean of 3 independent raters}
+    S -->|purpose or value 0| N[Not needed]
+    S -->|ease 0| B[Blocked: record it]
+  end
+  subgraph GOAL["Body 2: SMART goal"]
+    G[SMART goal with predicted time] --> T[Target: next Fibonacci number toward the goal]
+  end
+  subgraph LOOP["Body 3: lean loop"]
+    C[Check + baseline] --> BU[Build] --> M[Measure]
+    M --> K{Beats baseline beyond noise?}
+    K -->|no| RF{Required fix, drop within noise?}
+    RF -->|no| R[Revert + learn] --> BU
+  end
   CH -->|no| G
-  S -->|purpose or value 0| N[Not needed]
-  S -->|ease 0| B[Blocked: record it]
-  S -->|yes| G[SMART goal with predicted time + check + baseline]
-  G --> T[Target: next Fibonacci number toward the goal] --> BU[Build] --> M[Measure]
-  M --> K{Beats baseline beyond noise?}
-  K -->|yes| L[Lock in the win: the new baseline, the ratchet] --> T
-  K -->|no| RF{Required fix, drop within noise?}
+  S -->|yes| G
+  T --> C
+  K -->|yes| L[Lock in the win]
   RF -->|yes| L
-  RF -->|no| R[Revert + learn] --> BU
+  L ==>|"ratchet: baseline := win"| C
+  L ==>|"next target"| T
   M -.->|same input, different result| Z["Declare ~ with its rate, then raise the rate"]
 ```
 

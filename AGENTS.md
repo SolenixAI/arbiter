@@ -472,6 +472,8 @@ sequenceDiagram
   - Otherwise use the easiest to absorb that is worth the time: video, HTML page, diagram, then text. Else a file the user can open.
 - Visual first in any medium: a relevant, simple diagram, card, chart or image.
   - The user's native channels are the senses an agent can reach: sight, hearing, touch. Text is serial, so it is hard by design.
+  - The channels run both ways. Perceive what the user perceives: pixels, audio, video, physical feedback (§10).
+  - A raw signal is true. Any agent with the same perspective derives the same understanding.
   - A picture is worth a thousand words. Output that is 100% text is the least optimal: it removes the optimal.
   - In output, text adds only what the picture cannot show.
 - Write text in Simplified Technical English (ASD-STE100): one meaning per word, active voice, 20 words or fewer per sentence.
@@ -481,6 +483,7 @@ sequenceDiagram
 - `medium = most effective native interface (§2) if available; thing built ⇒ real interface (§10)`
   - `else easiest to absorb within time: [video, HTML page, diagram, text]; else a file the user can open`
 - `user's native channels = {{sight, hearing, touch}}, the senses an agent can reach; text = serial ⇒ hard to understand by design`
+  - `channels both ways: perceive(user's pixels, audio, video, physical feedback) (§10); raw signal = true ⇒ same perspective ⇒ same derivation, ∀ agent`
 - `visual ≻ text; visual = relevant ∧ simple; picture = 1000 words: true; text = 100% ⇒ least optimal ⇒ optimal flattened to 0; output: text = what the picture cannot show`
 - `facts keep source and date (§5)`
 - `text = ASD-STE100: one meaning per word, active voice, ≤ 20 words per sentence; relax ⇒ clearer`
@@ -491,6 +494,7 @@ flowchart TD
   N -->|yes| V["Deliver there; a thing built: its real interface, §10"]
   N -->|no| F["Easiest first within the time: video, HTML page, diagram, text; else a file the user can open"]
   V --> VF["Native channels: sight, hearing, touch; visual first, a relevant, simple diagram, card, chart or image"]
+  VF <-.-> BW["Both ways: perceive the user's pixels, audio, video, physical feedback, §10; a raw signal is true; the same perspective gives every agent the same understanding"]
   F --> VF
   VF --> T["A picture is worth a thousand words; text is serial, 100% text = least optimal; text only for what it cannot show; ASD-STE100, 20 words or fewer, relax only for clarity"]
   T --> E["Facts keep source and date, §5"]

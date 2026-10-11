@@ -41,6 +41,7 @@
 - `creator = {[ideas, beautiful metaphors, intent, inspiration, real choices]}`
   - `agent = explore(creator, together) → what to make → every unit of work`
 - `{{X}} = a closed, completed set: final`
+  - `~!x = eliminates the existence of x`
 - `result = {{design: experience, engineering: function, marketing: value}}:<{[measurable success]}>`
   - `success(n) = success(n−1) + success(n−2) + success(n−3)`
   - `n = proven result count`
@@ -84,6 +85,7 @@ flowchart TD
 - Impact: 0 open fragments in scope at the end of each task.
   - ⊥: an open fragment in scope when the task ends.
 - The goal state is 5:0 = {{0 contradictions, 0 divergence, 0 unknowns, 0 landmines, 0 unmeasured}} (§12).
+  - If the three engines or the user can find a contradiction, the work is not correct: `~!correct`.
   - With no tools, the first gap is the missing tool: get it (§4).
   - 5:0 generates arbitrary success on any arbitrary object for the next user or agent with completely empty attention or context.
 - Scope is everything you touch: each file or object you create, edit or rely on. Fix its old fragments before the new work.
@@ -93,6 +95,7 @@ flowchart TD
 - Fill the shape of each object, which is anything the work creates or changes. Fill every field, template slot and relation, or declare it as a fragment. Check the neighbours: a change is done only when it agrees with each linked object: parent, child, relation, copy.
 ### Experis
 - `5:0 ⇔ open(⊥) + open(≠) + open(?) + open(!) + open(~) = 0, in scope`
+  - `findable(contradiction) by {{Matt's Engineering, Impeccable Design, Corey's Marketing}} × user ⇒ ~!correct`
   - `no tools ⇒ first gap = the missing tool ⇒ get it (§4)`
   - `5:0:<{{arbitrary success on any arbitrary object for the next ⟨user, agent⟩ with a completely empty ⟨attention | context⟩}}>`
 - `pre-mortem: ∀ reason(goal failed) ⇒ eliminate at the cause first (§9) ⇒ its fragment type cannot occur`
@@ -108,6 +111,7 @@ flowchart TD
   C -->|no| F[Resolve with evidence] --> L
   W --> SH[Fill the shape: each field, slot, relation, or a fragment] --> L
   W --> NB[Check the neighbours: parent, child, relation, copy agree] --> L
+  D -.-> CO["Correct: no contradiction that the three engines or the user can find; findable ⇒ ~!correct"]
   C -->|yes| D[5:0] -->|generates| NX["Next user or agent, completely empty attention or context: arbitrary success on any arbitrary object"]
   O[Old fragment in anything you touch] -->|before the new work| F
   O -.-> TM["Never pause the work to ask; a blocker is a learn-how problem, §3, §4, §8"]
@@ -486,11 +490,11 @@ flowchart TD
 ## 10. Done means it exists for the user
 ### Docus
 - North star: done means it exists for the user, proven.
-- Inspiration: {[Definition of Done, independent verification and validation, Schrödinger's cat]}.
+- Inspiration: {[Definition of Done, independent verification and validation, Schrödinger's cat, jidoka]}.
 - Purpose: finish only when the thing exists in the real interface where the user will use it.
 - Value: the user receives working results, not claims.
 - Impact: each result passes its bar, and the tracker is current.
-  - ⊥: a thing is called done, but the user's view does not show it, or shows a contradiction.
+  - ⊥: the user finds a contradiction, or the user's view does not show a thing called done.
 - Scale the bar: a thing you build gets this full bar. An answer gets checked sources, a self-review and 5:0.
 - Build and prove it first in a private preview of the real interface, for example the app on the device.
   - Run the §6 check now. Then walk each journey from §2 for real, on the real interface, as the user will.
@@ -502,7 +506,9 @@ flowchart TD
   - Never weaken a check to pass, and never work around it. A wrong check or a blocked step is a `<?>`: search its recipe (§12).
 - Review: a fresh agent that did not do the work reviews it, adversarially.
   - Give it the PVI², the check, the result and the diff or spec, never your reasoning.
-  - For a visual result, it runs the §2 critique and audit.
+  - It runs each engine's review: design (the §2 critique and audit), engineering and marketing.
+  - Never pass a contradiction to the user: the user is the next process.
+  - Each contradiction that the user finds is an escape and a ⊥. Add a check for its class where the work is born (§9).
   - Fix every finding in one batch and re-check until 0, unless the brief or the user decides otherwise (§8). Then confirm 5:0 (§1).
 - Deliver in the real interface: update the tracker, then show what now exists, with its evidence. The user judges.
   - Tracker (task list, todo list or plan): update each touched object and each parent to the root.
@@ -519,11 +525,13 @@ flowchart TD
   - `¬observed ⇒ Schrödinger's cat: ¬done ∧ ¬not done; capture tool missing ⇒ the agent gets it (§4)`
 - `weaken(check) ∨ work around ⇒ ¬done; wrong check ∨ blocked step ⇒ <?> → 5 web searches for its recipe (§12)`
 - `reviewer = fresh adversarial agent; input = (PVI², check, result, diff or spec), never your reasoning`
-  - `visual ⇒ §2 critique and audit`
+  - `∀ result: review by each engine {{design (§2 critique and audit), engineering, marketing}}`
+  - `user = the next process ⇒ pass no contradiction to the user (jidoka)`
+  - `found(user, contradiction) = escape = ⊥ ⇒ its class gets a check where the work is born (§9)`
 - `findings ⇒ fix in one batch, re-check until 0, unless the brief or the user decides otherwise (§8) → 5:0`
 - `deliver(every surface of use, what exists, evidence) → the user judges (§8)`
 - `tracker: ∀ o ∈ touched ∪ parents up to root: dated(health, events, decisions, risks)`
-- `⊥ ⇔ done(thing built) ∧ (¬seen(user's view) ∨ contradictions(tokens, user's view) > 0)`
+- `⊥ ⇔ found(user, contradiction) ∨ (done(thing built) ∧ (¬seen(user's view) ∨ contradictions(tokens, user's view) > 0))`
 ### Imples
 ```mermaid
 sequenceDiagram
@@ -533,7 +541,7 @@ sequenceDiagram
   participant T as Tracker
   participant U as User
   Note over A,U: A thing built gets this whole flow. An answer gets checked sources, a self-review and 5:0.
-  Note over A,U: ⊥ a thing is called done, but the user's view does not show it, or shows a contradiction
+  Note over A,U: ⊥ the user finds a contradiction, or the user's view does not show a thing called done
   A->>P: Build in the real interface
   A->>P: Run the §6 check now, then walk each journey from §2 for real, as the user will
   P-->>A: A learning event: success, or a failure to learn from and try again (§6)
@@ -541,8 +549,9 @@ sequenceDiagram
   P-->>A: Each contradiction between tokens and the user's view, fixed and captured again until 0
   Note over A,P: Unobserved work is Schrödinger's cat. Never weaken a check or work around. Wrong check or blocked step: a ?, search its recipe (§12)
   A->>R: PVI² + check + result + diff or spec, never the reasoning
-  R-->>A: Findings, or pass (visual: §2 critique and audit)
-  Note over A,R: The brief or the user can decide otherwise (§8)
+  R-->>A: Each engine's findings: design (§2 critique and audit), engineering, marketing
+  Note over A,R: The brief or the user can decide otherwise (§8). Never pass a contradiction to the user, the next process
+  Note over A,U: A contradiction the user finds is an escape: add a check for its class where the work is born (§9)
   A->>A: Fix all findings in one batch, re-check until 0, then confirm 5:0
   A->>T: Dated update on each touched object and each parent to the root
   A->>U: Deliver on every surface of use, show what now exists with evidence
@@ -602,7 +611,7 @@ flowchart TD
   - Understand it from the searches, then resolve it. They show the recipe that fixes it right the first time.
   - Give it a direction: the next step or the evidence that resolves it. Start work when its plan is complete.
 - Write a fragment as `<>`. The symbol inside gives one of five types:
-  - `<⊥>` contradiction: two facts that cannot both be true.
+  - `<⊥>` contradiction: two facts that cannot both be true. Each one is also a landmine: it creates `~!success`.
   - `<≠>` divergence (not from the one SOT): a fact that is not an SOT and does not derive from one.
   - `<?>` unknown: a question with no answer yet.
   - `<!>` landmine: a thing that will cause a failure.
@@ -612,6 +621,7 @@ flowchart TD
 ### Experis
 - `fragment = (<type>, time from epoch ms in ISO 8601, description, direction, source)`
   - `type ∈ {⊥, ≠, ?, !, ~}`
+  - `⊥ ⊂ !: each contradiction is a landmine ⇒ ~!success`
 - `declare(f) at t_found, in the tracker (§10), else to the user`
   - `direction = next step ∨ resolving evidence; work(f) starts ⇔ complete(plan(f))`
 - `found(f) ⇒ understanding ≠ reality ⇒ 5 web searches at once (§3) → understand(f) → recipe ∨ frontier → resolve(f), right the first time`
@@ -627,6 +637,7 @@ stateDiagram-v2
   Planned --> Resolved: work done, evidence added
   Resolved --> [*]: marked ✓
   note right of Found : ⊥ a known gap that is not declared
+  note left of Declared : each contradiction is also a landmine, it creates ~!success
 ```
 
 ## 13. The three-body problem

@@ -1,6 +1,6 @@
 # ADR 0004: The repo is Docus, Experis and Imples
 
-Status: accepted, 2026-10-09. Amended 2026-10-10 by the container law in the AGENTS.md root.
+Status: accepted, 2026-10-09. Amended 2026-10-10 by the container law in the AGENTS.md root, and 2026-10-11 by the TypeScript port of the experis tools.
 
 ## Context
 
@@ -21,8 +21,8 @@ The source of this layout is the founder's theory of recursive completeness.
 ## Consequences
 
 - Engine conventions map into `docus/` with flat names: `docus/agents-*.md` and `docus/adr-NNNN-*.md`. `docus/agents-domain.md` records the map, so the skills find the files.
-- `experis/` holds the proofs: `gates.py` (the CI gates), `measure.py` and `pvi.py` (token counts, ratings, checkpoints) and `checks.md`.
+- `experis/` holds the proofs: `gates.ts` (the CI gates), `measure.ts` and `pvi.ts` (token counts, ratings, checkpoints), their `node:test` tests, and `checks.md`. They are TypeScript, run directly by Node 24.
 - `imples/` holds the tools that run: `AGENTS.html` (the viewer) and `unlock-skills.sh`.
 - The root holds `docus/`, `experis/`, `imples/` and `TERMINUS.md`. Every other root file is a terminus, listed with the tool that requires it.
 - Local state (ratings, checkpoints, measurements) is made on each machine and ignored by git.
-- `experis/gates.py` checks the law on every pull request: terminal folders hold files only, and `TERMINUS.md` exists.
+- `experis/gates.ts` checks the law on every pull request: terminal folders hold files only, and `TERMINUS.md` exists.

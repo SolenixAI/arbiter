@@ -99,7 +99,15 @@ for (let p of md.split(/^(?=## )/m).filter(s => s.trim())) {
   out.appendChild(sec);
 }
 const br = await (await fetch('bodies-render.json?t=' + Date.now(), {cache: 'no-store'})).json().catch(() => ({}));
-const mk = (name, b) => { const w = document.createElement('div'); w.innerHTML = '<div class="tlabel">' + name + '</div><table><tr><th>tokens</th><th>%</th><th>PVI</th><th>Δ PVI</th><th>' + b.v + '</th></tr><tr><td>' + b.tokens + '</td><td>' + b.pct + '%</td><td>' + (b.pvi ?? '–') + '</td><td>' + (b.delta == null ? '–' : (b.delta > 0 ? '+' : '') + b.delta) + '</td><td>' + b.at + '</td></tr></table>'; return w; };
+const row = (tag, cells) => { const tr = document.createElement('tr'); cells.forEach(t => { const c = document.createElement(tag); c.textContent = t; tr.append(c); }); return tr; };
+const mk = (name, b) => {
+  const w = document.createElement('div');
+  const label = document.createElement('div'); label.className = 'tlabel'; label.textContent = name;
+  const table = document.createElement('table');
+  table.append(row('th', ['tokens', '%', 'PVI', 'Δ PVI', b.v]), row('td', [b.tokens, b.pct + '%', b.pvi ?? '–', b.delta == null ? '–' : (b.delta > 0 ? '+' : '') + b.delta, b.at]));
+  w.append(label, table);
+  return w;
+};
 document.querySelectorAll('#out section').forEach(sec => {
   const h = sec.querySelector('h1, h2'); if (!h) return;
   const num = h.tagName === 'H1' ? '0' : (h.innerText.match(/^(\d+)\./) || [])[1]; const b = br[num]; if (!b) return;

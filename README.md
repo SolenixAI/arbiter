@@ -49,7 +49,7 @@ Diagram (Imples):
 
 ```mermaid
 flowchart TD
-  PM["Pre-mortem: imagine it failed, list every reason"] --> P["Eliminate each at its cause, §9"] --> Q["Its fragment type cannot occur"]
+  PM["Pre-mortem: imagine it failed, list every reason"] --> P["Remove each at its cause, §9"]
 ```
 
 ## The 13 sections

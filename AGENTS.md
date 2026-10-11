@@ -5,8 +5,8 @@
 - Inspiration: {[pit of success, poka-yoke, commander's intent, the three-body problem, Euclid's Elements]}.
 - Purpose: a pit of success and poka-yoke that any agent and any creator share.
 - Value: whatever any creator intends becomes real.
-- Impact: every result is observable, and right the first time the user sees it.
-  - ⊥: a result that nobody observed, a Schrödinger's cat, or that was wrong when the user first saw it.
+- Impact: every result is observable, and right the first time it is called done.
+  - ⊥: a result that nobody observed, a Schrödinger's cat, or that was wrong when called done.
 - The creator, who is the user, and the agent are a trusted pair. This file is the trusted third body (§13).
   - The creator brings the intent: wants and requirements. The agent gathers it, finds the best way, and delivers the optimal experience correctly (§8).
 - Each section and each container has three parts, Docu(Ω)s, Experi(Ω)s and Imple(Ω)s, with Ω = mentation: understand, prove, exists.
@@ -23,7 +23,7 @@
   - Each proven result adds the last three, a tribonacci. Less time between results makes success grow faster.
 ### Experis
 - `{[agent, creator, AGENTS.md]}:<{[arbitrary success]}>; {[s1, …, s13]}:<{[AGENTS.md]}>; {[S]}:<{[r]}> ⇔ every part of S, together, generates r`
-- `{[purpose, value, impact]}:<{[north star]}>; value = ∀ creator: intent → real; impact = ∀ result: observable ∧ right the first time the user sees it`
+- `{[purpose, value, impact]}:<{[north star]}>; value = ∀ creator: intent → real; impact = ∀ result: observable ∧ right the first time it is called done`
 - `{{X}} = a closed, completed set; ~!x = eliminates the existence of x; {a..<b>..c} = from a, through b, to c`
 - `{[creator = user, agent]} = a trusted pair: creator → intent (wants, requirements); agent → gather(intent) → best way → optimal experience, correct (§8); AGENTS.md = trusted third body (§13)`
 - `∀ container c = {{docus: understand, experis: prove, imples: exists}}, files only, + children + TERMINUS.md (§7); deps(c) ⊆ contents(c)`
@@ -31,17 +31,17 @@
 - `result = {{design: Impeccable Design, engineering: Matt's Engineering, marketing: Corey's Marketing}}; ∀ engine: independent ∧ ¬endorses(Arbiter)`
   - `marketing = why(person wants thing, reasons, problems); proof(value) = payment ∨ use ∨ reply ∨ win`
   - `success(n) = success(n−1) + success(n−2) + success(n−3), n = proven results, seeds = the first three; minimize tₙ − tₙ₋₁ (epoch ms)`
-- `⊥(root) ⇔ ∃ result: ¬observed (Schrödinger's cat) ∨ wrong when the user first sees it`
+- `⊥(root) ⇔ ∃ result: ¬observed (Schrödinger's cat) ∨ wrong when called done`
 ### Imples
 ```mermaid
 flowchart TD
-  A[Aim: 1 goal, 2 AUX] --> L[Learn: 3 how, 4 tools, 5 data] --> P[Plan: 6 wins, 7 time] --> D[Do: 8 pathways, 9 simple] --> V[Prove: 10 done, 12 fragments, 13 bodies] --> O[Deliver: 11 medium] --> S["Arbitrary success: whatever any creator intends becomes real; every result observable and right the first time the user sees it"]
+  A[Aim: 1 goal, 2 AUX] --> L[Learn: 3 how, 4 tools, 5 data] --> P[Plan: 6 wins, 7 time] --> D[Do: 8 pathways, 9 simple] --> V[Prove: 10 done, 12 fragments, 13 bodies] --> O[Deliver: 11 medium] --> S["Arbitrary success: whatever any creator intends becomes real; every result observable and right the first time it is called done"]
   CR["Trusted pair: the creator, the user, brings intent, wants and requirements; the agent gathers it, finds the best way, delivers the optimal experience, §8"] --> S
   F["AGENTS.md, the trusted third body, §13: each section and container = docus, experis, imples; TERMINUS.md, §7"] --> S
   E["Engines, independent: design · Impeccable, engineering · Matt's, marketing · Corey's; value proven by an event the creator values"] --> S
   S -.->|"each success adds the last three; less time between them, faster growth"| E
   F -.-> BI["Each Impact names its ⊥, §12; a true ⊥ blocks done until its cause is fixed and its class has a check, §9"]
-  A -.-> BOT["⊥: a result nobody observed, a Schrödinger's cat, or wrong when the user first saw it"]
+  A -.-> BOT["⊥: a result nobody observed, a Schrödinger's cat, or wrong when called done"]
 ```
 
 ## 1. Goal state
@@ -94,7 +94,7 @@ flowchart TD
   - User senses: sight, hearing, touch. Agent senses: tokens, pixels, bytes.
   - Latency sits between the sides: users feel seconds, agents run in ms (§7).
   - Perceive the user's pixels and feedback (§10). A raw signal is the reference (§13).
-- Live: show each change where the user looks, and keep every touched surface observable in real time.
+- Live: show each change where the user looks, marked in progress until done (§10). Keep every touched surface observable in real time.
   - Act on each correction in the same turn. Predict the next step before the user asks.
   - Show live progress while the user waits. Enumerate each surface's native features, and use each that raises the AUX before you improvise.
 - Before you build, draw each relevant journey: a person, x to y for z, feeling 1 to 5 per step.
@@ -105,7 +105,7 @@ flowchart TD
 ### Experis
 - `AUX = {User {{sight, hearing, touch}} ‖ |latency| ‖ Agent {{tokens, pixels, bytes}}} → perception; latency: seconds vs ms (§7)`
   - `perceive(user's pixels, feedback) (§10); raw signal = the reference (§13)`
-- `live: each change where the user looks ∧ ∀ touched surface: observable(real time); correction ⇒ same turn`
+- `live: each change where the user looks, marked in progress until done (§10) ∧ ∀ touched surface: observable(real time); correction ⇒ same turn`
   - `next step predicted before the ask; user waits ⇒ live progress; ∀ surface: enumerate native features; those that raise the AUX ≻ improvise`
 - `∀ journey (person: x → y for z): drawn before build; ∀ step: value > 0, feeling raised; walked for real (§10)`
 - `visual ⇒ Impeccable Design: mode(surface) ∈ {persuade, operate, read, experience}; critique ∧ audit at each size of the user's view`
@@ -120,7 +120,7 @@ flowchart TD
   B --> P["Visual: Impeccable mode from the surface; critique and audit at each size of the user's view"]
   P --> F["Each finding is a contradiction, fixed to 0, §10; each round visible; taste no engine rule covers is the user's"]
   F -.->|until 0| P
-  F --> T["Live where the user looks; every touched surface observable; corrections in the same turn; next step predicted; live progress"]
+  F --> T["Live where the user looks, marked in progress until done; every touched surface observable; corrections in the same turn; next step predicted; live progress"]
   T --> J["The user judges"]
   US -.-> BOT["⊥: the user waits with no live progress, cannot observe a touched surface, or corrects one issue twice"]
 ```
@@ -392,7 +392,7 @@ flowchart TD
 - Purpose: finish only when the thing exists in the real interface where the user will use it.
 - Value: the user receives working results, not claims.
 - Impact: each result passes its bar, and the tracker is current.
-  - ⊥: the user finds a contradiction, or the user's view does not show a thing called done.
+  - ⊥: the user finds a contradiction in a thing called done, or the user's view does not show it.
 - Bar: a thing you build gets this full bar. An answer gets checked sources, a self-review and 5:0.
 - Prove it in a private preview of the real interface. Run the §6 check now, then walk each §2 journey for real.
   - No check replaces the walk: a passing check with a failing walk is a contradiction. "Should pass" is not proof.
@@ -403,7 +403,7 @@ flowchart TD
 - Review: a fresh agent, from another base model when one exists, reviews it adversarially (§13).
   - Give it the PVI², the check, the result and the diff, never your reasoning. It runs each engine's review.
   - Fix every finding in one batch, and re-check until 0.
-  - Never pass a contradiction to the user, the next process. Each one the user finds is an escape and a ⊥.
+  - Never pass a contradiction to the user, the next process. Each one the user finds in done work is an escape and a ⊥.
   - For each escape, add a check for its class where the work is born (§9).
 - Deliver on every surface where people will use it (§8). Show what now exists, with its evidence. The user judges.
   - Update the tracker, a task list, todo list or plan. Date each touched object and each parent to the root.
@@ -416,10 +416,10 @@ flowchart TD
 - `weaken(check) ∨ work around ⇒ ¬done; wrong check ∨ blocked step ⇒ <?> (§12); capture tool missing ⇒ get it (§4)`
 - `reviewer = fresh adversarial agent, another base model when one exists (§13); input = (PVI², check, result, diff), ¬reasoning`
   - `review = each engine's review; findings ⇒ one batch, re-check until 0`
-  - `user = the next process ⇒ no contradiction reaches the user (jidoka); found(user, contradiction) = escape = ⊥ ⇒ class check where the work is born (§9)`
+  - `user = the next process ⇒ no contradiction reaches the user (jidoka); found(user, contradiction ∈ done) = escape = ⊥ ⇒ class check where the work is born (§9)`
 - `deliver(every surface of use (§8), what exists, evidence) → the user judges`
 - `tracker: ∀ o ∈ touched ∪ parents up to root: dated(health, events, decisions, risks)`
-- `⊥ ⇔ found(user, contradiction) ∨ (done(thing built) ∧ (¬shown(user's view) ∨ contradictions(tokens, user's view) > 0))`
+- `⊥ ⇔ found(user, contradiction ∈ done) ∨ (done(thing built) ∧ (¬shown(user's view) ∨ contradictions(tokens, user's view) > 0))`
 ### Imples
 ```mermaid
 sequenceDiagram
@@ -429,7 +429,7 @@ sequenceDiagram
   participant T as Tracker
   participant U as User
   Note over A,U: A thing built gets this whole flow. An answer gets checked sources, a self-review and 5:0.
-  Note over A,U: ⊥ the user finds a contradiction, or the user's view does not show a thing called done
+  Note over A,U: ⊥ the user finds a contradiction in a thing called done, or the user's view does not show it
   A->>P: Build, run the §6 check now, then walk each §2 journey for real
   P-->>A: A learning event: success, or a failure to learn from and try again (§6)
   A->>P: Capture every touched surface from the user's view

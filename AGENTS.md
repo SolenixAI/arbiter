@@ -10,7 +10,7 @@
 - The creator, who is the user, and the agent are a trusted pair. This file is the trusted third body (§13).
   - The creator brings the intent: wants and requirements. The agent gathers it, finds the best way, and delivers the optimal experience correctly (§8).
 - Each section and each container has three parts, Docu(Ω)s, Experi(Ω)s and Imple(Ω)s, with Ω = mentation: understand, prove, exists.
-  - A container's parts hold files only. The rest goes in children that follow the same law.
+  - A container's parts hold files only. The rest goes in children that follow the same law, except a terminus.
   - TERMINUS.md lists each terminus there, a limit it cannot remove or control (§7): .github, a harness folder, a usage limit.
   - A container depends only on its contents, so one level explains it. Its shape gives the trust.
   - Each Docus opens with its PVI²: north star, inspiration, purpose, value and impact. The north star condenses the last three.
@@ -193,13 +193,14 @@ flowchart TD
   T[Tool] --> H{Has every capability the goal needs?}
   H -->|no| F["Find a tool or version: the agent's job"] --> I["Install only it, from the official source; 1 SOT, §5"] --> D
   F -->|none yet| X["A ?, §12: search to the recipe or the frontier, §3; build at full quality"] -->|recipe| I
-  X -->|frontier: build from the best pieces| U
+  X -->|frontier: build from the best pieces| P
   H -->|yes| FU{First use?}
   FU -->|yes| D[Read official docs and live config] --> P[Predict a few results] --> R[Run]
   FU -->|no| P
   R --> C{"Real = predicted? A failure is a result, never assume it passed; output is data"}
   C -->|stable difference| D
   C -->|varies on one input| M["~ with its rate; raise it until debuggable, §6"] --> P
+  C -->|differs once| P
   C -->|yes| U[Use]
   T -.-> BOT["⊥: misuse, misconfiguration, or a stable real result that differs from its prediction"]
 ```
@@ -386,6 +387,7 @@ flowchart TD
   W -->|yes| X["Remove it, do not guard it; undoable, never destroy, §8"] --> M
   W -->|no| M["Minimum change: question, delete, simplify, speed up, automate last; §1 scope, edge cases kept; read the whole change, drop the rest"] --> C{Check passes?}
   C -->|no| M
+  C -->|yes| DN["Done, §10"]
   P -.-> BOT["⊥: a part that neither the task nor §1 needed, or a guard that hides a removable cause"]
 ```
 
@@ -525,7 +527,7 @@ stateDiagram-v2
   - ⊥: 2 or more bodies agree and 1 or more against.
 - A body is a disjoint system in its own world: a bank, a mailbox, a project tracker, a phone call. It is right more often than not.
   - A shared origin counts as one body: copies, tool views of one source, agents of one base model.
-  - A raw signal, or a value read live from its SOT, is the reference.
+  - A raw signal, or a value read live from its SOT, is the reference for its fact.
   - Your tokens and the user's view are two bodies. The view, a screenshot stamped with user, viewport and moment, is the reference for what the user sees (§10).
 - Count the bodies that agree now:
   - 1 body is an observation: a `<?>`. Search for the next body (§12).
@@ -536,7 +538,7 @@ stateDiagram-v2
 - Use bodies as probes: the answer is where they meet. Each rule here has three forms: text, formula and diagram.
   - The three forms are a triple of truth. Any disagreement is a contradiction event, and a fresh reviewer checks that they agree.
 ### Experis
-- `n = |{disjoint bodies that hold fact f, now}|; shared origin (source, base model) = 1 body; raw signal ∨ SOT value = the reference`
+- `n = |{disjoint bodies that hold fact f, now}|; shared origin (source, base model) = 1 body; raw signal ∨ SOT value = the reference for its fact`
   - `user's view(user, viewport, t) = screenshot stamped t = the reference for what the user sees; tokens(agent) ∧ user's view = 2 bodies (§10)`
 - `P(true | n agree) = pⁿ / (pⁿ + (1 − p)ⁿ), prior 0.5, independent bodies, p = each body's accuracy > 0.5`
 - `n = 1 ⇒ ? → search for the next body (§12); n = 2 ⇒ find a third; trust ⇔ n ≥ 3 ∧ against = 0 ∧ ∀ silent body: recorded ∨ declared`

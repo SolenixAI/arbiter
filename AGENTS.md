@@ -147,7 +147,7 @@ flowchart TD
 ### Experis
 - `learn(how) → enumerate → searches ≥ 5, each an open question of 5 to 10 words`
   - `change(x) ⇒ learn why(x) exists (Chesterton's fence); sources = web, docs, live config, files, skills, plugins, connectors, data that the task names or needs, in §5 order`
-- `L₁ = now: open fragments → what to know; hard ⇒ Fib3 tree: children(q ∈ Lₙ) = F(n+2), ≤ 9 questions per L₁ question; grow ⇔ new gap`
+- `L₁ = now: open fragments → what to know; hard ⇒ Fib3 tree: children(q ∈ L₁) = 2, children(q ∈ L₂) = 3, depth 3: ≤ 9 questions per L₁ question; grow ⇔ new gap`
 - `∀ part of goal: use argmax over attempts of progress; build only the missing 1%`
 - `stop ⇔ ∀ object: (|disjoint sources| ≥ 5 ∧ agree ≥ 3 ∧ against = 0 (§13)) ∨ frontier; fewer ∧ ¬frontier ⇒ search deeper`
   - `frontier ⇔ the Fib3 tree finds no new source ⇒ searches resolve the <?> (no recipe yet) ∧ build from the best pieces ∧ show the user`
@@ -405,8 +405,8 @@ flowchart TD
   - Fix every finding in one batch, and re-check until 0.
   - Never call work done with a contradiction in it: the user is the next process. Each one the user finds in done work is an escape and a ⊥.
   - For each escape, add a check for its class where the work is born (§9).
-- Deliver on every surface where people will use it (§8). Show what now exists, with its evidence. The user judges.
-  - Update the tracker, a task list, todo list or plan. Date each touched object and each parent to the root.
+- Deliver: update the tracker, then ship to every surface where people will use it (§8). Show what exists, with evidence. The user judges.
+  - The tracker is a task list, todo list or plan. Date each touched object and each parent to the root.
   - Give each its health, events, decisions and risks.
 ### Experis
 - `bar(answer) = sources checked ∧ self-review ∧ 5:0`
@@ -417,7 +417,7 @@ flowchart TD
 - `reviewer = fresh adversarial agent, another base model when one exists (§13); input = (PVI², check, result, diff), ¬reasoning`
   - `review = each engine's review; findings ⇒ one batch, re-check until 0`
   - `user = the next process ⇒ ¬done(work ∋ contradiction) (jidoka); found(user, contradiction ∈ done) = escape = ⊥ ⇒ class check where the work is born (§9)`
-- `deliver(every surface of use (§8), what exists, evidence) → the user judges`
+- `tracker updated → deliver(every surface of use (§8), what exists, evidence) → the user judges`
 - `tracker: ∀ o ∈ touched ∪ parents up to root: dated(health, events, decisions, risks)`
 - `⊥ ⇔ found(user, contradiction ∈ done) ∨ (done(thing built) ∧ (¬shown(user's view) ∨ contradictions(tokens, user's view) > 0))`
 ### Imples

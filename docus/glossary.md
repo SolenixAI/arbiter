@@ -6,7 +6,7 @@ The terms of this repo. Each term has one meaning and one source: the linked sec
 - **Docus, Experis, Imples**: documentation, experimentation, implementation: the three parts of each section and each container. [Root](../AGENTS.md#arbiter)
 - **Container law**: a container holds docus, experis and imples (files only), meaningful children and a TERMINUS.md. [Root](../AGENTS.md#arbiter)
 - **`{[ ]}`, `{{ }}`, `:< >`, `~!`**: parts that work together; a closed, complete set; generates; eliminates the existence of. [Root](../AGENTS.md#arbiter)
-- **Escape**: a contradiction that the user finds before an engine or the agent does. [§10](../AGENTS.md#10-done-means-it-exists-for-the-user)
+- **Escape**: a contradiction that the user finds. [§10](../AGENTS.md#10-done-means-it-exists-for-the-user)
 - **⊥ contradiction event**: the fact that proves a section failed. Each Impact names one. [Root](../AGENTS.md#arbiter), [§12](../AGENTS.md#12-fragments)
 - **5:0**: the goal state, with zero open fragments in scope. [§1](../AGENTS.md#1-goal-state)
 - **AUX**: the agent-user experience, the two sides of every experience. [§2](../AGENTS.md#2-optimal-aux)

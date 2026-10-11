@@ -256,7 +256,7 @@ flowchart TD
 ### Experis
 - `{{why, goal, loop}}:<{[compounding wins]}>, lock = the ratchet; why = PVI², one direction`
 - `choose ∨ tie (§8) ⇒ score = mean over 3 raters, one per disjoint body (§13), of 20 · (P · V · I · C · E)^(1/5)`
-  - `each ∈ {0, …, 5}; C = agreeing bodies, C < 3 ⇒ impact is <?>; P = 0 ∨ V = 0 ⇒ not now; E = 0 ⇒ a blocker (§8); highest score first`
+  - `each ∈ {0, …, 5}; C = min(5, agreeing bodies), C < 3 ⇒ impact is <?>; P = 0 ∨ V = 0 ⇒ not now; E = 0 ⇒ a blocker (§8); highest score first`
 - `goal = SMART, T = TTT to the goal ∨ a terminus (§7), predicted → actual; check and target fixed before build`
 - `keep ⇔ checks pass ∧ (Δ > noise ∨ ((required ∨ simpler (§9)) ∧ Δ ≥ −noise)); Δ = metric(change) − metric(baseline)`
 - `same input ∧ different result ⇒ <~>(rate), raised until debuggable`
@@ -315,9 +315,8 @@ flowchart TD
 - Impact: no task waits on the user for what a tool or recipe could do.
   - ⊥: a task waits on the user for something a tool or recipe could do.
 - Frame: state the 1 core problem. There is always one correct best way to solve it: take it.
-  - If the way is unclear, it is a `<?>` (§12).
-  - Then find the three best correct pathways, lowest in latency and effort. Pick the one with the best user journey.
-  - A change that one sentence describes needs one pathway.
+  - If the way is unclear, it is a `<?>` (§12). Its searches give the three best correct pathways, lowest in latency and effort.
+  - Pick the one with the best user journey.
 - Act at once: show it where the user looks, and keep it undoable. Clear each obstacle by its recipe, and never destroy (§9).
   - The engines, not the user, decide how (§2).
   - Corrected twice on one issue: restate the goal, list what failed, replan, and act now.
@@ -328,7 +327,7 @@ flowchart TD
   - The recipe leaves the user at most one native action, such as a required approval, ready in their view.
 ### Experis
 - `north star = optimal(real user journey ∧ experience) at every level: perspective, step, view; the agent does all the work`
-- `problem → one correct best way ⇒ take it; one-sentence change ⇒ one pathway`
+- `problem → one correct best way ⇒ take it`
   - `unclear ⇒ <?> (§12) → {p1, p2, p3}: best ∧ correct ∧ min(latency, effort) → p* = argmax journey(p)`
 - `act ⇒ at once ∧ where the user looks ∧ undoable; obstacle ⇒ its recipe, ¬destroy (§9); how = the engines (§2), ¬the user`
   - `corrected twice ⇒ restate goal, list what failed, new plan, act now`
@@ -340,7 +339,7 @@ flowchart TD
 ```mermaid
 flowchart TD
   G["One core goal: the optimal real user journey and experience, at every level"] --> P1["State the 1 core problem"]
-  P1 --> T["Always one correct best way: take it. Unclear: a ?, §12. Find 3 best correct pathways, lowest latency and effort. Pick the best journey. One-sentence change: 1 pathway"]
+  P1 --> T["Always one correct best way: take it. Unclear: a ?, §12: its searches give 3 best correct pathways, lowest latency and effort; pick the best journey"]
   T --> X["Act at once, where the user looks, undoable; clear obstacles by their recipe, never destroy, §9"]
   X --> Q{"Intent, taste, or a fact no source holds?"}
   Q -->|yes| W["One native question-tool call, recommended first; keep working"] --> X
@@ -486,14 +485,14 @@ flowchart TD
   - A fragment shows that our understanding and reality disagree. Run 5 web searches on it at once (§3), before any fix.
   - The searches give the recipe. Understand it, plan it, then resolve it right the first time.
 - Write each fragment as `<type>`, one of five:
-  - `<⊥>` contradiction: two facts that cannot both be true. It acts as a landmine: `~!success`.
+  - `<⊥>` contradiction: two facts that cannot both be true, such as an Impact and a fact that fails it. It acts as a landmine: `~!success`.
   - `<≠>` divergence: a fact that is not an SOT and does not derive from one.
   - `<?>` unknown: a question with no answer yet.
   - `<!>` landmine: a thing that will cause a failure.
   - `<~>` unmeasured: a claim with no measurement.
 - Record: `<type>`, timestamp from epoch ms in ISO 8601, description, direction, source. Mark it `<✓>` only with the evidence.
 ### Experis
-- `fragment = (<type>, time from epoch ms in ISO 8601, description, direction, source); type ∈ {⊥, ≠, ?, !, ~}`
+- `fragment = (<type>, time from epoch ms in ISO 8601, description, direction, source); type ∈ {⊥, ≠, ?, !, ~}; ⊥ includes (Impact, a fact that fails it)`
   - `effect(⊥) = effect(!) = ~!success; each fragment counts once, by its declared type`
 - `declare(f) at t_found, in the tracker (§10), else to the user`
 - `found(f) ⇒ understanding ≠ reality ⇒ 5 web searches at once (§3) → recipe ∨ frontier → plan → resolve(f), right the first time`
@@ -529,7 +528,7 @@ stateDiagram-v2
   - 2 bodies are good, but not trust yet. Find a third.
   - 3 bodies are the minimum for trust. Each body after 3 adds confidence.
 - Two or more bodies in agreement and one or more against is a contradiction event. Declare a `<⊥>`, find the wrong body, and fix it there.
-  - No two in agreement: a `<?>` (§12). A body with no record of the fact is a missing agreement: record it there, or declare it.
+  - No two in agreement and no reference: a `<?>` (§12). A body with no record of the fact is a missing agreement: record it there, or declare it.
 - Use bodies as probes: the answer is where they meet. Each rule here has three forms: text, formula and diagram.
   - The three forms are a triple of truth. Any disagreement is a contradiction event, and a fresh reviewer checks that they agree.
 ### Experis
@@ -538,7 +537,7 @@ stateDiagram-v2
 - `P(true | n agree) = pⁿ / (pⁿ + (1 − p)ⁿ), prior 0.5, independent bodies, p = each body's accuracy`
 - `n = 1 ⇒ ? → search for the next body (§12); n = 2 ⇒ find a third; trust ⇔ n ≥ 3 ∧ against = 0`
 - `n ≥ 2 ∧ against ≥ 1 ⇒ ⊥ (certain): find the wrong body, fix it there, then ✓; agreement ⇒ trust only`
-- `no 2 agree ⇒ ? (§12); silent body ⇒ missing agreement: record or declare`
+- `no 2 agree ∧ ¬reference ⇒ ? (§12); silent body ⇒ missing agreement: record or declare`
 - `∀ rule: {{text, formula, diagram}} = a triple of truth; disagree(forms) ⇒ ⊥; a fresh reviewer checks agreement`
 - `goal: n = |bodies|, concurrently`
 ### Imples
@@ -547,7 +546,7 @@ flowchart TD
   F[Fact] --> B["Read every disjoint body now; a shared origin or base model = 1 body; a raw signal or the SOT value is the reference"]
   B --> D{Do bodies differ?}
   D -->|2 or more agree, 1 or more against| C["Contradiction event, certain: declare ⊥, find the wrong body, fix it there"]
-  D -->|no 2 agree| U["Unknown: declare ?, §12"]
+  D -->|no 2 agree, no reference| U["Unknown: declare ?, §12"]
   D -->|no| N{How many agree?}
   N -->|1| O["Observation: declare ?, search for the next body, §12"]
   N -->|2| G[Good: find a third]

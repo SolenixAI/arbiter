@@ -137,7 +137,7 @@ flowchart TD
   - Make each surface you touch observable to the user in real time.
   - Predict the next step before the user asks. Minimize each step's latency: the goal is 0 and real-time feedback.
   - Show live progress while the user waits.
-- Before you build, draw each relevant user journey (§11): each stage, step and feeling from 1 to 5. Remove no-value steps and raise low feelings.
+- Before you build, draw each relevant user journey: each stage, step and feeling from 1 to 5. Remove no-value steps and raise low feelings.
   - A journey is a person going from x to y for z. Each one becomes a walk that §10 does for real.
 - Native first, at every surface: the host app and its panes, each tool, service and environment.
   - Each native feature exists because it has purpose, value and impact.
@@ -613,7 +613,7 @@ flowchart TD
   - Understand it from the searches, then resolve it. They show the recipe that fixes it right the first time.
   - Give it a direction: the next step or the evidence that resolves it. Start work when its plan is complete.
 - Write a fragment as `<>`. The symbol inside gives one of five types:
-  - `<⊥>` contradiction: two facts that cannot both be true. Each one is also a landmine: it creates `~!success`.
+  - `<⊥>` contradiction: two facts that cannot both be true. Each one acts as a landmine: it creates `~!success`.
   - `<≠>` divergence (not from the one SOT): a fact that is not an SOT and does not derive from one.
   - `<?>` unknown: a question with no answer yet.
   - `<!>` landmine: a thing that will cause a failure.
@@ -623,7 +623,7 @@ flowchart TD
 ### Experis
 - `fragment = (<type>, time from epoch ms in ISO 8601, description, direction, source)`
   - `type ∈ {⊥, ≠, ?, !, ~}`
-  - `⊥ ⊂ !: each contradiction is a landmine ⇒ ~!success`
+  - `effect(⊥) = effect(!) = ~!success; each fragment counts once, by its declared type`
 - `declare(f) at t_found, in the tracker (§10), else to the user`
   - `direction = next step ∨ resolving evidence; work(f) starts ⇔ complete(plan(f))`
 - `found(f) ⇒ understanding ≠ reality ⇒ 5 web searches at once (§3) → understand(f) → recipe ∨ frontier → resolve(f), right the first time`
@@ -639,7 +639,7 @@ stateDiagram-v2
   Planned --> Resolved: work done, evidence added
   Resolved --> [*]: marked ✓
   note right of Found : ⊥ a known gap that is not declared
-  note left of Declared : each contradiction is also a landmine, it creates ~!success
+  note left of Declared : each contradiction acts as a landmine, it creates ~!success
 ```
 
 ## 13. The three-body problem

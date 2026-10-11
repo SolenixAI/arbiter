@@ -1,6 +1,6 @@
 # Terminus
 
-A terminus is unavoidable, uncontrollable and unpredictable ([AGENTS.md §7](AGENTS.md#7-time-matters)). This repo cannot remove these items. It can only push on their time to terminus from what it controls.
+A terminus is unavoidable and uncontrollable, and hitting it is the failure ([AGENTS.md §7](AGENTS.md#7-time-matters)). This repo cannot remove these items. It pushes their time to terminus away through every vector it controls, and minimizes the harm of one it cannot push.
 
 ## Paths that other tools control
 

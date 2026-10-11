@@ -9,12 +9,6 @@ reviews:
   auto_review:
     enabled: true
     drafts: false
-  # Findings the creator overruled (AGENTS.md §10): recorded here so the review finds them no more.
-  path_instructions:
-    - path: "{AGENTS.md,README.md}"
-      instructions: >-
-        Overruled by the creator, do not flag: the `{problem..<solutions>..goal}` frontier notation
-        is intentional and self-explanatory, with no definition line.
   suggested_labels: true
   auto_apply_labels: true
   labeling_instructions:

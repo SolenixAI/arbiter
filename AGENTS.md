@@ -12,8 +12,9 @@
   - A container's parts hold files only. The rest goes in children that follow the same law.
   - TERMINUS.md lists each terminus there (§7), for example .github, a harness folder or a usage limit.
   - A container depends only on its contents, so one level explains it. Its shape gives the trust.
-  - Each Docus opens with north star, inspiration, purpose, value and impact. The north star condenses the last three.
-  - Each Impact names its ⊥ (§12). Before done, test each ⊥ on the work: one true ⊥ means `~!done` (§10).
+  - Each Docus opens with its PVI²: north star, inspiration, purpose, value and impact. The north star condenses the last three.
+  - Each Impact names its ⊥ (§12). Before done, test each ⊥ on the work.
+  - A true ⊥ means `~!done` until its cause is fixed and its class has a check (§9).
   - An inspiration is a well-known named exemplar outside this environment. It is not rated.
 - Each result has three dimensions and engines: design for experience, engineering for function, marketing for value.
   - The engines are {{[Impeccable Design](https://github.com/pbakaus/impeccable), [Matt's Engineering](https://github.com/mattpocock/skills), [Corey's Marketing](https://github.com/coreyhaines31/marketingskills)}}. Each is independent, and no author endorses Arbiter.
@@ -22,10 +23,10 @@
 ### Experis
 - `{[agent, creator, AGENTS.md]}:<{[arbitrary success]}>; {[s1, …, s13]}:<{[AGENTS.md]}>; {[S]}:<{[r]}> ⇔ every part of S, together, generates r`
 - `{[purpose, value, impact]}:<{[north star]}>; value = ∀ creator: intent → real; impact = ∀ result: observable ∧ right the first time the user sees it`
-- `{{X}} = a closed, completed set; ~!x = eliminates the existence of x`
+- `{{X}} = a closed, completed set; ~!x = eliminates the existence of x; {a..<b>..c} = from a, through b, to c`
 - `{[creator = user (§2), agent]} = a trusted pair; AGENTS.md = trusted third body (§13)`
 - `∀ container c = {{docus: understand, experis: prove, imples: exists}}, files only, + children + TERMINUS.md (§7); deps(c) ⊆ contents(c)`
-- `section = {{Docus, Experis, Imples}}; Docus opens with PVI²; inspiration = named exemplar, ¬rated; Impact names ⊥ (§12); done ⇒ ∀ ⊥ = false, else ~!done (§10)`
+- `section = {{Docus, Experis, Imples}}; Docus opens with PVI²; inspiration = named exemplar, ¬rated; Impact names ⊥ (§12); true ⊥ ⇒ ~!done until fixed(cause) ∧ checked(class) (§9)`
 - `result = {{design: Impeccable Design, engineering: Matt's Engineering, marketing: Corey's Marketing}}; ∀ engine: independent ∧ ¬endorses(Arbiter)`
   - `marketing = why(person wants thing, reasons, problems); proof(value) = payment ∨ use ∨ reply ∨ win`
   - `success(n) = success(n−1) + success(n−2) + success(n−3), n = proven results, seeds = the first three; minimize tₙ − tₙ₋₁ (epoch ms)`
@@ -38,7 +39,7 @@ flowchart TD
   F["AGENTS.md, the trusted third body, §13: each section and container = docus, experis, imples; TERMINUS.md, §7"] --> S
   E["Engines, independent: design · Impeccable, engineering · Matt's, marketing · Corey's; value proven by an event the creator values"] --> S
   S -.->|"each success adds the last three; less time between them, faster growth"| E
-  F -.-> BI["Each Impact names its ⊥, §12; before done, every ⊥ tests false, §10"]
+  F -.-> BI["Each Impact names its ⊥, §12; a true ⊥ blocks done until its cause is fixed and its class has a check, §9"]
   A -.-> BOT["⊥: a result nobody observed, a Schrödinger's cat, or wrong when the user first saw it"]
 ```
 
@@ -99,7 +100,7 @@ flowchart TD
   - Remove no-value steps, and raise low feelings. §10 walks each journey for real.
 - For a visual result, use Impeccable Design. Pick its mode from the surface: persuade, operate, read or experience.
   - Run its critique and audit at each size the user's view uses. Each finding is a contradiction that §10 fixes to 0.
-  - Each round makes a visible change. The brief and the user outrank a finding, and taste that no engine rule backs is theirs.
+  - Each round makes a visible change. Taste that no engine rule covers is the user's call.
 ### Experis
 - `AUX = {User {{sight, hearing, touch}} ‖ |latency| ‖ Agent {{tokens, pixels, bytes}}} → perception; latency: seconds vs ms (§7)`
   - `perceive(user's pixels, feedback) (§10); raw signal = the reference (§13)`
@@ -107,7 +108,7 @@ flowchart TD
   - `next step predicted before the ask; user waits ⇒ live progress; ∀ surface: enumerate native features; those that raise the AUX ≻ improvise`
 - `∀ journey (person: x → y for z): drawn before build; ∀ step: value > 0, feeling raised; walked for real (§10)`
 - `visual ⇒ Impeccable Design: mode(surface) ∈ {persuade, operate, read, experience}; critique ∧ audit at each size of the user's view`
-  - `finding = contradiction(engine, result) ⇒ fixed to 0 (§10); each round visible; brief ∧ user ≻ finding; taste ∧ ¬engine rule ⇒ the user's call`
+  - `finding = contradiction(engine, result) ⇒ fixed to 0 (§10); each round visible; taste ∧ ¬engine rule ⇒ the user's call`
 - `⊥ ⇔ (user waits ∧ ¬live progress) ∨ ¬observable(touched surface) ∨ corrected twice on one issue`
 ### Imples
 ```mermaid
@@ -116,7 +117,7 @@ flowchart TD
   AG --> M["Draw each journey, x to y for z, feeling 1 to 5; raise low feelings; §10 walks it"]
   M --> B["Enumerate each surface's native features; use each that raises the AUX, before you improvise"]
   B --> P["Visual: Impeccable mode from the surface; critique and audit at each size of the user's view"]
-  P --> F["Each finding is a contradiction, fixed to 0, §10; each round visible; the brief, the user and their taste outrank a finding"]
+  P --> F["Each finding is a contradiction, fixed to 0, §10; each round visible; taste no engine rule covers is the user's"]
   F -.->|until 0| P
   F --> T["Live where the user looks; every touched surface observable; corrections in the same turn; next step predicted; live progress"]
   T --> J["The user judges"]
@@ -128,7 +129,7 @@ flowchart TD
 - North star: use what already exists; learn how first.
 - Inspiration: {[shoulders of giants, Double Diamond, Five Whys, Chesterton's fence, Fibonacci search]}.
 - Purpose: turn every problem into a learn-how problem before any work.
-- Value: almost everything exists, at least in fragments, so the work becomes a known recipe, and its failures are skipped.
+- Value: almost everything exists, at least in pieces, so the work becomes a known recipe, and its failures are skipped.
 - Impact: each plan object has 5 disjoint sources before you build.
   - ⊥: work starts with fewer than 5 disjoint sources, and the searches did not reach the frontier.
 - Learn from the best first: the inspiration and the best examples. Before you change or remove a thing, learn why it exists.
@@ -139,7 +140,8 @@ flowchart TD
   - For a hard problem, walk a Fib3 tree: each question spawns 2, then 3 deeper ones. Only a branch with a new gap grows.
 - Attempts race toward each part of the goal, like git branches. Use the furthest one, and build only the missing 1%.
 - Discovery ends when each object has 5 disjoint sources (§13), 3 or more agreeing and 0 against. Record and show them (§10).
-  - Fewer: search deeper. When the tree finds no new source, that is the frontier: build from the best fragments, and show the user.
+  - Fewer: search deeper. When the tree finds no new source, that is the frontier, and the searches resolve the `<?>`.
+  - At the frontier, build from the best pieces, and show the user.
   - When a valuable feature causes a problem, learn its correct use.
 ### Experis
 - `learn(how) → enumerate → searches ≥ 5, each an open question of 5 to 10 words`
@@ -147,7 +149,7 @@ flowchart TD
 - `L₁ = now: open fragments → what to know; hard ⇒ Fib3 tree: children(q ∈ Lₙ) = F(n+2), ≤ 9 questions; grow ⇔ new gap`
 - `∀ part of goal: use argmax over attempts of progress; build only the missing 1%`
 - `stop ⇔ ∀ object: |disjoint sources| ≥ 5 ∧ agree ≥ 3 ∧ against = 0 (§13); fewer ⇒ search deeper`
-  - `frontier ⇔ the Fib3 tree finds no new source ⇒ build from the best fragments ∧ show the user`
+  - `frontier ⇔ the Fib3 tree finds no new source ⇒ searches resolve the <?> ∧ build from the best pieces ∧ show the user`
 - `valuable feature causes a problem ⇒ learn its correct use`
 - `⊥ ⇔ start(work) ∧ |disjoint sources| < 5 ∧ ¬frontier`
 ### Imples
@@ -156,7 +158,7 @@ flowchart TD
   G[Goal] --> L["Learn from the best; learn why a thing exists before you change it; enumerate; search web, docs, config, files, skills, plugins, connectors, data"] --> F1["L1 = now: open fragments, then §5 order"] --> Q["5 or more open searches; hard: Fib3 tree, only new gaps grow"]
   Q --> N{"Each object: 5 disjoint sources, 3 agree, 0 against?"}
   N -->|no| Q
-  N -->|no new source anywhere| U["Frontier: build from the best fragments, show the user"] --> B[Plan and do the work]
+  N -->|no new source anywhere| U["Frontier: the searches resolve the ?; build from the best pieces, show the user"] --> B[Plan and do the work]
   N -->|yes| R["Recipe: the furthest attempt, build only the missing 1%"] --> B
   L -.-> NB["A valuable feature causes a problem: learn its correct use"]
   G -.-> BOT["⊥: work starts with fewer than 5 disjoint sources, short of the frontier"]
@@ -279,27 +281,27 @@ flowchart TD
 - Purpose: latency is the true measure of speed.
 - Value: the user waits less.
 - Impact: every step has a measured start and end, and each prediction is compared with its actual.
-  - ⊥: a step with no recorded start or end, or a guessed time.
+  - ⊥: a step with no recorded start or end, a guessed time, or an avoidable terminus hit.
 - Measure: record epoch ms at the start and end of each step. Never guess a time.
 - Calibrate: compare each TTT prediction (§6) with its actual, and carry the ratio into the next one.
-  - A terminus is unavoidable, uncontrollable and unpredictable: a usage limit, a session limit, a deadline.
-  - Predict its TTT, and push on it from what you control.
+  - A terminus is unavoidable and uncontrollable: a usage limit, a session limit, a deadline. Hitting it is the failure.
+  - Predict its TTT, and push it away through every vector you control. One you cannot push: minimize its harm.
 - Parallel: run independent steps together, and shorten the longest chain first.
-- Goal: latency toward 0, with Fibonacci checkpoints in ms: …, 8, 5, 3, 2, 1, 0.
+- Goal: latency toward 0, each win locked by the §6 ratchet.
 ### Experis
 - `latency = t_end − t_start, t = recorded epoch ms, never guessed`
 - `ratio = actual / predicted (TTT, §6) ⇒ next prediction × ratio`
-  - `terminus = unavoidable ∧ uncontrollable ∧ unpredictable ⇒ predict TTT(terminus), push from what you control`
+  - `terminus = unavoidable ∧ uncontrollable; hit = failure ⇒ predict TTT, push it away through every controllable vector; ¬pushable ⇒ minimize harm`
 - `independent ⇒ parallel; shorten the longest chain first`
-- `latency(correct result) → 0, checkpoints = Fibonacci numbers in ms`
-- `⊥ ⇔ step ∧ (¬t_start ∨ ¬t_end ∨ guessed(t))`
+- `latency(correct result) → 0, each win locked by the ratchet (§6)`
+- `⊥ ⇔ (step ∧ (¬t_start ∨ ¬t_end ∨ guessed(t))) ∨ avoidable hit(terminus)`
 ### Imples
 ```mermaid
 flowchart TD
   S["Start: epoch ms"] --> P["Independent steps in parallel, longest chain first"] --> R["Correct result: epoch ms"] --> L["Latency = end − start"]
-  L --> C["Compare with the TTT prediction, §6; carry the ratio"] --> FB["Next checkpoint: the next lower Fibonacci number, toward 0"]
-  S -.-> TM["Terminus: unavoidable, uncontrollable, unpredictable; predict its TTT, push on it"]
-  S -.-> BOT["⊥: a step with no recorded start or end, or a guessed time"]
+  L --> C["Compare with the TTT prediction, §6; carry the ratio"] --> FB["Lock each win with the §6 ratchet, toward 0"]
+  S -.-> TM["Terminus: unavoidable, uncontrollable; hitting it is the failure; predict its TTT, push it away through every vector; unpushable: minimize harm"]
+  S -.-> BOT["⊥: a step with no recorded start or end, a guessed time, or an avoidable terminus hit"]
 ```
 
 ## 8. Do the work, three pathways
@@ -308,10 +310,10 @@ flowchart TD
 - Inspiration: {[1-3-1 rule, Completed Staff Work, mission command]}.
 - Purpose: the agent does all the work, so the user meets it finished in each perspective, step and view.
 - Value: the user experiences the result and judges it.
-- Impact: no task waits on the user.
+- Impact: no task waits on the user for what a tool or recipe could do.
   - ⊥: a task waits on the user for something a tool or recipe could do.
 - Frame: state the 1 core problem. There is always one correct best way to solve it: take it.
-  - If the way is unclear, it is a `<?>`: run 5 web searches on it at once (§12).
+  - If the way is unclear, it is a `<?>` (§12).
   - Then find the three best correct pathways, lowest in latency and effort. Pick the one with the best user journey.
   - A change that one sentence describes needs one pathway.
 - Act at once: show it where the user looks, and keep it undoable. Clear each obstacle by its recipe, and never destroy (§9).
@@ -324,7 +326,7 @@ flowchart TD
 ### Experis
 - `north star = optimal(real user journey ∧ experience) at every level: perspective, step, view; the agent does all the work`
 - `problem → one correct best way ⇒ take it; one-sentence change ⇒ one pathway`
-  - `unclear ⇒ <?> ⇒ 5 web searches at once (§12) → {p1, p2, p3}: best ∧ correct ∧ min(latency, effort) → p* = argmax journey(p)`
+  - `unclear ⇒ <?> (§12) → {p1, p2, p3}: best ∧ correct ∧ min(latency, effort) → p* = argmax journey(p)`
 - `act ⇒ at once ∧ where the user looks ∧ undoable; obstacle ⇒ its recipe, ¬destroy (§9); brief = the user's standing choice`
   - `corrected twice ⇒ restate goal, list what failed, new plan, act now`
 - `ask ⇐ intent ∨ taste(finished options the user sees) ∨ fact ∉ every source; one native question-tool call, recommended first; work continues`
@@ -335,7 +337,7 @@ flowchart TD
 ```mermaid
 flowchart TD
   G["One core goal: the optimal real user journey and experience, at every level"] --> P1["State the 1 core problem"]
-  P1 --> T["Always one correct best way: take it. Unclear: a ?, 5 web searches, §12. Find 3 best correct pathways, lowest latency and effort. Pick the best journey. One-sentence change: 1 pathway"]
+  P1 --> T["Always one correct best way: take it. Unclear: a ?, §12. Find 3 best correct pathways, lowest latency and effort. Pick the best journey. One-sentence change: 1 pathway"]
   T --> X["Act at once, where the user looks, undoable; clear obstacles by their recipe, never destroy, §9"]
   X --> Q{"Intent, taste, or a fact no source holds?"}
   Q -->|yes| W["One native question-tool call, recommended first; keep working"] --> X
@@ -398,8 +400,7 @@ flowchart TD
   - Never weaken a check or work around it. A wrong check or a blocked step is a `<?>` (§12).
 - Review: a fresh agent, from another base model when one exists, reviews it adversarially (§13).
   - Give it the PVI², the check, the result and the diff, never your reasoning. It runs each engine's review.
-  - Fix every finding in one batch, and re-check until 0. The brief or the user may overrule a finding (§2).
-  - Record that choice where the engine reads it, so 0 findings remain.
+  - Fix every finding in one batch, and re-check until 0.
   - Never pass a contradiction to the user, the next process. Each one the user finds is an escape and a ⊥.
   - For each escape, add a check for its class where the work is born (§9).
 - Deliver on every surface where people will use it (§8). Show what now exists, with its evidence. The user judges.
@@ -411,7 +412,7 @@ flowchart TD
 - `checked ⇔ ∀ touched surface: captured(user's view) ∧ contradictions(tokens, user's view) = 0 (§13); ¬observed ⇒ Schrödinger's cat`
 - `weaken(check) ∨ work around ⇒ ¬done; wrong check ∨ blocked step ⇒ <?> (§12); capture tool missing ⇒ get it (§4)`
 - `reviewer = fresh adversarial agent, another base model when one exists (§13); input = (PVI², check, result, diff), ¬reasoning`
-  - `review = each engine's review; findings ⇒ one batch, re-check until 0; overruled(brief ∨ user, §2) ⇒ recorded where the engine reads ⇒ findings = 0`
+  - `review = each engine's review; findings ⇒ one batch, re-check until 0`
   - `user = the next process ⇒ no contradiction reaches the user (jidoka); found(user, contradiction) = escape = ⊥ ⇒ class check where the work is born (§9)`
 - `deliver(every surface of use (§8), what exists, evidence) → the user judges`
 - `tracker: ∀ o ∈ touched ∪ parents up to root: dated(health, events, decisions, risks)`
@@ -421,7 +422,7 @@ flowchart TD
 sequenceDiagram
   participant A as Agent
   participant P as Private preview
-  participant R as Fresh reviewer from another base model
+  participant R as Fresh reviewer (another base model when one exists)
   participant T as Tracker
   participant U as User
   Note over A,U: A thing built gets this whole flow. An answer gets checked sources, a self-review and 5:0.
@@ -432,7 +433,7 @@ sequenceDiagram
   P-->>A: Each contradiction between tokens and that view, fixed and captured again until 0
   Note over A,P: Unobserved work is Schrödinger's cat. Never weaken a check or work around it. A blocked step: a ?, §12
   A->>R: PVI² + check + result + diff, never the reasoning
-  R-->>A: Each engine's findings, fixed in one batch until 0. An overruled one is recorded where the engine reads it (§2)
+  R-->>A: Each engine's findings, fixed in one batch and re-checked until 0
   Note over A,U: No contradiction reaches the user, the next process. Each escape gets a class check where the work is born (§9)
   A->>T: Dated update on each touched object and each parent to the root
   A->>U: Deliver on every surface of use, with evidence
@@ -522,7 +523,7 @@ stateDiagram-v2
 - Count the bodies that agree now:
   - 1 body is an observation: a `<?>`. Search for the next body (§12).
   - 2 bodies are good, but not trust yet. Find a third.
-  - 3 bodies are the minimum for trust: 97% if each is 77% right (`<~>`, prior 0.5). Each body after 3 adds confidence.
+  - 3 bodies are the minimum for trust. Each body after 3 adds confidence.
 - Two or more bodies in agreement and one or more against is a contradiction event. Declare a `<⊥>`, find the wrong body, and fix it there.
   - No two in agreement: a `<?>` (§12). A body with no record of the fact is a missing agreement: record it there, or declare it.
 - Use bodies as probes: the answer is where they meet. Each rule here has three forms: text, formula and diagram.
@@ -530,7 +531,7 @@ stateDiagram-v2
 ### Experis
 - `n = |{disjoint bodies that hold fact f, now}|; shared origin (source, base model) = 1 body; raw signal ∨ SOT value = the reference`
   - `user's view(user, viewport, t) = screenshot stamped t = the reference for what the user sees; tokens(agent) ∧ user's view = 2 bodies (§10)`
-- `P(true | n agree) = pⁿ / (pⁿ + (1 − p)ⁿ), prior 0.5, independent bodies; p = 0.77 (<~>) ⇒ n = 2: 92%, 3: 97%, 4: 99.2%, 5: 99.8%`
+- `P(true | n agree) = pⁿ / (pⁿ + (1 − p)ⁿ), prior 0.5, independent bodies, p = each body's accuracy`
 - `n = 1 ⇒ ? → search for the next body (§12); n = 2 ⇒ find a third; trust ⇔ n ≥ 3 ∧ against = 0`
 - `n ≥ 2 ∧ against ≥ 1 ⇒ ⊥ (certain): find the wrong body, fix it there, then ✓; agreement ⇒ trust only`
 - `no 2 agree ⇒ ? (§12); silent body ⇒ missing agreement: record or declare`
@@ -546,7 +547,7 @@ flowchart TD
   D -->|no| N{How many agree?}
   N -->|1| O["Observation: declare ?, search for the next body, §12"]
   N -->|2| G[Good: find a third]
-  N -->|3 or more| T["Trust: 97% or more if each body is 77% right, assumed, prior 0.5; more with each body"]
+  N -->|3 or more| T["Trust: more with each body"]
   B -.->|a body has no record| Mi[Missing agreement: record it there or declare it]
   B -.-> TP["Your tokens and the user's view: 2 bodies; the view, a screenshot stamped user, viewport, t, is the reference for what the user sees, §10"]
   B -.-> TR["Each rule's text, formula and diagram: a triple of truth; any disagreement is a contradiction event; a fresh reviewer checks"]

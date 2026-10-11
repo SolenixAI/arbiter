@@ -535,9 +535,9 @@ stateDiagram-v2
 - `n = |{disjoint bodies that hold fact f, now}|; shared origin (source, base model) = 1 body; raw signal ∨ SOT value = the reference`
   - `user's view(user, viewport, t) = screenshot stamped t = the reference for what the user sees; tokens(agent) ∧ user's view = 2 bodies (§10)`
 - `P(true | n agree) = pⁿ / (pⁿ + (1 − p)ⁿ), prior 0.5, independent bodies, p = each body's accuracy`
-- `n = 1 ⇒ ? → search for the next body (§12); n = 2 ⇒ find a third; trust ⇔ n ≥ 3 ∧ against = 0`
+- `n = 1 ⇒ ? → search for the next body (§12); n = 2 ⇒ find a third; trust ⇔ n ≥ 3 ∧ against = 0 ∧ ∀ silent body: recorded ∨ declared`
 - `n ≥ 2 ∧ against ≥ 1 ⇒ ⊥ (certain): find the wrong body, fix it there, then ✓; agreement ⇒ trust only`
-- `no 2 agree ∧ ¬reference ⇒ ? (§12); silent body ⇒ missing agreement: record or declare`
+- `no 2 agree ∧ ¬reference ⇒ ? (§12); silent body = missing agreement`
 - `∀ rule: {{text, formula, diagram}} = a triple of truth; disagree(forms) ⇒ ⊥; a fresh reviewer checks agreement`
 - `goal: n = |bodies|, concurrently`
 ### Imples

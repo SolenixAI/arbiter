@@ -83,12 +83,13 @@ for hit in re.findall(r"\b[A-Z]{2,5}-\d{2,5}\b", md):
 
 # Stop exits: no rule may end by parking the work or handing it back (5:0, §1, §8).
 STOP = re.compile(r"(?i)\b(report it|record the blocker|outside your control|one-way door|keep a finding|stop and ask|wait for (?:the user|approval)|out of scope)\b")
-for hit in STOP.findall(md):
-    fails.append(f"stop exit: '{hit}' parks the work; route it to a recipe (§8)")
-
-# The file passes its own 5:0: no assumed number or open marker sits on a value in its own rules.
-for hit in re.findall(r"\(\s*`?<[~?!≠⊥]>`?\s*[,)]|\(assumed\b", md):
-    fails.append(f"open fragment in the file: {hit}")
+OPEN = re.compile(r"\(\s*`?<[~?!≠⊥]>`?\s*[,)]|\(assumed\b")
+for n, line in enumerate(md.splitlines(), 1):
+    for m in STOP.finditer(line):
+        fails.append(f"stop exit, line {n}: '{m.group(0)}' parks the work; route it to a recipe (§8)")
+    # The file passes its own 5:0: no assumed number or open marker sits on a value in its own rules.
+    for m in OPEN.finditer(line):
+        fails.append(f"open fragment in the file, line {n}: {m.group(0)}")
 
 # No muted engine: a reviewer config never tells an engine to stop finding something (§10).
 for f in tracked:

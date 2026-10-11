@@ -41,9 +41,9 @@ An agent that reads one form better still gets the whole rule. A disagreement be
 
 Here is one rule from section 1, Goal state, in its three forms.
 
-Text (Docus): Pre-mortem first: imagine that the goal already failed. List every reason, then eliminate each one at its cause (§9), so its fragment type cannot occur.
+Text (Docus): Pre-mortem first: imagine that the goal failed, list every reason, and remove each one at its cause (§9).
 
-Formula (Experis): `pre-mortem: ∀ reason(goal failed) ⇒ eliminate at the cause first (§9) ⇒ its fragment type cannot occur`
+Formula (Experis): `pre-mortem: ∀ reason(goal failed) ⇒ remove it at its cause (§9)`
 
 Diagram (Imples):
 

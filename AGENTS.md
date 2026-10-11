@@ -55,7 +55,7 @@ flowchart TD
 - 5:0 = {{0 contradictions, 0 divergence, 0 unknowns, 0 landmines, 0 unmeasured}} (§12).
   - If an engine or the user can find a contradiction, the work is not correct: `~!correct`.
   - 5:0 generates arbitrary success on any object for the next user or agent, with empty attention or context.
-  - With no tools, the first gap is the missing tool (§4).
+  - With no tools, the first gap is the tool the goal needs (§4).
 - Scope is everything you create, edit or rely on. Fix its old fragments before the new work.
   - Handle questions and blockers as §8 says.
 - Pre-mortem first: imagine that the goal failed, list every reason, and remove each one at its cause (§9).
@@ -64,7 +64,7 @@ flowchart TD
 ### Experis
 - `5:0 ⇔ open(⊥) + open(≠) + open(?) + open(!) + open(~) = 0, in scope`
   - `findable(contradiction) by {{engines}} × user ⇒ ~!correct`
-  - `5:0:<{{arbitrary success on any object for the next ⟨user, agent⟩ with an empty ⟨attention | context⟩}}>; no tools ⇒ first gap = the tool (§4)`
+  - `5:0:<{{arbitrary success on any object for the next ⟨user, agent⟩ with an empty ⟨attention | context⟩}}>; no tools ⇒ first gap = the tool the goal needs (§4)`
 - `scope = {o : create(o) ∨ edit(o) ∨ rely on(o)}; old fragments ⇒ fixed before new work; questions ∧ blockers ⇒ §8`
 - `pre-mortem: ∀ reason(goal failed) ⇒ remove it at its cause (§9)`
 - `∀ slot ∈ shape(o): filled ∨ fragment; done(change) ⇒ ∀ n ∈ links(o): consistent(o, n)`
@@ -76,7 +76,7 @@ flowchart TD
   C -->|no| F[Resolve with evidence] --> L
   W --> SH["Fill the shape; agree with each linked object"] --> L
   O["Old fragments in scope, before the new work; questions and blockers: §8"] --> F
-  NT["No tools: get the tool, §4"] --> L
+  NT["No tools: get the tool the goal needs, §4"] --> L
   C -->|yes| D["5:0: generates arbitrary success on any object for the next user or agent, empty context"]
   D -.-> CO["A contradiction an engine or the user can find: ~!correct"]
   W -.-> BOT["⊥: an open fragment in scope at the end"]
@@ -149,7 +149,7 @@ flowchart TD
   - `change(x) ⇒ learn why(x) exists (Chesterton's fence); sources = web, docs, live config, files, skills, plugins, connectors, data that the task names or needs, in §5 order`
 - `L₁ = now: open fragments → what to know; hard ⇒ Fib3 tree: children(q ∈ Lₙ) = F(n+2), ≤ 9 questions; grow ⇔ new gap`
 - `∀ part of goal: use argmax over attempts of progress; build only the missing 1%`
-- `stop ⇔ ∀ object: |disjoint sources| ≥ 5 ∧ agree ≥ 3 ∧ against = 0 (§13); fewer ⇒ search deeper`
+- `stop ⇔ ∀ object: (|disjoint sources| ≥ 5 ∧ agree ≥ 3 ∧ against = 0 (§13)) ∨ frontier; fewer ∧ ¬frontier ⇒ search deeper`
   - `frontier ⇔ the Fib3 tree finds no new source ⇒ searches resolve the <?> ∧ build from the best pieces ∧ show the user`
 - `valuable feature causes a problem ⇒ learn its correct use`
 - `⊥ ⇔ start(work) ∧ |disjoint sources| < 5 ∧ ¬frontier`
@@ -285,14 +285,15 @@ flowchart TD
   - ⊥: a step with no recorded start or end, a guessed time, or an avoidable terminus hit.
 - Measure: record epoch ms at the start and end of each step. Never guess a time.
 - Calibrate: compare each TTT prediction (§6) with its actual, and carry the ratio into the next one.
-  - A terminus is unavoidable and uncontrollable: a usage limit, a session limit, a deadline. Hitting it is the failure.
-  - Predict its TTT, and push it away through every vector you control. One you cannot push: minimize its harm.
+  - A terminus is a limit you cannot remove or control: a usage limit, a session limit, a deadline.
+  - An avoidable hit is the failure. Predict its TTT, and keep the work from hitting it through every vector you control.
+  - A hit you cannot avoid: minimize its harm.
 - Parallel: run independent steps together, and shorten the longest chain first.
 - Goal: latency toward 0, each win locked by the §6 ratchet.
 ### Experis
 - `latency = t_end − t_start, t = recorded epoch ms, never guessed`
 - `ratio = actual / predicted (TTT, §6) ⇒ next prediction × ratio`
-  - `terminus = unavoidable ∧ uncontrollable; hit = failure ⇒ predict TTT, push it away through every controllable vector; ¬pushable ⇒ minimize harm`
+  - `terminus = a limit, ¬removable ∧ ¬controllable; avoidable hit = failure ⇒ predict TTT, keep the work from hitting it through every controllable vector; unavoidable hit ⇒ minimize harm`
 - `independent ⇒ parallel; shorten the longest chain first`
 - `latency(correct result) → 0, each win locked by the ratchet (§6)`
 - `⊥ ⇔ (step ∧ (¬t_start ∨ ¬t_end ∨ guessed(t))) ∨ avoidable hit(terminus)`
@@ -301,7 +302,7 @@ flowchart TD
 flowchart TD
   S["Start: epoch ms"] --> P["Independent steps in parallel, longest chain first"] --> R["Correct result: epoch ms"] --> L["Latency = end − start"]
   L --> C["Compare with the TTT prediction, §6; carry the ratio"] --> FB["Lock each win with the §6 ratchet, toward 0"]
-  S -.-> TM["Terminus: unavoidable, uncontrollable; hitting it is the failure; predict its TTT, push it away through every vector; unpushable: minimize harm"]
+  S -.-> TM["Terminus: a limit you cannot remove or control; an avoidable hit is the failure; predict its TTT, keep the work from hitting it; unavoidable hit: minimize harm"]
   S -.-> BOT["⊥: a step with no recorded start or end, a guessed time, or an avoidable terminus hit"]
 ```
 

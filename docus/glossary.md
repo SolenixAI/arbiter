@@ -17,7 +17,7 @@ The terms of this repo. Each term has one meaning and one source: the linked sec
 - **PVI²**: north star, inspiration, purpose, value, impact. [§6](../AGENTS.md#6-compounding-wins)
 - **The ratchet**: each kept win becomes the next baseline. [§6](../AGENTS.md#6-compounding-wins)
 - **TTT**: time to terminus, the time predictions to the goal or a terminus. [§6](../AGENTS.md#6-compounding-wins)
-- **Terminus**: something unavoidable and uncontrollable; hitting it is the failure. See [TERMINUS.md](../TERMINUS.md). [§7](../AGENTS.md#7-time-matters)
+- **Terminus**: a limit you cannot remove or control; an avoidable hit is the failure. See [TERMINUS.md](../TERMINUS.md). [§7](../AGENTS.md#7-time-matters)
 - **Blocker**: a learn-how problem, solved by the right tool and recipe. [§8](../AGENTS.md#8-do-the-work-three-pathways)
 - **Recipe**: the known steps that complete a task right the first time. [§3](../AGENTS.md#3-learn-how-before-doing)
 - **Frontier**: where the search tree finds no new source, so the agent builds from the best pieces. [§3](../AGENTS.md#3-learn-how-before-doing)

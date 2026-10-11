@@ -246,7 +246,7 @@ flowchart TD
 - Impact: each kept change beats its baseline, then becomes the next baseline.
   - ⊥: a kept change that loses to its baseline beyond noise, or fails its check.
 - Why: state the PVI² first, and keep its one direction.
-  - To choose what to build, or between tied options (§8), rate purpose, value, impact, certainty and ease 0 to 5.
+  - To choose what to build, rate purpose, value, impact, certainty and ease 0 to 5.
   - Score = 20 × ⁵√(their product), as the mean of 3 raters, one per disjoint body (§13).
   - Certainty counts the bodies that agree on the impact, up to 5. Below 3, find a third body first (§13).
   - Purpose or value 0: not now. Ease 0: a blocker, solved as §8 says. Do the highest score first.
@@ -259,7 +259,7 @@ flowchart TD
   - After two reverts of one idea, change the approach, not the details.
 ### Experis
 - `{{why, goal, loop}}:<{[compounding wins]}>, lock = the ratchet; why = PVI², one direction`
-- `choose ∨ tie (§8) ⇒ score = mean over 3 raters, one per disjoint body (§13), of 20 · (P · V · I · C · E)^(1/5)`
+- `choose(what to build) ⇒ score = mean over 3 raters, one per disjoint body (§13), of 20 · (P · V · I · C · E)^(1/5)`
   - `each ∈ {0, …, 5}; C = min(5, agreeing bodies), C < 3 ⇒ find a third body (§13); P = 0 ∨ V = 0 ⇒ not now; E = 0 ⇒ a blocker (§8); highest score first`
 - `goal = SMART, T = TTT to the goal ∨ a terminus (§7), predicted → actual; check and target fixed before build`
 - `keep ⇔ checks pass ∧ (Δ > noise ∨ ((required ∨ simpler (§9)) ∧ Δ ≥ −noise)); Δ = metric(change) − metric(baseline)`
@@ -322,7 +322,7 @@ flowchart TD
   - If the way is unclear, it is a `<?>` (§12). Its searches give the three best correct pathways, lowest in latency and effort.
   - Pick the one with the best user journey.
 - Act at once: show it where the user looks, and keep it undoable. Clear each obstacle by its recipe, and never destroy (§9).
-  - The engines, not the user, decide how (§2).
+  - The engines decide how (§2). Taste that no engine rule covers is the user's.
   - Corrected twice on one issue: restate the goal, list what failed, replan, and act now.
 - Questions: ask only for intent, taste between finished options the user can see, or a fact no source holds.
   - Search every source first. Ask in one native question-tool call, recommended answer first, and keep working.
@@ -333,10 +333,10 @@ flowchart TD
 - `north star = optimal(real user journey ∧ experience) at every level: perspective, step, view; the agent does all the work`
 - `after §3: problem → one correct best way ⇒ take it`
   - `unclear ⇒ <?> (§12) → {p1, p2, p3}: best ∧ correct ∧ min(latency, effort) → p* = argmax journey(p)`
-- `act ⇒ at once ∧ where the user looks ∧ undoable; obstacle ⇒ its recipe, ¬destroy (§9); how = the engines (§2), ¬the user`
+- `act ⇒ at once ∧ where the user looks ∧ undoable; obstacle ⇒ its recipe, ¬destroy (§9); how = the engines (§2); taste ∧ ¬engine rule = the user's`
   - `corrected twice ⇒ restate goal, list what failed, new plan, act now`
 - `ask ⇐ intent ∨ taste(finished options the user sees) ∨ fact ∉ every source; one native question-tool call, recommended first; work continues`
-  - `end(turn) on a question ⇔ a real choice remains`
+  - `end(turn) on a question ⇔ a real choice remains ∧ no other work`
 - `blocker ⇒ learn-how problem (§3, §4) → tool ∧ recipe; user's part ≤ one native action, such as an approval, ready in view`
 - `⊥ ⇔ waits(task on the user) ∧ a tool or recipe could do it`
 ### Imples
@@ -527,7 +527,7 @@ stateDiagram-v2
   - ⊥: 2 or more bodies agree and 1 or more against.
 - A body is a disjoint system in its own world: a bank, a mailbox, a project tracker, a phone call. It is right more often than not.
   - A shared origin counts as one body: copies, tool views of one source, agents of one base model.
-  - A raw signal, or a value read live from its SOT, is the reference for its fact.
+  - A raw signal, or a value read live from an undoubted SOT, is the reference for its fact.
   - Your tokens and the user's view are two bodies. The view, a screenshot stamped with user, viewport and moment, is the reference for what the user sees (§10).
 - Count the bodies that agree now:
   - 1 body is an observation: a `<?>`. Search for the next body (§12).
@@ -538,7 +538,7 @@ stateDiagram-v2
 - Use bodies as probes: the answer is where they meet. Each rule here has three forms: text, formula and diagram.
   - The three forms are a triple of truth. Any disagreement is a contradiction event, and a fresh reviewer checks that they agree.
 ### Experis
-- `n = |{disjoint bodies that hold fact f, now}|; shared origin (source, base model) = 1 body; raw signal ∨ SOT value = the reference for its fact`
+- `n = |{disjoint bodies that hold fact f, now}|; shared origin (source, base model) = 1 body; raw signal ∨ undoubted SOT value = the reference for its fact`
   - `user's view(user, viewport, t) = screenshot stamped t = the reference for what the user sees; tokens(agent) ∧ user's view = 2 bodies (§10)`
 - `P(true | n agree) = pⁿ / (pⁿ + (1 − p)ⁿ), prior 0.5, independent bodies, p = each body's accuracy > 0.5`
 - `n = 1 ⇒ ? → search for the next body (§12); n = 2 ⇒ find a third; trust ⇔ n ≥ 3 ∧ against = 0 ∧ ∀ silent body: recorded ∨ declared`
@@ -549,7 +549,7 @@ stateDiagram-v2
 ### Imples
 ```mermaid
 flowchart TD
-  F[Fact] --> B["Read every disjoint body now, each right more often than not; a shared origin or base model = 1 body; a raw signal or the SOT value is the reference"]
+  F[Fact] --> B["Read every disjoint body now, each right more often than not; a shared origin or base model = 1 body; a raw signal or an undoubted SOT value is the reference"]
   B --> D{Do bodies differ?}
   D -->|2 or more agree and 1 or more against, or a body against the reference| C["Contradiction event, certain: declare ⊥, find the wrong body, fix it there"] -->|fixed| B
   D -->|no 2 agree, no reference| U["Which body is wrong is unknown: declare ?, find the next body, §12"] --> B

@@ -95,7 +95,7 @@ Each engine is an independent project. Their authors do not endorse Arbiter. Thi
 
 Solenix exists to bridge the gap between the technology that already exists and the people who need it. When the file works for them, it works for everyone in between.
 
-North star: arbitrary success for any creator, in any environment or system, in any `{problem..<solutions>..goal}` frontier space.
+North star: arbitrary success for any creator, in any environment or system, in any `{problem..<solutions>..goal}` frontier, derived from one file.
 
 In the file's own notation: `{{any AI, any harness, any goal, any user}}:<∞ arbitrary success>`.
 

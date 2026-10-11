@@ -11,7 +11,7 @@
   - The creator brings the intent: wants and requirements. The agent gathers it, finds the best way, and delivers the optimal experience correctly (§8).
 - Each section and each container has three parts, Docu(Ω)s, Experi(Ω)s and Imple(Ω)s, with Ω = mentation: understand, prove, exists.
   - A container's parts hold files only. The rest goes in children that follow the same law.
-  - TERMINUS.md lists each terminus there (§7), for example .github, a harness folder or a usage limit.
+  - TERMINUS.md lists each terminus there, a limit it cannot remove or control (§7): .github, a harness folder, a usage limit.
   - A container depends only on its contents, so one level explains it. Its shape gives the trust.
   - Each Docus opens with its PVI²: north star, inspiration, purpose, value and impact. The north star condenses the last three.
   - Each Impact names its ⊥ (§12). Before done, test each ⊥ on the work.
@@ -131,7 +131,7 @@ flowchart TD
 - Inspiration: {[shoulders of giants, Double Diamond, Five Whys, Chesterton's fence, Fibonacci search]}.
 - Purpose: turn every problem into a learn-how problem before any work.
 - Value: almost everything exists, at least in pieces, so the work becomes a known recipe, and its failures are skipped.
-- Impact: each plan object has 5 disjoint sources before you build.
+- Impact: each plan object has 5 disjoint sources, or reaches the frontier, before you build.
   - ⊥: work starts with fewer than 5 disjoint sources, and the searches did not reach the frontier.
 - Learn from the best first: the inspiration and the best examples. Before you change or remove a thing, learn why it exists.
   - Enumerate every field, feature, option or object that applies.
@@ -141,16 +141,16 @@ flowchart TD
   - For a hard problem, walk a Fib3 tree: each question spawns 2, then 3 deeper ones. Only a branch with a new gap grows.
 - Attempts race toward each part of the goal, like git branches. Use the furthest one, and build only the missing 1%.
 - Discovery ends when each object has 5 disjoint sources, 3 or more agreeing and 0 against (§13). Record and show them (§10).
-  - Fewer: search deeper. When the tree finds no new source, that is the frontier, and the searches resolve the `<?>`.
+  - Fewer: search deeper. When the tree finds no new source, that is the frontier. The searches resolve the `<?>`: no recipe exists yet.
   - At the frontier, build from the best pieces, and show the user.
   - When a valuable feature causes a problem, learn its correct use.
 ### Experis
 - `learn(how) → enumerate → searches ≥ 5, each an open question of 5 to 10 words`
   - `change(x) ⇒ learn why(x) exists (Chesterton's fence); sources = web, docs, live config, files, skills, plugins, connectors, data that the task names or needs, in §5 order`
-- `L₁ = now: open fragments → what to know; hard ⇒ Fib3 tree: children(q ∈ Lₙ) = F(n+2), ≤ 9 questions; grow ⇔ new gap`
+- `L₁ = now: open fragments → what to know; hard ⇒ Fib3 tree: children(q ∈ Lₙ) = F(n+2), ≤ 9 questions per L₁ question; grow ⇔ new gap`
 - `∀ part of goal: use argmax over attempts of progress; build only the missing 1%`
 - `stop ⇔ ∀ object: (|disjoint sources| ≥ 5 ∧ agree ≥ 3 ∧ against = 0 (§13)) ∨ frontier; fewer ∧ ¬frontier ⇒ search deeper`
-  - `frontier ⇔ the Fib3 tree finds no new source ⇒ searches resolve the <?> ∧ build from the best pieces ∧ show the user`
+  - `frontier ⇔ the Fib3 tree finds no new source ⇒ searches resolve the <?> (no recipe yet) ∧ build from the best pieces ∧ show the user`
 - `valuable feature causes a problem ⇒ learn its correct use`
 - `⊥ ⇔ start(work) ∧ |disjoint sources| < 5 ∧ ¬frontier`
 ### Imples
@@ -159,7 +159,7 @@ flowchart TD
   G[Goal] --> L["Learn from the best; learn why a thing exists before you change it; enumerate; search web, docs, config, files, skills, plugins, connectors, data"] --> F1["L1 = now: open fragments, then §5 order"] --> Q["5 or more open searches; hard: Fib3 tree, only new gaps grow"]
   Q --> N{"Each object: 5 disjoint sources, 3 agree, 0 against?"}
   N -->|no| Q
-  N -->|no new source anywhere| U["Frontier: the searches resolve the ?; build from the best pieces, show the user"] --> B[Plan and do the work]
+  N -->|no new source anywhere| U["Frontier: no recipe yet, the searches resolve the ?; build from the best pieces, show the user"] --> B[Plan and do the work]
   N -->|yes| R["Recipe: the furthest attempt, build only the missing 1%"] --> B
   L -.-> NB["A valuable feature causes a problem: learn its correct use"]
   G -.-> BOT["⊥: work starts with fewer than 5 disjoint sources, short of the frontier"]
@@ -403,7 +403,7 @@ flowchart TD
 - Review: a fresh agent, from another base model when one exists, reviews it adversarially (§13).
   - Give it the PVI², the check, the result and the diff, never your reasoning. It runs each engine's review.
   - Fix every finding in one batch, and re-check until 0.
-  - Never pass a contradiction to the user, the next process. Each one the user finds in done work is an escape and a ⊥.
+  - Never call work done with a contradiction in it: the user is the next process. Each one the user finds in done work is an escape and a ⊥.
   - For each escape, add a check for its class where the work is born (§9).
 - Deliver on every surface where people will use it (§8). Show what now exists, with its evidence. The user judges.
   - Update the tracker, a task list, todo list or plan. Date each touched object and each parent to the root.
@@ -416,7 +416,7 @@ flowchart TD
 - `weaken(check) ∨ work around ⇒ ¬done; wrong check ∨ blocked step ⇒ <?> (§12); capture tool missing ⇒ get it (§4)`
 - `reviewer = fresh adversarial agent, another base model when one exists (§13); input = (PVI², check, result, diff), ¬reasoning`
   - `review = each engine's review; findings ⇒ one batch, re-check until 0`
-  - `user = the next process ⇒ no contradiction reaches the user (jidoka); found(user, contradiction ∈ done) = escape = ⊥ ⇒ class check where the work is born (§9)`
+  - `user = the next process ⇒ ¬done(work ∋ contradiction) (jidoka); found(user, contradiction ∈ done) = escape = ⊥ ⇒ class check where the work is born (§9)`
 - `deliver(every surface of use (§8), what exists, evidence) → the user judges`
 - `tracker: ∀ o ∈ touched ∪ parents up to root: dated(health, events, decisions, risks)`
 - `⊥ ⇔ found(user, contradiction ∈ done) ∨ (done(thing built) ∧ (¬shown(user's view) ∨ contradictions(tokens, user's view) > 0))`
@@ -437,7 +437,7 @@ sequenceDiagram
   Note over A,P: Unobserved work is Schrödinger's cat. Never weaken a check or work around it. A blocked step: a ?, §12
   A->>R: PVI² + check + result + diff, never the reasoning
   R-->>A: Each engine's findings, fixed in one batch and re-checked until 0
-  Note over A,U: No contradiction reaches the user, the next process. Each escape gets a class check where the work is born (§9)
+  Note over A,U: Never call work done with a contradiction in it, the user is the next process. Each escape gets a class check where the work is born (§9)
   A->>T: Dated update on each touched object and each parent to the root
   A->>U: Deliver on every surface of use, with evidence
   U-->>A: Judges the result
@@ -483,7 +483,7 @@ flowchart TD
   - ⊥: a known gap that is not declared: in the tracker, else to the user.
 - Declare each fragment the moment you find it, in the tracker (§10), else to the user.
   - A fragment shows that our understanding and reality disagree. Run 5 web searches on it at once (§3), before any fix.
-  - The searches give the recipe. Understand it, plan it, then resolve it right the first time.
+  - The searches give the recipe, or show the frontier (§3). Understand it, plan it, then resolve it right the first time.
 - Write each fragment as `<type>`, one of five:
   - `<⊥>` contradiction: two facts that cannot both be true, such as an Impact and a fact that fails it. It acts as a landmine: `~!success`.
   - `<≠>` divergence: a fact that is not an SOT and does not derive from one.

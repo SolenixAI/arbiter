@@ -4,6 +4,9 @@ on:
   pull_request:
   push:
     branches: [main]
+  # GITHUB_TOKEN opens the release PR, and its events start no run. release-please.yml dispatches
+  # this workflow on the release branch, so the release PR gets its required checks.
+  workflow_dispatch:
 
 permissions: {}
 
@@ -52,4 +55,4 @@ jobs:
           for f in "$RUNNER_TEMP"/mmd/*.mmd; do
             npx -y @mermaid-js/mermaid-cli@12.0.0 -q -p "$RUNNER_TEMP/puppeteer.json" -i "$f" -o "${f%.mmd}.svg"
           done
-          ls "$RUNNER_TEMP"/mmd/*.svg | wc -l
+          find "$RUNNER_TEMP/mmd" -name '*.svg' | wc -l

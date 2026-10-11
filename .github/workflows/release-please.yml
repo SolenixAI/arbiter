@@ -22,3 +22,28 @@ jobs:
         with:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
+
+  # GITHUB_TOKEN opened the release PR, so its events start no run and its required checks never start.
+  # Only workflow_dispatch may be started with GITHUB_TOKEN, so each check is dispatched on the open release
+  # branch. This job holds actions: write alone; the release-please action above never gets it.
+  dispatch-checks:
+    name: start the required checks on the open release PR
+    needs: release-please
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write # gh workflow run
+      pull-requests: read # gh pr list
+    steps:
+      - name: Start the required checks on the open release PR
+        shell: bash # fails the step on a failed gh pr list (default bash does not set pipefail)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh pr list --state open --limit 100 --json headRefName \
+            --jq '.[] | select(.headRefName | startswith("release-please--branches--main--components--")) | .headRefName' |
+          while IFS= read -r branch; do
+            for workflow in ci.yml links.yml pr-title.yml; do
+              gh workflow run "$workflow" --ref "$branch" < /dev/null
+            done
+          done

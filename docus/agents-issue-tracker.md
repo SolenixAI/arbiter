@@ -16,7 +16,7 @@ Use the Linear MCP tools when the agent has them. Otherwise use the GraphQL API 
 - **Apply / remove labels**: update the issue's `labelIds`.
 - **Close**: move it to Done or Canceled, with a comment that says why.
 
-Each issue keeps its sources in Resources as links. Start needs 5 web-search sources, or searches that reach the frontier (AGENTS.md section 3).
+Each issue keeps its sources and its frontier searches in Resources as links. Start needs 5 web-search sources, or linked searches that reach the frontier (AGENTS.md section 3).
 
 ## Pull requests as a triage surface
 

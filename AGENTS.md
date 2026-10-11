@@ -493,7 +493,8 @@ flowchart TD
   - ⊥: a thing is called done, but the user's view does not show it, or shows a contradiction.
 - Scale the bar: a thing you build gets this full bar. An answer gets checked sources, a self-review and 5:0.
 - Build and prove it first in a private preview of the real interface, for example the app on the device.
-  - Walk each journey from §2 for real, on the real interface, as the user will. That walk is the only test that counts.
+  - Run the §6 check now. Then walk each journey from §2 for real, on the real interface, as the user will.
+  - No other check replaces that walk. A check that passes while the walk fails is a contradiction.
   - Each walk is a learning event: success, or a failure to learn from and try again (§6). A past run or "should pass" is not proof.
   - Unobserved work is Schrödinger's cat: neither done nor not done. Observe every surface it touches from the user's view.
   - Your tokens and the user's view are two bodies, and the view is the reference (§13). List each contradiction between them, fix it, and capture again until 0.
@@ -511,7 +512,8 @@ flowchart TD
 - `bar(answer) = sources checked ∧ self-review ∧ 5:0`
 - `done(thing built) ⇔ all of:`
   - `exists in the real interface, proven first in a private preview`
-  - `∀ journey (§2): walked for real on the real interface ∧ passes; checked ∧ review passes ∧ tracker dated ∧ 5:0`
+  - `check (§6) passes now ∧ ∀ journey (§2): walked for real on the real interface ∧ passes; checked ∧ review passes ∧ tracker dated ∧ 5:0`
+  - `¬∃ check: replaces(walk); check passes ∧ walk fails ⇒ ⊥`
   - `walk = learning event ∈ {success, failure}; failure ⇒ learn → try again (§6)`
 - `checked ⇔ ∀ surface touched: seen(user's view) ∧ contradictions(tokens, user's view) = 0; user's view = the reference (§13)`
   - `¬observed ⇒ Schrödinger's cat: ¬done ∧ ¬not done; capture tool missing ⇒ the agent gets it (§4)`
@@ -533,7 +535,7 @@ sequenceDiagram
   Note over A,U: A thing built gets this whole flow. An answer gets checked sources, a self-review and 5:0.
   Note over A,U: ⊥ a thing is called done, but the user's view does not show it, or shows a contradiction
   A->>P: Build in the real interface
-  A->>P: Walk each journey from §2 for real, as the user will
+  A->>P: Run the §6 check now, then walk each journey from §2 for real, as the user will
   P-->>A: A learning event: success, or a failure to learn from and try again (§6)
   A->>P: Capture every surface it touches from the user's view
   P-->>A: Each contradiction between tokens and the user's view, fixed and captured again until 0

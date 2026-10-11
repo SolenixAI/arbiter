@@ -14,6 +14,8 @@ A terminus is unavoidable, uncontrollable and unpredictable ([AGENTS.md §7](AGE
 | `.github/` | GitHub | Workflows, issue forms and Dependabot. |
 | `.agents/`, `.claude/`, `.cursor/`, `.codex/` | Each agent harness | Each harness loads skills and hooks from its own folder. |
 | `.gitignore` | git | git reads it at the root. |
+| `package.json`, `package-lock.json` | npm | npm reads them to install the experis tools. CI runs `npm ci`. |
+| `tsconfig.json` | TypeScript | `tsc` reads it for the strict typecheck of `experis/`. |
 
 ## Events that others control
 

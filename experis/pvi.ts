@@ -10,6 +10,7 @@ import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { PyFloat, dumps, loads, type Dict, type Json } from "./json.ts";
+import { isEntryPoint, readText } from "./io.ts";
 import { LINE_START, pyRound, splitlines, strip, stripNewlines } from "./text.ts";
 
 export const USAGE = `PVI ratings for each AGENTS.md section. Writes only experis/pvi.json; measure.ts --write puts the scores in AGENTS.md.
@@ -62,12 +63,12 @@ function ledgerPath(root: string): string {
 }
 
 function readAgents(root: string): string {
-  return readFileSync(join(root, "AGENTS.md"), "utf8");
+  return readText(join(root, "AGENTS.md"));
 }
 
 export function readLedger(root: string): Dict {
   const file = ledgerPath(root);
-  return existsSync(file) ? (loads(readFileSync(file, "utf8")) as Dict) : new Map();
+  return existsSync(file) ? (loads(readText(file)) as Dict) : new Map();
 }
 
 // The stored score when the hash still matches, "stale" when the section changed, null when never rated.
@@ -152,7 +153,7 @@ export function runPvi(argv: string[], root: string, stdin = ""): RunResult {
   }
 }
 
-if (process.argv[1] !== undefined && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+if (isEntryPoint(import.meta.url)) {
   const argv = process.argv.slice(2);
   const stdin = argv.length === 1 && argv[0] === "set" ? readFileSync(0, "utf8") : "";
   const result = runPvi(argv, ROOT, stdin);

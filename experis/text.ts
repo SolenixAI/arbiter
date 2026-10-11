@@ -73,3 +73,16 @@ export function partition(text: string, sep: string): [string, string, string] {
   const at = text.indexOf(sep);
   return at < 0 ? [text, "", ""] : [text.slice(0, at), sep, text.slice(at + sep.length)];
 }
+
+// The value of one Unicode decimal digit. Each run of decimal digits is ten code points, starting at zero.
+export function digitValue(digit: string): number {
+  const code = digit.codePointAt(0) as number;
+  let start = code;
+  while (start > 0 && /\p{Nd}/u.test(String.fromCodePoint(start - 1))) start--;
+  return (code - start) % 10;
+}
+
+// Python's int() of a run of decimal digits, which may use any Unicode decimal digit.
+export function pyInt(digits: string): number {
+  return Number(Array.from(digits, (digit) => digitValue(digit)).join(""));
+}

@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
-import { copyFileSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { copyFileSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, symlinkSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -24,15 +24,18 @@ function editAfter(md: string, marker: string, from: string, to: string): string
   return md.slice(0, at) + md.slice(at).replace(from, to);
 }
 
-test("passes on the repository's own AGENTS.md, with the counts the Python original printed", () => {
+test("passes on the repository's own AGENTS.md, and the summary counts the diagrams in the file", () => {
   const report = checkAgents(REPO);
-  assert.equal(report.summary, "13 sections + root · 347 sentences · 14 diagrams");
   assert.deepEqual(report.fails, []);
+  assert.match(report.summary, /^\d+ sections \+ root · \d+ sentences · \d+ diagrams$/);
+  assert.ok(report.summary.endsWith(` · ${report.diagrams.length} diagrams`), report.summary);
+  const md = readFileSync(join(REPO, "AGENTS.md"), "utf8");
+  assert.equal(report.diagrams.length, md.split("```mermaid").length - 1);
 });
 
 test("fails a sentence of more than 20 words (STE)", () => {
   const words = Array.from({ length: 25 }, (_, i) => `word${i}`).join(" ");
-  const report = checkAgents(fixture((md) => `${md.replace("## Measurements", "## Measurements")}\n- ${words}.\n`));
+  const report = checkAgents(fixture((md) => `${md}\n- ${words}.\n`));
   assert.ok(report.fails.some((fail) => fail.startsWith("STE: 25 words: word0 word1")), report.fails.join("\n"));
 });
 
@@ -83,12 +86,45 @@ test("container law: a folder inside docus fails, because docus holds files only
   );
 });
 
+test("reads CRLF line endings the way Python's universal newlines do", () => {
+  const report = checkAgents(fixture((md) => md.replace(/\n/g, "\r\n")));
+  assert.deepEqual(report.fails, []);
+  assert.match(report.summary, /^\d+ sections \+ root/);
+});
+
+test("refuses to run the container-law check without git, rather than passing it", () => {
+  const root = fixture();
+  const path = process.env.PATH;
+  process.env.PATH = "";
+  try {
+    assert.throws(() => checkAgents(root));
+  } finally {
+    process.env.PATH = path;
+  }
+});
+
+test("reads a numbered heading written with fullwidth digits, as Python's \\d does", () => {
+  const fullwidthOne = String.fromCharCode(0xff11);
+  const report = checkAgents(fixture((md) => md.replace("## 1. Goal state", `## ${fullwidthOne}. Goal state`)));
+  assert.deepEqual(report.fails, []);
+  assert.match(report.summary, /^\d+ sections \+ root/);
+});
+
+test("runs when reached through a symlink, so a symlinked gate cannot pass unchecked", () => {
+  const link = join(mkdtempSync(join(tmpdir(), "link-")), "gates-link.ts");
+  symlinkSync(join(REPO, "experis", "gates.ts"), link);
+  const run = spawnSync(process.execPath, [link], { cwd: REPO, encoding: "utf8" });
+  assert.equal(run.status, 0, run.stderr);
+  assert.match(run.stdout, /^\d+ sections \+ root/);
+});
+
 test("writeDiagrams writes one NN.mmd file per mermaid block, as the render check reads them", () => {
   const dir = mkdtempSync(join(tmpdir(), "mmd-"));
-  writeDiagrams(checkAgents(REPO).diagrams, dir);
+  const report = checkAgents(REPO);
+  writeDiagrams(report.diagrams, dir);
   const names = readdirSync(dir).sort();
-  assert.equal(names.length, 14);
+  assert.equal(names.length, report.diagrams.length);
   assert.equal(names[0], "00.mmd");
-  assert.equal(names[13], "13.mmd");
+  assert.equal(names[names.length - 1], `${String(names.length - 1).padStart(2, "0")}.mmd`);
   assert.match(readFileSync(join(dir, "00.mmd"), "utf8"), /^flowchart/);
 });

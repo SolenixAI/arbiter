@@ -1,9 +1,13 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
+import { spawnSync } from "node:child_process";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, symlinkSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { dirname, join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import { clean, runPvi, sectionHashes } from "./pvi.ts";
+
+const REPO = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
 const DEMO = `# Demo
 
@@ -203,4 +207,17 @@ test("no argument prints the usage to stderr and exits 1", () => {
   assert.equal(result.code, 1);
   assert.equal(result.stdout, "");
   assert.ok(result.stderr.startsWith("PVI ratings for each AGENTS.md section. Writes only experis/pvi.json; measure.ts --write"));
+});
+
+test("reads CRLF line endings the way Python's universal newlines do", () => {
+  const root = fixture(DEMO.replace(/\n/g, "\r\n"));
+  assert.equal(runPvi(["list"], root).stdout, LIST_UNRATED);
+});
+
+test("runs when reached through a symlink, so a symlinked tool cannot pass unchecked", () => {
+  const link = join(mkdtempSync(join(tmpdir(), "link-")), "pvi-link.ts");
+  symlinkSync(join(REPO, "experis", "pvi.ts"), link);
+  const run = spawnSync(process.execPath, [link, "list"], { cwd: REPO, encoding: "utf8" });
+  assert.equal(run.status, 0, run.stderr);
+  assert.match(run.stdout, /unrated|current|stale/);
 });

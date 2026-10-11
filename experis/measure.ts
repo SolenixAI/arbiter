@@ -6,11 +6,12 @@
 // Body PVI = the body rated alone against its parent section's goal (semantic, parent-relative). Checkpoints: versions.json, one Greek letter per change of a node's hash.
 
 import { execFileSync } from "node:child_process";
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { getEncoding } from "js-tiktoken";
 import { dumps, loads, type Dict, type Json } from "./json.ts";
+import { isEntryPoint, readText } from "./io.ts";
 import { clean, sectionHashes, sha256 } from "./pvi.ts";
 import { LINE_START, lstrip, NOT_WS, pyRound, splitlines, splitWords, strip, stripNewlines, WS } from "./text.ts";
 
@@ -239,7 +240,7 @@ export function runMeasure(argv: string[], root: string, now: string): RunResult
   const bodiesFile = join(root, "experis", "bodies.json");
   const viewDir = join(root, "imples");
 
-  const md = clean(readFileSync(agentsFile, "utf8"));
+  const md = clean(readText(agentsFile));
   const cut = md.lastIndexOf("\n---\n");
   if (cut < 0) throw new Error("not enough values to unpack (expected 2, got 1)");
   const body = md.slice(0, cut);
@@ -251,12 +252,12 @@ export function runMeasure(argv: string[], root: string, now: string): RunResult
   const total = tokenCount(md);
   const hashes = new Map(sectionHashes(md));
   const versions: Dict = existsSync(versionsFile)
-    ? (loads(readFileSync(versionsFile, "utf8")) as Dict)
+    ? (loads(readText(versionsFile)) as Dict)
     : new Map<string, Json>();
   if (!versions.has("file")) versions.set("file", []);
   if (!versions.has("sections")) versions.set("sections", new Map<string, Json>());
   if (!versions.has("bodies")) versions.set("bodies", new Map<string, Json>());
-  const bods: Dict = existsSync(bodiesFile) ? (loads(readFileSync(bodiesFile, "utf8")) as Dict) : new Map<string, Json>();
+  const bods: Dict = existsSync(bodiesFile) ? (loads(readText(bodiesFile)) as Dict) : new Map<string, Json>();
 
   const lens: number[] = [];
   for (const line of splitlines(md)) {
@@ -269,7 +270,7 @@ export function runMeasure(argv: string[], root: string, now: string): RunResult
   }
   const ste = pyRound((100 * lens.filter((words) => words <= 20).length) / lens.length);
 
-  const numbered = parts.filter((part) => /^## [0-9]+\./.test(part));
+  const numbered = parts.filter((part) => /^## \p{Nd}+\./u.test(part));
   const trip = numbered.filter((part) => part.includes("```mermaid") && new RegExp(FORMULA_LINE).test(part)).length;
   const bodyParts = parts.filter((part) => !part.startsWith("## Measurements"));
   const nineOk = bodyParts.reduce((sum, part) => sum + nine(part), 0);
@@ -282,8 +283,10 @@ export function runMeasure(argv: string[], root: string, now: string): RunResult
   for (const p of parts) {
     const first = splitlines(p)[0] ?? "";
     const title = strip(first.replace(/^#+/, ""));
+    // The Python original indexes title[0] here, so an empty title raises before anything is written.
+    if (title === "") throw new Error("IndexError: string index out of range");
     const key = p.startsWith("## ") ? strip(first.slice(3)) : strip(first);
-    const num = /^[0-9]/.test(title) ? title.split(".")[0] : p.startsWith("## ") ? null : "0";
+    const num = /^\p{Nd}/u.test(title) ? title.split(".")[0] : p.startsWith("## ") ? null : "0";
     const n = tokenCount(p);
     if (num === null) {
       out.push(`${rstripNewlines(p)}\n`);
@@ -388,7 +391,7 @@ export function runMeasure(argv: string[], root: string, now: string): RunResult
     stdout += `tables written to measurements.json; ${agentsFile} holds only rules\n`;
   }
   if (sealing) {
-    writeFileSync(join(viewDir, "checkpoints", "sealed.md"), readFileSync(agentsFile, "utf8"));
+    writeFileSync(join(viewDir, "checkpoints", "sealed.md"), readText(agentsFile));
     execFileSync("chflags", ["uchg", agentsFile]);
     // The Python original locks the file before it reads the stamp. With no stamp line it fails at that read, after the lock.
     const stamp = newText.match(STAMP);
@@ -400,7 +403,7 @@ export function runMeasure(argv: string[], root: string, now: string): RunResult
   return { code: 0, stdout, stderr: "" };
 }
 
-if (process.argv[1] !== undefined && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+if (isEntryPoint(import.meta.url)) {
   try {
     const result = runMeasure(process.argv.slice(2), ROOT, localNow());
     process.stdout.write(result.stdout);

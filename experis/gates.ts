@@ -4,10 +4,11 @@
 // Node builtins only, so it runs on Node 24 with no install.
 
 import { spawnSync } from "node:child_process";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { LINE_END, LINE_START, lstrip, partition, splitlines, splitWords, strip, stripRun, WORD_AFTER, WORD_BEFORE, WS } from "./text.ts";
+import { isEntryPoint, readText } from "./io.ts";
+import { LINE_END, LINE_START, lstrip, partition, pyInt, splitlines, splitWords, strip, stripRun, WORD_AFTER, WORD_BEFORE, WS } from "./text.ts";
 
 export interface GateReport {
   summary: string;
@@ -45,11 +46,13 @@ function bodies(section: string): Map<string, string> {
 
 function trackedFiles(root: string): string[] {
   const listed = spawnSync("git", ["-C", root, "ls-files"], { encoding: "utf8" });
+  // Without git the Python original raised, so the container-law check never passed by default.
+  if (listed.error !== undefined) throw listed.error;
   return splitWords(listed.stdout ?? "");
 }
 
 export function checkAgents(root: string): GateReport {
-  const md = readFileSync(join(root, "AGENTS.md"), "utf8");
+  const md = readText(join(root, "AGENTS.md"));
   const fails: string[] = [];
 
   // STE: every text sentence has 20 words or fewer. Formulas are math, not sentences.
@@ -70,9 +73,9 @@ export function checkAgents(root: string): GateReport {
   const numbers: number[] = [];
   for (const part of parts) {
     const title = splitlines(part)[0] ?? "";
-    const numbered = /^## ([0-9]+)\. /.exec(title);
+    const numbered = /^## (\p{Nd}+)\. /u.exec(title);
     const name = numbered !== null ? `§${numbered[1]}` : "root";
-    if (numbered !== null) numbers.push(Number(numbered[1]));
+    if (numbered !== null) numbers.push(pyInt(numbered[1]));
 
     // Triplet: text, formula and diagram, in that order.
     const found = bodies(part);
@@ -107,14 +110,14 @@ export function checkAgents(root: string): GateReport {
   if (numbers.some((n, i) => n !== i + 1)) {
     fails.push(`sections: numbered [${numbers.join(", ")}]`);
   }
-  const refs = [...new Set([...md.matchAll(/§([0-9]+)/g)].map((match) => Number(match[1])))].sort((a, b) => a - b);
+  const refs = [...new Set([...md.matchAll(/§(\p{Nd}+)/gu)].map((match) => pyInt(match[1])))].sort((a, b) => a - b);
   for (const ref of refs) {
     if (!numbers.includes(ref)) fails.push(`pointer: §${ref} does not exist`);
   }
 
   // The README quotes one rule. The quote must match the file word for word, so it cannot drift.
   const readmeFile = join(root, "README.md");
-  const readme = existsSync(readmeFile) ? readFileSync(readmeFile, "utf8") : "";
+  const readme = existsSync(readmeFile) ? readText(readmeFile) : "";
   const quotes = readme.matchAll(
     new RegExp(`${LINE_START}\\*{0,2}(Text \\(Docus\\)|Formula \\(Experis\\))\\*{0,2}:\\*{0,2}${WS}*([^\\n]+)${LINE_END}`, "g"),
   );
@@ -173,6 +176,6 @@ export function main(argv: string[], root: string): number {
   return 0;
 }
 
-if (process.argv[1] !== undefined && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+if (isEntryPoint(import.meta.url)) {
   process.exitCode = main(process.argv.slice(2), ROOT);
 }

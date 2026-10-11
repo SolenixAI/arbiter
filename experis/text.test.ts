@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { lstrip, partition, pyRound, splitlines, splitWords, strip, stripNewlines } from "./text.ts";
+import { lstrip, partition, pyInt, pyRound, splitlines, splitWords, strip, stripNewlines } from "./text.ts";
 
 const LS = String.fromCharCode(0x2028);
 const NBSP = String.fromCharCode(0xa0);
@@ -38,4 +38,10 @@ test("pyRound rounds half to even, as Python's round() does", () => {
 test("partition splits at the first separator, as str.partition does", () => {
   assert.deepEqual(partition("docus/a/b.md", "/"), ["docus", "/", "a/b.md"]);
   assert.deepEqual(partition("TERMINUS.md", "/"), ["TERMINUS.md", "", ""]);
+});
+
+test("pyInt reads any Unicode decimal digit, as Python's int() does", () => {
+  assert.equal(pyInt("12"), 12);
+  assert.equal(pyInt(String.fromCharCode(0xff11, 0xff12)), 12);
+  assert.equal(pyInt(String.fromCharCode(0x0663)), 3);
 });

@@ -1,10 +1,14 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
+import { spawnSync } from "node:child_process";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, symlinkSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { dirname, join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import { loads, type Dict, type Json } from "./json.ts";
 import { roman, runMeasure, tokenCount, versionLabel } from "./measure.ts";
+
+const REPO = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
 const NOW = "2026-10-11T18:52-02:30";
 
@@ -205,4 +209,25 @@ test("a changing AGENTS.md is measured, checkpointed and reported the way the Py
     ["N.N.N α", "N.N.N β"],
   );
   assert.equal(section(versionsAfter, "1")[1].get("sha"), "b3ffd14da20ab4a34eba0e258d93f638cc23e79f7124f91a733f72ab97b3312b");
+});
+
+test("reads CRLF line endings the way Python's universal newlines do", () => {
+  const root = fixture(TRIPLE.replace(/\n/g, "\r\n"));
+  assert.equal(normalise(runMeasure([], root, NOW).stdout, root), PRINT_BEFORE_WRITE);
+});
+
+test("refuses a heading with no title, as the Python original does, and writes nothing", () => {
+  const markdown = TRIPLE.replace("## 1. Goal state", "## ");
+  const root = fixture(markdown);
+  assert.throws(() => runMeasure(["--write"], root, NOW), /IndexError/);
+  assert.equal(read(root, "AGENTS.md"), markdown);
+  assert.equal(existsSync(join(root, "experis", "versions.json")), false);
+});
+
+test("runs when reached through a symlink, so a symlinked tool cannot pass unchecked", () => {
+  const link = join(mkdtempSync(join(tmpdir(), "link-")), "measure-link.ts");
+  symlinkSync(join(REPO, "experis", "measure.ts"), link);
+  const run = spawnSync(process.execPath, [link], { cwd: REPO, encoding: "utf8" });
+  assert.equal(run.status, 0, run.stderr);
+  assert.match(run.stdout, /## Measurements/);
 });

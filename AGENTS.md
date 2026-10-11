@@ -406,7 +406,7 @@ flowchart TD
   - Update the tracker: each touched object and each parent to the root, dated, with health, events, decisions and risks.
 ### Experis
 - `bar(answer) = sources checked ∧ self-review ∧ 5:0`
-- `done(thing built) ⇔ private preview ∧ check (§6) passes now ∧ ∀ journey (§2): walked for real ∧ checked ∧ review passes ∧ tracker dated ∧ 5:0`
+- `done(thing built) ⇔ private preview ∧ check (§6) passes now ∧ ∀ journey (§2): walked for real ∧ checked ∧ review passes ∧ tracker dated ∧ delivered (§8) ∧ 5:0`
   - `¬∃ check: replaces(walk); check passes ∧ walk fails ⇒ ⊥; walk = learning event ∈ {success, failure} (§6)`
 - `checked ⇔ ∀ touched surface: captured(user's view) ∧ contradictions(tokens, user's view) = 0 (§13); ¬observed ⇒ Schrödinger's cat`
 - `weaken(check) ∨ work around ⇒ ¬done; wrong check ∨ blocked step ⇒ <?> (§12); capture tool missing ⇒ get it (§4)`

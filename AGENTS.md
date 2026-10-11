@@ -215,13 +215,13 @@ flowchart TD
   - ⊥: a decision on a number with no source and no `<~>`, or two copies of one fact that differ.
 - Compare options on one metric, with numbers from data only. Mark an assumed number `<~>`. No data is a `<?>` (§12), never a guess.
 - Each fact is an SOT or derives from one. Read it live, newest first from now in epoch ms, and bisect any span.
-  - Replace every other copy with a link to the SOT. Check a doubtful SOT with §13.
+  - Replace every other copy with a link to the SOT. Check a doubtful SOT with §13, as one body, not the reference.
 - Give each fact its source and date: a clickable link or file path, with the tool's exact URL.
 - Write knowledge in OKF, in every store: each file states its type, sources, dates and status. Redact every secret first.
 ### Experis
 - `decision = argmax over options of metric(option), with a score, probability or confidence when data supports one`
 - `fact = (value, exact source URL or file path, source date); value = derive(SOT, now)`
-- `no data ⇒ <?> (§12), ¬guess; assumed(number) ⇒ <~>; doubtful SOT ⇒ §13`
+- `no data ⇒ <?> (§12), ¬guess; assumed(number) ⇒ <~>; doubtful SOT ⇒ §13 as one body, ¬reference`
 - `order(sources) = reverse chronology from t_now (epoch ms); bisect any [t₁, t₂]; other copies ⇒ links to the SOT`
 - `knowledge ⇒ OKF (type, sources, dates, status) in every store ∧ secrets redacted`
 - `⊥ ⇔ decision(number ∧ ¬source ∧ ¬<~>) ∨ copy₁(f) ≠ copy₂(f)`
@@ -232,7 +232,7 @@ flowchart TD
   E --> O[Options on one metric] --> C[Decision + score, probability or confidence]
   D -->|no data| U["?, §12; never a guess"]
   D -->|assumed number| U2["~"]
-  E -->|doubtful SOT| S13[Check with §13]
+  E -->|doubtful SOT| S13[Check with §13, as one body, not the reference]
   E --> K["Knowledge in OKF, in every store, secrets redacted"]
   D -.-> BOT["⊥: a number with no source and no ~, or two copies that differ"]
 ```
@@ -275,7 +275,7 @@ flowchart TD
   K -->|yes| L["Lock, the ratchet: new baseline, next target"]
   L ==> G
   K -->|no| R["Revert; 2 reverts of one idea: new approach"] --> B
-  B -.->|same input, different result| Z["~ with its rate; raise it"]
+  B -.->|same input, different result| Z["~ with its rate; raise it"] --> B
   W -.-> BOT["⊥: a kept change that loses to its baseline beyond noise, or fails its check"]
 ```
 
@@ -532,7 +532,7 @@ stateDiagram-v2
 - Count the bodies that agree now:
   - 1 body is an observation: a `<?>`. Search for the next body (§12).
   - 2 bodies are good, but not trust yet. Find a third.
-  - 3 bodies are the minimum for trust. Each body after 3 adds confidence.
+  - 3 bodies are the minimum for trust, once each silent body is recorded or declared. Each body after 3 adds confidence.
 - Two or more bodies in agreement and one or more against is a contradiction event. Declare a `<⊥>`, find the wrong body, and fix it there.
   - A body against the reference is the wrong body: a `<⊥>`, fixed there. No two in agreement and no reference: which body is wrong is a `<?>` (§12). A body with no record of the fact is a missing agreement: record it there, or declare it.
 - Use bodies as probes: the answer is where they meet. Each rule here has three forms: text, formula and diagram.
@@ -551,12 +551,12 @@ stateDiagram-v2
 flowchart TD
   F[Fact] --> B["Read every disjoint body now, each right more often than not; a shared origin or base model = 1 body; a raw signal or the SOT value is the reference"]
   B --> D{Do bodies differ?}
-  D -->|2 or more agree and 1 or more against, or a body against the reference| C["Contradiction event, certain: declare ⊥, find the wrong body, fix it there"]
-  D -->|no 2 agree, no reference| U["Which body is wrong is unknown: declare ?, find the next body, §12"]
+  D -->|2 or more agree and 1 or more against, or a body against the reference| C["Contradiction event, certain: declare ⊥, find the wrong body, fix it there"] -->|fixed| B
+  D -->|no 2 agree, no reference| U["Which body is wrong is unknown: declare ?, find the next body, §12"] --> B
   D -->|no| N{How many agree?}
-  N -->|1| O["Observation: declare ?, search for the next body, §12"]
-  N -->|2| G[Good: find a third]
-  N -->|3 or more| T["Trust: more with each body"]
+  N -->|1| O["Observation: declare ?, search for the next body, §12"] --> B
+  N -->|2| G[Good: find a third] --> B
+  N -->|3 or more| T["Trust: 3 or more, each silent body recorded or declared; more with each body"]
   B -.->|a body has no record| Mi[Missing agreement: record it there or declare it]
   B -.-> TP["Your tokens and the user's view: 2 bodies; the view, a screenshot stamped user, viewport, t, is the reference for what the user sees, §10"]
   B -.-> TR["Each rule's text, formula and diagram: a triple of truth; any disagreement is a contradiction event; a fresh reviewer checks"]

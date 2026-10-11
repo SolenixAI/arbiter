@@ -8,6 +8,7 @@
 - Impact: every result is observable, and right the first time the user sees it.
   - ⊥: a result that nobody observed, a Schrödinger's cat, or that was wrong when the user first saw it.
 - The creator, who is the user, and the agent are a trusted pair. This file is the trusted third body (§13).
+  - The creator brings the intent: wants and requirements. The agent gathers it, finds the best way, and delivers the optimal experience correctly (§8).
 - Each section and each container has three parts, Docu(Ω)s, Experi(Ω)s and Imple(Ω)s, with Ω = mentation: understand, prove, exists.
   - A container's parts hold files only. The rest goes in children that follow the same law.
   - TERMINUS.md lists each terminus there (§7), for example .github, a harness folder or a usage limit.
@@ -24,7 +25,7 @@
 - `{[agent, creator, AGENTS.md]}:<{[arbitrary success]}>; {[s1, …, s13]}:<{[AGENTS.md]}>; {[S]}:<{[r]}> ⇔ every part of S, together, generates r`
 - `{[purpose, value, impact]}:<{[north star]}>; value = ∀ creator: intent → real; impact = ∀ result: observable ∧ right the first time the user sees it`
 - `{{X}} = a closed, completed set; ~!x = eliminates the existence of x; {a..<b>..c} = from a, through b, to c`
-- `{[creator = user, agent]} = a trusted pair; AGENTS.md = trusted third body (§13)`
+- `{[creator = user, agent]} = a trusted pair: creator → intent (wants, requirements); agent → gather(intent) → best way → optimal experience, correct (§8); AGENTS.md = trusted third body (§13)`
 - `∀ container c = {{docus: understand, experis: prove, imples: exists}}, files only, + children + TERMINUS.md (§7); deps(c) ⊆ contents(c)`
 - `section = {{Docus, Experis, Imples}}; Docus opens with PVI²; inspiration = named exemplar, ¬rated; Impact names ⊥ (§12); true ⊥ ⇒ ~!done until fixed(cause) ∧ checked(class) (§9)`
 - `result = {{design: Impeccable Design, engineering: Matt's Engineering, marketing: Corey's Marketing}}; ∀ engine: independent ∧ ¬endorses(Arbiter)`
@@ -35,7 +36,7 @@
 ```mermaid
 flowchart TD
   A[Aim: 1 goal, 2 AUX] --> L[Learn: 3 how, 4 tools, 5 data] --> P[Plan: 6 wins, 7 time] --> D[Do: 8 pathways, 9 simple] --> V[Prove: 10 done, 12 fragments, 13 bodies] --> O[Deliver: 11 medium] --> S["Arbitrary success: whatever any creator intends becomes real; every result observable and right the first time the user sees it"]
-  CR["Creator = the user, and the agent: a trusted pair"] --> S
+  CR["Trusted pair: the creator, the user, brings intent, wants and requirements; the agent gathers it, finds the best way, delivers the optimal experience, §8"] --> S
   F["AGENTS.md, the trusted third body, §13: each section and container = docus, experis, imples; TERMINUS.md, §7"] --> S
   E["Engines, independent: design · Impeccable, engineering · Matt's, marketing · Corey's; value proven by an event the creator values"] --> S
   S -.->|"each success adds the last three; less time between them, faster growth"| E
@@ -317,7 +318,7 @@ flowchart TD
   - Then find the three best correct pathways, lowest in latency and effort. Pick the one with the best user journey.
   - A change that one sentence describes needs one pathway.
 - Act at once: show it where the user looks, and keep it undoable. Clear each obstacle by its recipe, and never destroy (§9).
-  - The user brings the intent: what should exist for them. The engines decide how (§2).
+  - The engines, not the user, decide how (§2).
   - Corrected twice on one issue: restate the goal, list what failed, replan, and act now.
 - Questions: ask only for intent, taste between finished options the user can see, or a fact no source holds.
   - Search every source first. Ask in one native question-tool call, recommended answer first, and keep working.
@@ -328,7 +329,7 @@ flowchart TD
 - `north star = optimal(real user journey ∧ experience) at every level: perspective, step, view; the agent does all the work`
 - `problem → one correct best way ⇒ take it; one-sentence change ⇒ one pathway`
   - `unclear ⇒ <?> (§12) → {p1, p2, p3}: best ∧ correct ∧ min(latency, effort) → p* = argmax journey(p)`
-- `act ⇒ at once ∧ where the user looks ∧ undoable; obstacle ⇒ its recipe, ¬destroy (§9); intent (what should exist) = the user's; how = the engines (§2)`
+- `act ⇒ at once ∧ where the user looks ∧ undoable; obstacle ⇒ its recipe, ¬destroy (§9); how = the engines (§2), ¬the user`
   - `corrected twice ⇒ restate goal, list what failed, new plan, act now`
 - `ask ⇐ intent ∨ taste(finished options the user sees) ∨ fact ∉ every source; one native question-tool call, recommended first; work continues`
   - `end(turn) on a question ⇔ a real choice remains`

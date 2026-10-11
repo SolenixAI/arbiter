@@ -83,7 +83,7 @@ for hit in re.findall(r"\b[A-Z]{2,5}-\d{2,5}\b", md):
 
 # Stop exits: no rule may end by parking the work or handing it back (5:0, §1, §8).
 STOP = re.compile(r"(?i)\b(report it|record the blocker|outside your control|one-way door|keep a finding|stop and ask|wait for (?:the user|approval)|out of scope)\b")
-OPEN = re.compile(r"\(\s*`?<[~?!≠⊥]>`?\s*[,)]|\(assumed\b")
+OPEN = re.compile(r"\(\s*`?<[~?!≠⊥]>`?\s*[,)]|\(assumed\b|\d%?\s*`?<[~?!≠⊥]>")
 for n, line in enumerate(md.splitlines(), 1):
     for m in STOP.finditer(line):
         fails.append(f"stop exit, line {n}: '{m.group(0)}' parks the work; route it to a recipe (§8)")

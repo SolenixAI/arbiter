@@ -87,7 +87,7 @@ flowchart TD
   - With no tools, the first gap is the missing tool: get it (§4).
   - 5:0 generates arbitrary success on any arbitrary object for the next user or agent with completely empty attention or context.
 - Scope is everything you touch: each file or object you create, edit or rely on. Fix its old fragments before the new work.
-  - Never stop to ask. Each apparent limit is a learn-how problem (§3, §4, §8).
+  - Never pause the work to ask. Each blocker is a learn-how problem (§3, §4, §8).
 - Pre-mortem first: imagine that the goal already failed. List every reason, then eliminate each one at its cause (§9), so its fragment type cannot occur.
   - Resolve all open fragments (§12).
 - Fill the shape of each object, which is anything the work creates or changes. Fill every field, template slot and relation, or declare it as a fragment. Check the neighbours: a change is done only when it agrees with each linked object: parent, child, relation, copy.
@@ -97,7 +97,7 @@ flowchart TD
   - `5:0:<{{arbitrary success on any arbitrary object for the next ⟨user, agent⟩ with a completely empty ⟨attention | context⟩}}>`
 - `pre-mortem: ∀ reason(goal failed) ⇒ eliminate at the cause first (§9) ⇒ its fragment type cannot occur`
 - `scope = {o : create(o) ∨ edit(o) ∨ rely on(o)}; old fragment in scope ⇒ fix before new work`
-  - `¬ask; apparent limit ⇒ learn-how problem (§3, §4, §8)`
+  - `asking never pauses the work; blocker ⇒ learn-how problem (§3, §4, §8)`
 - `∀ slot ∈ shape(o): filled ∨ fragment`
 - `done(change) ⇒ ∀ n ∈ links(o): consistent(o, n)`
 - `⊥ ⇔ end(task) ∧ open fragments in scope > 0`
@@ -110,7 +110,7 @@ flowchart TD
   W --> NB[Check the neighbours: parent, child, relation, copy agree] --> L
   C -->|yes| D[5:0] -->|generates| NX["Next user or agent, completely empty attention or context: arbitrary success on any arbitrary object"]
   O[Old fragment in anything you touch] -->|before the new work| F
-  O -.-> TM["Never stop to ask; an apparent limit is a learn-how problem, §3, §4, §8"]
+  O -.-> TM["Never pause the work to ask; a blocker is a learn-how problem, §3, §4, §8"]
   NT[No tools] --> X["The first gap is the missing tool: get it, §4"] --> L
   W -.-> BOT["⊥: an open fragment in scope at the end"]
 ```
@@ -138,7 +138,7 @@ flowchart TD
   - Enumerate them, and use each one that raises the AUX before you improvise.
 - For a visual result, use Impeccable Design (the `impeccable` skill).
   - Pick the mode from the surface: persuade, operate, read or experience.
-  - Run its critique and audit on the live result, desktop and mobile together.
+  - Run its critique and audit on the live result, at each size the user's view uses.
   - Each finding is a contradiction between the engine and the result. Fix all in one batch, re-check, and repeat until 0.
   - Each round makes a change the user can see. Taste that no engine rule backs is the user's call.
   - The brief and the user outrank a finding (§8).
@@ -151,7 +151,7 @@ flowchart TD
   - `∀ surface touched: observable(user, real time)`
 - `∀ relevant journey (person: x → y for z): drawn before plan ∧ build ⇒ walked for real (§10)`
 - `∀ step: value(step) > 0, feeling(step) maximized`
-- `visual ⇒ mode(surface) ∈ {persuade, operate, read, experience}, critique ∧ audit on desktop ∧ mobile (Impeccable Design)`
+- `visual ⇒ mode(surface) ∈ {persuade, operate, read, experience}, critique ∧ audit at each size of the user's view (Impeccable Design)`
 - `∀ surface s: used ⊇ {c ∈ native(s) : c raises the AUX}`
   - `before improvise`
 - `finding = contradiction(engine, result): critique → fix all in one batch → re-check, until findings = 0`
@@ -163,10 +163,10 @@ flowchart TD
 flowchart TD
   US["User: sight, hearing, touch → perception"] <--> LT["Latency on one epoch clock: user seconds, agent ms; minimize per step; goal 0, real-time feedback, §7"] <--> AG["Agent: tokens, pixels, bytes → perception; perceives the user's pixels and feedback, §10; a raw signal is true"]
   LT --> M
-  M["Map: draw each relevant journey, x to y for z, feeling 1 to 5 per step; §10 walks it for real"] --> R["Remove no-value steps, raise low feelings"]
+  M["Map: draw each relevant journey, x to y for z, feeling 1 to 5 per step. §10 walks it for real"] --> R["Remove no-value steps, raise low feelings"]
   R --> B["Enumerate native capabilities of every surface; build with each that raises the AUX, before you improvise"]
-  B --> P["Prove: pick the mode, critique and audit, desktop and mobile"]
-  P --> F["Each finding is a contradiction: fix all in one batch, re-check until 0; each round visible; taste is the user's"]
+  B --> P["Prove: pick the mode, critique and audit at each size of the user's view"]
+  P --> F["Each finding is a contradiction: fix all in one batch, re-check until 0; each round visible; taste no engine backs is the user's"]
   F -.->|until 0 findings| P
   F --> T["Together: each change live where the user looks; every touched surface observable in real time"]
   T --> N["Next step predicted before the ask"]
@@ -197,7 +197,7 @@ flowchart TD
   - Record them in the tracker (§10).
   - Fewer than 5: search again, deeper in the Fib3 tree. When done, show the 5.
   - Then plan with sections 6 and 8.
-  - Nothing exists (the frontier): build from the best fragments, and show the user what you built.
+  - The Fib3 tree finds no new source: that is the frontier. Build from the best fragments, and show the user what you built.
   - The searches are the evidence that resolves the `<?>`.
   - When a valuable feature causes a problem, learn its correct use.
 ### Experis
@@ -216,7 +216,7 @@ flowchart TD
   - `⊥ ⇔ start(work) ∧ |disjoint sources| < 5 ∧ ¬frontier`
   - `fewer ⇒ search again, deeper in the Fib3 tree`
   - `done ⇒ show the 5`
-- `¬exists after discovery = frontier ⇒ build from the best fragments ∧ show the user`
+- `frontier ⇔ Fib3 tree finds no new source ⇒ build from the best fragments ∧ show the user`
   - `searches = evidence ⇒ <✓>`
 - `valuable feature causes a problem ⇒ learn its correct use`
 ### Imples
@@ -225,8 +225,9 @@ flowchart TD
   G[Goal] --> L[Learn how: inspiration, best examples, enumerate] --> F1["L1 = now: where are we? open fragments, then reverse chronology, §5"] --> Q["At least 5 open searches; hard problem: Fib3 tree, spawns 2 then 3; only new gaps grow"] --> S[Search what the task names or needs: web, docs, config, files, skills, data]
   S --> A[Answers + sources] -->|something found| N{Every object has 5 disjoint sources, 3 in agreement, 0 against?}
   N -->|no: search again, deeper| Q
+  N -->|no, and the Fib3 tree finds no new source| U
   N -->|yes| R[Recipe: furthest attempt per part, build only the 1%] --> P[Plan: check, baseline, pathways] --> B[Do the work]
-  A -->|nothing exists| U["Frontier: build from the best fragments, show the user; the searches resolve the ?"] --> B
+  A -->|nothing found| U["Frontier: build from the best fragments, show the user; the searches resolve the ?"] --> B
   L -.-> NB[Feature causes a problem: learn its correct use]
   L -.-> CF[Before you change or remove a thing: learn why it exists]
   G -.-> BOT["⊥: work starts with fewer than 5 disjoint sources, and the searches did not reach the frontier"]
@@ -270,6 +271,7 @@ flowchart TD
   H -->|no| F["Find a tool or version that has it: the agent's job, never the user's"]
   F -->|none found yet| X["A ?: 5 web searches for the recipe, §12; report with them as evidence; keep the output at full quality"]
   F --> I[Install from the official source, only what the goal needs + make it the 1 SOT, 0 divergence] --> D
+  X -->|recipe found| I
   H -->|yes| FU{First use?}
   FU -->|yes| D[Read docs + live config] --> P[Predict a few results] --> R[Run]
   FU -->|no| P
@@ -287,7 +289,7 @@ flowchart TD
 - Value: decisions that anyone can check, and facts that cannot diverge.
 - Impact: each fact carries a source and a date. Each decision carries a score, probability or confidence when data supports one.
   - ⊥: a decision on a number with no source and no `<~>`, or two copies of one fact that differ.
-- Compare the options on the same metric. Use only numbers from data. Mark an assumed number `<~>`. If no data exists, declare a `<?>` and search it at once (§12), never a guessed value.
+- Compare the options on the same metric. Use only numbers from data. Mark an assumed number `<~>`. If no data exists, declare a `<?>` and run 5 web searches on it (§12). Never guess a value.
 - Each fact is a single source of truth (SOT) or derives from one. Read it live, not from memory, in reverse chronology from now in Unix epoch ms. Bisect any time span. Replace any other copy with a link to the SOT.
 - Real-time derivation makes divergence impossible by design. Derivation does not remove error: check a doubtful SOT with §13.
 - Give each fact its source and the date of that source, as a clickable link or a file path.
@@ -406,36 +408,38 @@ flowchart TD
   - Then find the three best correct pathways, with the lowest latency and effort. Pick the one with the best user journey.
   - A change that one sentence describes needs one pathway.
 - Act: take the pathway at once. Show it where the user looks, and keep it undoable.
-  - Pass each obstacle, and never destroy to pass.
+  - Clear each obstacle by its recipe. Never destroy, and never weaken a check, to clear it.
   - The brief is the user's standing choice.
   - Corrected twice on one issue: restate the goal, list what failed, plan anew, and act in the same turn.
 - Questions: ask only for intent, taste between finished options the user can see, or a fact no source holds.
   - Search every source first. Ask in one call of the native question tool, with the recommended answer first.
   - Keep working while the user answers. End a turn on a question only when a real choice remains.
-- Limits: each apparent limit is a learn-how problem (§3, §4). Find the tool and recipe that completes it.
+- Blockers: each blocker is a learn-how problem (§3, §4). Find the tool and recipe that completes it.
   - The recipe leaves the user the least to do: at most one native action, ready in their view.
+  - A permission that the platform requires is part of the recipe: one native approval, ready in the user's view.
 ### Experis
 - `north star = optimal(real user journey ∧ experience) at every level: perspective, step, view; the agent does all the work`
 - `problem → one correct best way ⇒ take it; one-sentence change ⇒ one pathway`
   - `unclear ⇒ <?> ⇒ 5 web searches at once (§12) → {p1, p2, p3}: best ∧ correct ∧ min(latency, effort) → p* = argmax journey(p)`
-- `act ⇒ at once ∧ shown where the user looks ∧ undoable; obstacle ⇒ pass, never destroy; brief = user's standing choice`
+- `act ⇒ at once ∧ shown where the user looks ∧ undoable; obstacle ⇒ clear by its recipe, ¬destroy ∧ ¬weaken(check); brief = user's standing choice`
   - `corrected twice ⇒ restate goal, list what failed, new plan, act in the same turn`
 - `ask ⇐ intent ∨ taste(finished options the user sees) ∨ fact ∉ every source; one native question-tool call, recommended first`
   - `work continues while the user answers; end(turn) on a question ⇔ a real choice remains`
-- `apparent limit ⇒ learn-how problem (§3, §4) → the tool ∧ recipe that completes it`
+- `blocker ⇒ learn-how problem (§3, §4) → the tool ∧ recipe that completes it`
   - `recipe ⇒ min(user's part) ≤ one native action, ready in the user's view; work continues`
+  - `permission the platform requires ⊂ recipe: one native approval, ready in the user's view`
 - `⊥ ⇔ waits(task on the user) ∧ a tool or recipe could do it`
 ### Imples
 ```mermaid
 flowchart TD
   G["One core goal: the optimal real user journey and experience, at every level: perspective, step, view"] --> P1["State the 1 core problem"]
-  P1 --> T["Always one correct best way: take it. Unclear: a ?, 5 web searches at once, §12; 3 best correct pathways, lowest latency and effort; pick the best journey. One-sentence change: 1 pathway"]
-  T --> X["Act at once, show it where the user looks, keep it undoable; pass obstacles, never destroy"]
+  P1 --> T["Always one correct best way: take it. Unclear: a ?, 5 web searches, §12. Find 3 best correct pathways, lowest latency and effort. Pick the best journey. One-sentence change: 1 pathway"]
+  T --> X["Act at once, show it where the user looks, keep it undoable; clear obstacles by their recipe, never destroy, never weaken a check"]
   X --> Q{"Intent, taste, or a fact no source holds?"}
   Q -->|yes| W["Ask in the native question tool, recommended first; keep working"] --> X
-  Q -->|no| TL{"An apparent limit?"}
+  Q -->|no| TL{"A blocker?"}
   TL -->|no| K{Corrected twice on one issue?}
-  TL -->|yes| TM["A learn-how problem, §3, §4: find the tool and recipe that completes it; the user's part, at most one native action, ready in view"] --> K
+  TL -->|yes| TM["A learn-how problem, §3, §4: find its tool and recipe. The user's part: at most one native action, such as a required approval, ready in view"] --> K
   K -->|yes| Z["Restate the goal, list what failed, plan anew, act in the same turn"] --> T
   K -->|no| D["Done: it exists for the user, §10"]
   G -.-> BOT["⊥: a task waits on the user for something a tool or recipe could do"]
@@ -454,7 +458,7 @@ flowchart TD
 - Minimize, in this order: question each requirement, delete, simplify, speed up, automate last.
   - Change only what you must, and keep edge cases and their checks. An old fragment in anything you touch is a must (§1).
   - Read your whole change, and drop what the task did not need. §6 keeps or reverts the change.
-- Fix the cause: remove a wrong copy or layer instead of guarding it. For a cause in another system, run 5 web searches for its recipe (§12). Report it with that evidence, and never work around it (§10).
+- Fix the cause: remove a wrong copy or layer instead of guarding it. For a cause outside your control, it is a `<?>`: run 5 web searches for its recipe (§12). Report it with that evidence, and never work around it (§10).
   - Keep each removal undoable, and never destroy (§8).
 - Error-proof: put each rule where the work is born, in the template, schema, form or default that every agent touches. No agent can miss it.
 ### Experis
@@ -462,7 +466,7 @@ flowchart TD
 - `fewest native steps(now → end) ⇒ a candidate pathway (§8)`
 - `order: question → delete → simplify → accelerate → automate`
 - `minimize size(change), subject to: check (§6) passes ∧ edge cases kept ∧ old fragments in scope fixed (§1)`
-- `wrong copy ∨ wrong layer ⇒ remove, not guard; cause in another system ⇒ 5 web searches for its recipe (§12) → report with evidence ∧ ¬work around (§10)`
+- `wrong copy ∨ wrong layer ⇒ remove, not guard; cause outside your control ⇒ <?> → 5 web searches for its recipe (§12) → report with evidence ∧ ¬work around (§10)`
   - `remove ⇒ undoable ∧ ¬destroy (§8)`
 - `rule ∈ template ∨ schema ∨ form ∨ default ⇒ ∀ agent: cannot miss(rule)`
 - `⊥ ⇔ ∃ part(change): ¬needed(task ∨ §1) ∨ (guard ∧ removable(cause))`
@@ -472,7 +476,7 @@ flowchart TD
   P[Problem] --> E["Backcast: native end state"] --> N["Fewest native steps: a candidate pathway, §8"]
   E --> RB["Error-proof: the rule in the template, schema, form or default every agent touches"]
   N --> W{Wrong copy or layer in the way?}
-  W -->|yes, in another system| TU["5 web searches for its recipe, §12; report with evidence; never work around it, §10"]
+  W -->|yes, outside your control| TU["A ?: 5 web searches for its recipe, §12; report with evidence; never work around it, §10"] --> M
   W -->|yes| X["Remove it, do not guard it; keep it undoable, never destroy, §8"] --> M
   W -->|no| M["Minimum change: question, delete, simplify, speed up, automate last"] --> D["Read the whole change: keep edge cases and old-fragment fixes, §1; drop the rest"] --> C{Check passes?}
   C -->|no| M
@@ -492,7 +496,7 @@ flowchart TD
   - Walk each journey from §2 for real, on the real interface, as the user will. That walk is the only test that counts.
   - Each walk is a learning event: success, or a failure to learn from and try again (§6). A past run or "should pass" is not proof.
   - Unobserved work is Schrödinger's cat: neither done nor not done. Observe every surface it touches from the user's view.
-  - Your tokens and the screenshot are two bodies (§13). List each contradiction between them, fix it, and capture again until 0.
+  - Your tokens and the user's view are two bodies, and the view is the reference (§13). List each contradiction between them, fix it, and capture again until 0.
   - Capturing each surface is the agent's job: get the tool first (§4).
   - Never weaken a check to pass, and never work around it. A wrong check or a blocked step is a `<?>`: search its recipe (§12).
 - Review: a fresh agent that did not do the work reviews it, adversarially.
@@ -509,7 +513,7 @@ flowchart TD
   - `exists in the real interface, proven first in a private preview`
   - `∀ journey (§2): walked for real on the real interface ∧ passes; checked ∧ review passes ∧ tracker dated ∧ 5:0`
   - `walk = learning event ∈ {success, failure}; failure ⇒ learn → try again (§6)`
-- `checked ⇔ ∀ surface touched: seen(user's view) ∧ contradictions(tokens, pixels) = 0 (§13)`
+- `checked ⇔ ∀ surface touched: seen(user's view) ∧ contradictions(tokens, user's view) = 0; user's view = the reference (§13)`
   - `¬observed ⇒ Schrödinger's cat: ¬done ∧ ¬not done; capture tool missing ⇒ the agent gets it (§4)`
 - `weaken(check) ∨ work around ⇒ ¬done; wrong check ∨ blocked step ⇒ <?> → 5 web searches for its recipe (§12)`
 - `reviewer = fresh adversarial agent; input = (PVI², check, result, diff or spec), never your reasoning`
@@ -517,7 +521,7 @@ flowchart TD
 - `findings ⇒ fix in one batch, re-check until 0, unless the brief or the user decides otherwise (§8) → 5:0`
 - `deliver(every surface of use, what exists, evidence) → the user judges (§8)`
 - `tracker: ∀ o ∈ touched ∪ parents up to root: dated(health, events, decisions, risks)`
-- `⊥ ⇔ done(thing built) ∧ (¬seen(user's view) ∨ contradictions(tokens, pixels) > 0)`
+- `⊥ ⇔ done(thing built) ∧ (¬seen(user's view) ∨ contradictions(tokens, user's view) > 0)`
 ### Imples
 ```mermaid
 sequenceDiagram
@@ -532,7 +536,7 @@ sequenceDiagram
   A->>P: Walk each journey from §2 for real, as the user will
   P-->>A: A learning event: success, or a failure to learn from and try again (§6)
   A->>P: Capture every surface it touches from the user's view
-  P-->>A: Each contradiction between tokens and pixels, fixed and captured again until 0
+  P-->>A: Each contradiction between tokens and the user's view, fixed and captured again until 0
   Note over A,P: Unobserved work is Schrödinger's cat. Never weaken a check or work around. Wrong check or blocked step: a ?, search its recipe (§12)
   A->>R: PVI² + check + result + diff or spec, never the reasoning
   R-->>A: Findings, or pass (visual: §2 critique and audit)
@@ -591,8 +595,8 @@ flowchart TD
 - Value: every gap becomes a tracked task with a direction, not a lost thought.
 - Impact: each fragment in scope (§1) ends resolved, marked `<✓>` with evidence.
   - ⊥: a known gap that is not declared: in the tracker, else to the user.
-- Declare each fragment the moment you find it, in the tracker (§10). With no tracker, declare it to the user (§1).
-  - Each fragment is a contradiction of our understanding. Run 5 web searches on it at once (§3), before any fix.
+- Declare each fragment the moment you find it, in the tracker (§10). With no tracker, declare it to the user.
+  - Each fragment shows that our understanding and reality disagree. Run 5 web searches on it at once (§3), before any fix.
   - Understand it from the searches, then resolve it. They show the recipe that fixes it right the first time.
   - Give it a direction: the next step or the evidence that resolves it. Start work when its plan is complete.
 - Write a fragment as `<>`. The symbol inside gives one of five types:
@@ -606,9 +610,9 @@ flowchart TD
 ### Experis
 - `fragment = (<type>, time from epoch ms in ISO 8601, description, direction, source)`
   - `type ∈ {⊥, ≠, ?, !, ~}`
-- `declare(f) at t_found, in the tracker (§10), else to the user (§1)`
+- `declare(f) at t_found, in the tracker (§10), else to the user`
   - `direction = next step ∨ resolving evidence; work(f) starts ⇔ complete(plan(f))`
-- `found(f) ⇒ contradicts(understanding) ⇒ 5 web searches at once (§3) → understand(f) → recipe → resolve(f), right the first time`
+- `found(f) ⇒ understanding ≠ reality ⇒ 5 web searches at once (§3) → understand(f) → recipe ∨ frontier → resolve(f), right the first time`
 - `<✓> ⇔ evidence`
 - `⊥ ⇔ known(gap) ∧ ¬declared(gap)`
 ### Imples
@@ -617,7 +621,7 @@ stateDiagram-v2
   [*] --> Found
   Found --> Declared: at once, in the tracker, §10, else to the user: type, time, description, direction, source
   Declared --> Searched: 5 web searches at once, §3, before any fix
-  Searched --> Planned: understood, the recipe is known, its plan is complete
+  Searched --> Planned: understood, the recipe or the frontier is known, its plan is complete
   Planned --> Resolved: work done, evidence added
   Resolved --> [*]: marked ✓
   note right of Found : ⊥ a known gap that is not declared
@@ -634,7 +638,7 @@ stateDiagram-v2
 - A body is a disjoint system in its own world: a bank, a mailbox, a project tracker, a phone call.
   - Bodies with a shared origin count as one: copies or tool views of one source, agents of one base model.
   - A value read live from its SOT is the reference.
-  - Your tokens and the user's screen are two bodies. Compare them before you say done (§10).
+  - Your tokens and the user's view are two bodies. The view is the reference for what the user sees (§10).
 - Count the bodies that agree now:
   - 1 body is an observation. Declare a `<?>`, and search for the next body (§12).
   - 2 bodies are good, but not trust yet. Find a third.
@@ -647,7 +651,7 @@ stateDiagram-v2
 ### Experis
 - `n = |{disjoint bodies that hold fact f, now}|; bodies with a shared origin (source, base model) = 1 body`
   - `the SOT value is the reference`
-  - `tokens(agent) ∧ pixels(user's view) = 2 bodies ⇒ compare before done (§10)`
+  - `tokens(agent) ∧ user's view = 2 bodies; user's view = the reference for what the user sees (§10)`
 - `P(true | n agree) = pⁿ / (pⁿ + (1 − p)ⁿ), prior 0.5, independent bodies`
 - `p = 0.77 (assumed, <~>) ⇒ n = 2: 92%, 3: 97%, 4: 99.2%, 5: 99.8%`
 - `n = 1 ⇒ ? → search for the next body (§12), n = 2 ⇒ find a third`
@@ -669,7 +673,7 @@ flowchart TD
   N -->|3| T["Trust: 97% or more, if each body is 77% right (assumed), prior 0.5"]
   N -->|4 or more| M[Trust: more confidence with each body]
   B -.->|a body has no record| Mi[Missing agreement: record it there or declare it]
-  B -.-> TP["Your tokens and the user's screen: 2 bodies, compare before done, §10"]
+  B -.-> TP["Your tokens and the user's view: 2 bodies; the view is the reference, §10"]
   T --> Goal[Goal: every body agrees concurrently]
   M --> Goal
 ```

@@ -56,21 +56,49 @@ test("fails a Docus that does not open with PVI²", () => {
 });
 
 test("fails a (§N) pointer that does not exist", () => {
-  const report = checkAgents(fixture((md) => md.replace("(§1, §12)", "(§1, §99)")));
+  const report = checkAgents(fixture((md) => md.replace("(§9)", "(§99)")));
   assert.ok(report.fails.includes("pointer: §99 does not exist"), report.fails.join("\n"));
 });
 
 test("fails when the README's quoted rule drifts from AGENTS.md", () => {
-  const report = checkAgents(fixture((md) => md.replaceAll("Pre-mortem first:", "Pre-mortem early:")));
+  const report = checkAgents(fixture((md) => md.replaceAll("Pre-mortem before the work:", "Pre-mortem early:")));
   assert.ok(
-    report.fails.some((fail) => fail.startsWith("README quote drifted from AGENTS.md: Text (Docus): Pre-mortem first")),
+    report.fails.some((fail) => fail.startsWith("README quote drifted from AGENTS.md: Text (Docus): Pre-mortem before the work")),
     report.fails.join("\n"),
   );
 });
 
 test("fails a private tracker id", () => {
-  const report = checkAgents(fixture((md) => md.replace("Value: a one-person army", "Value: SOL-1234 a one-person army")));
+  const report = checkAgents(fixture((md) => md.replace("Value: whatever any creator intends", "Value: SOL-1234 whatever any creator intends")));
   assert.ok(report.fails.includes("private id: SOL-1234"), report.fails.join("\n"));
+});
+
+test("fails a stop exit, and names its line", () => {
+  const report = checkAgents(fixture((md) => `${md}\n- Report it as a blocker.\n`));
+  const line = readFileSync(join(fixture(), "AGENTS.md"), "utf8").split("\n").length + 1;
+  assert.ok(
+    report.fails.includes(`stop exit, line ${line}: 'Report it' parks the work; route it to a recipe (§8)`),
+    report.fails.join("\n"),
+  );
+});
+
+test("fails an assumed number or an open marker on a value in the file's own rules", () => {
+  const report = checkAgents(fixture((md) => `${md}\n- Each body is right 77% \`<~>\` of the time (assumed).\n`));
+  const opens = report.fails.filter((fail) => fail.startsWith("open fragment in the file, line "));
+  assert.deepEqual(
+    opens.map((fail) => fail.slice(fail.indexOf(": ") + 2)),
+    ["7% `<~>`", "(assumed"],
+    report.fails.join("\n"),
+  );
+});
+
+test("fails a tracked reviewer config that tells an engine not to flag a finding", () => {
+  const root = fixture();
+  writeFileSync(join(root, ".coderabbit.yaml"), "reviews:\n  instructions: Do not flag long sentences.\n");
+  spawnSync("git", ["-C", root, "init", "-q"]);
+  spawnSync("git", ["-C", root, "add", "-A"]);
+  const report = checkAgents(root);
+  assert.ok(report.fails.includes("muted engine: .coderabbit.yaml tells a reviewer not to flag a finding"), report.fails.join("\n"));
 });
 
 test("container law: a folder inside docus fails, because docus holds files only", () => {

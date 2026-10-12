@@ -21,6 +21,13 @@ const PVI2 = ["North star:", "Inspiration:", "Purpose:", "Value:", "Impact:"];
 const TRIPLET = ["docus", "experis", "imples"];
 const SENTENCE_BREAK = new RegExp(`(?<=[.!?])${WS}+(?=[A-Z"\`])`);
 const FORMULA = LINE_START + "- `[^`]+`" + LINE_END;
+const MARKER = "`?<[~?!≠⊥]>`?";
+const STOP = new RegExp(
+  `${WORD_BEFORE}(report it|record the blocker|outside your control|one-way door|keep a finding|stop and ask|wait for (?:the user|approval)|out of scope)${WORD_AFTER}`,
+  "giu",
+);
+const OPEN = new RegExp(`\\(${WS}*${MARKER}${WS}*[,)]|\\(assumed${WORD_AFTER}|\\p{Nd}%?${WS}*${MARKER}`, "gu");
+const MUTED = new RegExp(`${WORD_BEFORE}(?:do not|don't|never) flag${WORD_AFTER}|overruled by`, "iu");
 
 // Python's repr of a list of strings, as the Python gate printed it.
 function pyListRepr(items: string[]): string {
@@ -139,6 +146,22 @@ export function checkAgents(root: string): GateReport {
     fails.push(`private id: ${match[0]}`);
   }
 
+  // Stop exits: no rule may end by parking the work or handing it back (5:0, §1, §8).
+  splitlines(md).forEach((line, i) => {
+    for (const match of line.matchAll(STOP)) {
+      fails.push(`stop exit, line ${i + 1}: '${match[0]}' parks the work; route it to a recipe (§8)`);
+    }
+    // The file passes its own 5:0: no assumed number or open marker sits on a value in its own rules.
+    for (const match of line.matchAll(OPEN)) fails.push(`open fragment in the file, line ${i + 1}: ${match[0]}`);
+  });
+
+  // No muted engine: a reviewer config never tells an engine to stop finding something (§10).
+  for (const file of tracked) {
+    if ((file.endsWith(".yaml") || file.endsWith(".yml")) && MUTED.test(readText(join(root, file)))) {
+      fails.push(`muted engine: ${file} tells a reviewer not to flag a finding`);
+    }
+  }
+
   const diagrams = [...md.matchAll(/```mermaid\n([\s\S]*?)```/g)].map((match) => match[1]);
   let sentences = 0;
   for (const line of splitlines(md)) {
@@ -172,7 +195,7 @@ export function main(argv: string[], root: string): number {
     process.stdout.write(`${report.fails.map((fail) => `FAIL ${fail}`).join("\n")}\n`);
     return 1;
   }
-  process.stdout.write("PASS: STE, triplets, 9-slot, PVI², pointers, README quote, container law, no private ids\n");
+  process.stdout.write("PASS: STE, triplets, 9-slot, PVI², pointers, README quote, container law, no private ids, no stop exits, own 5:0, no muted engine\n");
   return 0;
 }
 

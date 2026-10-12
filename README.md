@@ -41,15 +41,15 @@ An agent that reads one form better still gets the whole rule. A disagreement be
 
 Here is one rule from section 1, Goal state, in its three forms.
 
-Text (Docus): Pre-mortem first: imagine that the goal already failed. List every reason, then eliminate each one at its cause (§9), so its fragment type cannot occur.
+Text (Docus): Pre-mortem before the work: imagine that the goal failed, list every reason, and remove each one at its cause (§9).
 
-Formula (Experis): `pre-mortem: ∀ reason(goal failed) ⇒ eliminate at the cause first (§9) ⇒ its fragment type cannot occur`
+Formula (Experis): `pre-mortem, before the work: ∀ reason(goal failed) ⇒ remove it at its cause (§9)`
 
 Diagram (Imples):
 
 ```mermaid
 flowchart TD
-  PM["Pre-mortem: imagine it failed, list every reason"] --> P["Eliminate each at its cause, §9"] --> Q["Its fragment type cannot occur"]
+  PM["Pre-mortem, before the work: imagine it failed, list every reason"] --> P["Remove each at its cause, §9"] --> W["Then the work"]
 ```
 
 ## The 13 sections
@@ -95,9 +95,9 @@ Each engine is an independent project. Their authors do not endorse Arbiter. Thi
 
 Solenix exists to bridge the gap between the technology that already exists and the people who need it. When the file works for them, it works for everyone in between.
 
-North star: arbitrary success for any creator, in any environment or system, in any `{problem..<solutions>..goal}` frontier space.
+North star: arbitrary success for any creator, in any environment or system, in any `{problem..<solutions>..goal}` frontier, derived from one file.
 
-In the file's own notation: `{{any AI, any harness, any goal, any user}}:<∞ arbitrary success>`.
+In the file's own notation: `{[agent, creator, AGENTS.md]}:<{[arbitrary success]}>`.
 
 ## Contribute
 

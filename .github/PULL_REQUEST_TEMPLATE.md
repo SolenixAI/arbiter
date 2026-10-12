@@ -19,3 +19,4 @@ Thanks for contributing. The PR title must be a Conventional Commit (for example
 - [ ] The AGENTS.md gates pass
 - [ ] Every link resolves
 - [ ] Text, formula and diagram agree for each changed rule
+- [ ] A fresh contradiction review and CodeRabbit both report 0 findings

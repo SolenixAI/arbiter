@@ -40,7 +40,7 @@ mark.chg{background:rgba(245,158,11,.22);color:inherit;border-radius:4px;box-sha
 (async () => {
 const raw = await (await fetch('../AGENTS.md?t=' + Date.now(), {cache: 'no-store'})).text();
 // Review mode: every line that differs from the last sealed version (checkpoints/sealed.md) is
-// highlighted; measurement-table rows are skipped because measure.py rewrites them on every write.
+// highlighted; measurement-table rows are skipped because measure.ts rewrites them on every write.
 const base = await fetch('checkpoints/sealed.md?t=' + Date.now(), {cache: 'no-store'}).then(r => r.ok ? r.text() : null, () => null);
 const fenceAdds = []; let added = 0, removed = 0;
 let md = raw;

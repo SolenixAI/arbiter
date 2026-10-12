@@ -1,6 +1,6 @@
 # Terminus
 
-A terminus is unavoidable, uncontrollable and unpredictable ([AGENTS.md §7](AGENTS.md#7-time-matters)). This repo cannot remove these items. It can only push on their time to terminus from what it controls.
+A terminus is a limit or event that this repo cannot remove or control ([AGENTS.md §7](AGENTS.md#7-time-matters)). An avoidable hit is the failure. The repo cannot move these events; it keeps its work from hitting them through every vector it controls, and minimizes the harm of a hit it cannot avoid.
 
 ## Paths that other tools control
 
@@ -14,6 +14,8 @@ A terminus is unavoidable, uncontrollable and unpredictable ([AGENTS.md §7](AGE
 | `.github/` | GitHub | Workflows, issue forms and Dependabot. |
 | `.agents/`, `.claude/`, `.cursor/`, `.codex/` | Each agent harness | Each harness loads skills and hooks from its own folder. |
 | `.gitignore` | git | git reads it at the root. |
+| `package.json`, `package-lock.json` | npm | npm reads them to install the experis tools. CI runs `npm ci`. |
+| `tsconfig.json` | TypeScript | `tsc` reads it for the strict typecheck of `experis/`. |
 
 ## Events that others control
 

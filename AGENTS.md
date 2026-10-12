@@ -59,20 +59,20 @@ flowchart TD
 - Scope is everything you create, edit or rely on. Fix its old fragments before the new work.
   - Handle questions and blockers as §8 says.
 - Pre-mortem first: imagine that the goal failed, list every reason, and remove each one at its cause (§9).
-- Fill the shape of each object: every field, slot and relation, or a declared fragment.
+- Fill every field, slot and relation in each object's shape, or declare a fragment.
   - A change is done only when it agrees with each linked object: parent, child, relation, copy.
 ### Experis
 - `5:0 ⇔ open(⊥) + open(≠) + open(?) + open(!) + open(~) = 0, in scope`
   - `findable(contradiction) by {{engines}} × user ⇒ ~!correct`
   - `5:0:<{{arbitrary success on any object for the next ⟨user, agent⟩ with an empty ⟨attention | context⟩}}>; no tools ⇒ first gap = the tool the goal needs (§4)`
 - `scope = {o : create(o) ∨ edit(o) ∨ rely on(o)}; old fragments ⇒ fixed before new work; questions ∧ blockers ⇒ §8`
-- `pre-mortem: ∀ reason(goal failed) ⇒ remove it at its cause (§9)`
+- `pre-mortem, before the work: ∀ reason(goal failed) ⇒ remove it at its cause (§9)`
 - `∀ slot ∈ shape(o): filled ∨ fragment; done(change) ⇒ ∀ n ∈ links(o): consistent(o, n)`
 - `⊥ ⇔ end(task) ∧ open fragments in scope > 0`
 ### Imples
 ```mermaid
 flowchart TD
-  W[Work] --> PM["Pre-mortem: every reason it fails, removed at its cause, §9"] --> L[Open fragments] --> C{"Sum = 0?"}
+  T[Task] --> PM["Pre-mortem first: every reason it fails, removed at its cause, §9"] --> W[Work] --> L[Open fragments] --> C{"Sum = 0?"}
   C -->|no| F[Resolve with evidence] --> L
   W --> SH["Fill the shape; agree with each linked object"] --> L
   O["Old fragments in scope, before the new work; questions and blockers: §8"] --> F

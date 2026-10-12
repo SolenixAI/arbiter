@@ -41,7 +41,7 @@ An agent that reads one form better still gets the whole rule. A disagreement be
 
 Here is one rule from section 1, Goal state, in its three forms.
 
-Text (Docus): Pre-mortem first: imagine that the goal failed, list every reason, and remove each one at its cause (§9).
+Text (Docus): Pre-mortem before the work: imagine that the goal failed, list every reason, and remove each one at its cause (§9).
 
 Formula (Experis): `pre-mortem, before the work: ∀ reason(goal failed) ⇒ remove it at its cause (§9)`
 
@@ -49,7 +49,7 @@ Diagram (Imples):
 
 ```mermaid
 flowchart TD
-  PM["Pre-mortem first: imagine it failed, list every reason"] --> P["Remove each at its cause, §9"] --> W["Then the work"]
+  PM["Pre-mortem, before the work: imagine it failed, list every reason"] --> P["Remove each at its cause, §9"] --> W["Then the work"]
 ```
 
 ## The 13 sections

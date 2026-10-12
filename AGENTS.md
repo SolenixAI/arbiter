@@ -58,7 +58,7 @@ flowchart TD
   - With no tools, the first gap is the tool the goal needs (§4).
 - Scope is everything you create, edit or rely on. Fix its old fragments before the new work.
   - Handle questions and blockers as §8 says.
-- Pre-mortem first: imagine that the goal failed, list every reason, and remove each one at its cause (§9).
+- Pre-mortem before the work: imagine that the goal failed, list every reason, and remove each one at its cause (§9).
 - Fill every field, slot and relation in each object's shape, or declare a fragment.
   - A change is done only when it agrees with each linked object: parent, child, relation, copy.
 ### Experis
@@ -72,7 +72,7 @@ flowchart TD
 ### Imples
 ```mermaid
 flowchart TD
-  T[Task] --> PM["Pre-mortem first: every reason it fails, removed at its cause, §9"] --> W[Work] --> L[Open fragments] --> C{"Sum = 0?"}
+  T[Task] --> PM["Pre-mortem, before the work: every reason it fails, removed at its cause, §9"] --> W[Work] --> L[Open fragments] --> C{"Sum = 0?"}
   C -->|no| F[Resolve with evidence] --> L
   W --> SH["Fill the shape; agree with each linked object"] --> L
   O["Old fragments in scope, before the new work; questions and blockers: §8"] --> F
@@ -191,7 +191,8 @@ flowchart TD
 ```mermaid
 flowchart TD
   T[Tool] --> H{Has every capability the goal needs?}
-  H -->|no| F["Find a tool or version: the agent's job"] --> I["Install only it, from the official source; 1 SOT, §5"] --> D
+  H -->|no| F{"Find a tool or version: the agent's job"}
+  F -->|found| I["Install only it, from the official source; 1 SOT, §5"] --> D
   F -->|none yet| X["A ?, §12: search to the recipe or the frontier, §3; build at full quality"] -->|recipe| I
   X -->|frontier: build from the best pieces| P
   H -->|yes| FU{First use?}
@@ -243,7 +244,7 @@ flowchart TD
 - Inspiration: {[Start With Why, kaizen, the flywheel, Lean Startup, SMART goals, ICE]}.
 - Purpose: point all work one way, prove each step, and lock it in.
 - Value: progress compounds; nothing proven is lost.
-- Impact: each kept change beats its baseline, then becomes the next baseline.
+- Impact: no kept change loses to its baseline beyond noise, and each becomes the next baseline.
   - ⊥: a kept change that loses to its baseline beyond noise, or fails its check.
 - Why: state the PVI² first, and keep its one direction.
   - To choose what to build, give purpose, value, impact, certainty and ease each a score from 0 to 5.
@@ -416,7 +417,7 @@ flowchart TD
   - Give each its health, events, decisions and risks.
 ### Experis
 - `bar(answer) = sources checked ∧ self-review ∧ 5:0`
-- `done(thing built) ⇔ private preview ∧ check (§6) passes now ∧ ∀ journey (§2): walked for real ∧ checked ∧ review passes ∧ tracker dated ∧ delivered (§8) ∧ 5:0`
+- `done(thing built) ⇔ private preview ∧ check (§6) passes now ∧ ∀ journey (§2): walked for real ∧ checked ∧ review passes ∧ tracker dated ∧ delivered ∧ 5:0`
   - `¬∃ check: replaces(walk); check passes ∧ walk fails ⇒ ⊥; walk = learning event ∈ {success, failure} (§6)`
 - `checked ⇔ ∀ touched surface: captured(user's view) ∧ contradictions(tokens, user's view) = 0 (§13); ¬observed ⇒ Schrödinger's cat`
 - `weaken(check) ∨ work around ⇒ ¬done; wrong check ∨ blocked step ⇒ <?> (§12); capture tool missing ⇒ get it (§4)`
@@ -524,10 +525,10 @@ stateDiagram-v2
 - Purpose: turn each discovery into trusted truth through disjoint bodies that agree.
 - Value: trust that does not rest on one source. A contradiction is certain; agreement only builds trust.
 - Impact: 3 or more bodies agree and 0 disagree.
-  - ⊥: 2 or more bodies agree and 1 or more against.
+  - ⊥: 2 or more bodies agree and 1 or more against, or a body against the reference.
 - A body is a disjoint system in its own world: a bank, a mailbox, a project tracker, a phone call. It is right more often than not.
   - A shared origin counts as one body: copies, tool views of one source, agents of one base model.
-  - A raw signal, or data read live from an undoubted SOT, is the reference for its fact.
+  - A raw signal, or data read live from an undoubted SOT, is the reference for its fact. In a disagreement, the reference decides which body is wrong.
   - Your tokens and the user's view are two bodies. The view, a screenshot stamped with user, viewport and moment, is the reference for what the user sees (§10).
 - Count the bodies that agree now:
   - 1 body is an observation: a `<?>`. Search for the next body (§12).

@@ -42,10 +42,12 @@ jobs:
           # escaped as \$1 or the shell fails with "$1: unbound variable" before lychee starts.
           # The skills installed by the engines (.agents, .claude, .cursor, .codex) are third-party
           # files: their links are not this repo's to fix, so they are excluded by path.
+          # The npm lockfile lists package registry URLs, which are not this repo's links, so it is excluded too.
           args: >-
             --no-progress --max-retries 3
             --remap "https://github.com/SolenixAI/arbiter/blob/main/(.*) file://${{ github.workspace }}/\$1"
             --remap "https://raw.githubusercontent.com/SolenixAI/arbiter/main/(.*) file://${{ github.workspace }}/\$1"
             --exclude-path '(^|/)\.(agents|claude|cursor|codex)/'
+            --exclude-path '(^|/)package-lock\.json$'
             "./**/*.md" "./**/*.json"
           fail: true

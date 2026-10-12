@@ -16,7 +16,7 @@ The terms of this repo. Each term has one meaning and one source: the linked sec
 - **OKF**: the trust header of a file. [§5](../AGENTS.md#5-decide-from-data)
 - **PVI²**: north star, inspiration, purpose, value, impact. [Root](../AGENTS.md#arbiter)
 - **The ratchet**: each kept win becomes the next baseline. [§6](../AGENTS.md#6-compounding-wins)
-- **TTT**: time to terminus, the time predictions to the goal or a terminus. [§6](../AGENTS.md#6-compounding-wins)
+- **TTT**: time to terminus: the predicted time and event dates to the goal or a terminus. [§6](../AGENTS.md#6-compounding-wins)
 - **Terminus**: a limit or event that you cannot remove or control; an avoidable hit is the failure. See [TERMINUS.md](../TERMINUS.md). [§7](../AGENTS.md#7-time-matters)
 - **Blocker**: a learn-how problem, solved by the right tool and recipe. [§8](../AGENTS.md#8-do-the-work-three-pathways)
 - **Recipe**: the known steps that complete a task right the first time. [§3](../AGENTS.md#3-learn-how-before-doing)

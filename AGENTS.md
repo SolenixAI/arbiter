@@ -261,7 +261,7 @@ flowchart TD
 - `{{why, goal, loop}}:<{[compounding wins]}>, lock = the ratchet; why = PVI², one direction`
 - `choose(what to build) ⇒ score = mean over 3 raters, one per disjoint body (§13), of 20 · (P · V · I · C · E)^(1/5)`
   - `each ∈ {0, …, 5}; C = min(5, agreeing bodies), C < 3 ⇒ find a third body (§13); P = 0 ∨ V = 0 ⇒ not now; E = 0 ⇒ a blocker (§8); highest score first`
-- `goal = SMART, T = TTT to the goal ∨ a terminus (§7), predicted → actual; check and target fixed before build`
+- `goal = SMART, T = TTT = (time, event dates) to the goal ∨ a terminus (§7), predicted → actual; check and target fixed before build`
 - `keep ⇔ checks pass ∧ (Δ > noise ∨ ((required ∨ simpler (§9)) ∧ Δ ≥ −noise)); Δ = metric(change) − metric(baseline); noise = the baseline's spread over repeated runs`
 - `same input ∧ different result ⇒ <~>(rate), raised until debuggable`
 - `lock: kept ⇒ baseline := win, target := next Fibonacci; else revert; 2 reverts of one idea ⇒ new approach`

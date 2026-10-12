@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.3.0](https://github.com/SolenixAI/arbiter/compare/v1.2.0...v1.3.0) (2026-10-12)
+
+
+### Features
+
+* **agents:** ~!correct, no contradiction reaches the user, every ⊥ tests false before done ([#51](https://github.com/SolenixAI/arbiter/issues/51)) ([3ba1e4b](https://github.com/SolenixAI/arbiter/commit/3ba1e4b796968f40a95b533bca7a8b72eabd41cc))
+* **agents:** agents never stop at 99%: one correct way, real journeys, observed in the user's view ([#49](https://github.com/SolenixAI/arbiter/issues/49)) ([6c31f7e](https://github.com/SolenixAI/arbiter/commit/6c31f7ea9c1598cd0ae6cdf202593a0eae775fab))
+* **agents:** root v2, every token earns its place, 0 contradictions with 5:0 ([#52](https://github.com/SolenixAI/arbiter/issues/52)) ([caf8060](https://github.com/SolenixAI/arbiter/commit/caf8060c92e0347b0f9cd6027c0375fd2d8fc521))
+
+
+### Bug Fixes
+
+* **agents:** done requires the §6 check and the real walk; link frontier searches ([#50](https://github.com/SolenixAI/arbiter/issues/50)) ([4568f78](https://github.com/SolenixAI/arbiter/commit/4568f7838dd24f4b4726045a53b017c70dea5f5a))
+* **imples:** build the section tables with DOM text, not innerHTML ([#47](https://github.com/SolenixAI/arbiter/issues/47)) ([724a17c](https://github.com/SolenixAI/arbiter/commit/724a17c0e126611be9cdf1b80a5ce896d70a9adf))
+
 ## [1.2.0](https://github.com/SolenixAI/arbiter/compare/v1.1.0...v1.2.0) (2026-10-10)
 
 

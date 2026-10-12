@@ -20,7 +20,7 @@ The terms of this repo. Each term has one meaning and one source: the linked sec
 - **Terminus**: a limit or event that you cannot remove or control; an avoidable hit is the failure. See [TERMINUS.md](../TERMINUS.md). [§7](../AGENTS.md#7-time-matters)
 - **Blocker**: a learn-how problem, solved by the right tool and recipe. [§8](../AGENTS.md#8-do-the-work-three-pathways)
 - **Recipe**: the known steps that complete a task right the first time. [§3](../AGENTS.md#3-learn-how-before-doing)
-- **Frontier**: the edge of the known, where the search tree finds no new source, so the agent builds from the best pieces. [§3](../AGENTS.md#3-learn-how-before-doing)
+- **Frontier**: a `{problem..<solutions>..goal}` space at the edge of the known, with no recipe yet. The search tree finds no new source there, so the agent builds from the best pieces. [§3](../AGENTS.md#3-learn-how-before-doing)
 - **One correct best way**: the one pathway an agent takes at each choice. [§8](../AGENTS.md#8-do-the-work-three-pathways)
 - **User journey**: a person going from x to y for z. [§2](../AGENTS.md#2-optimal-aux), [§10](../AGENTS.md#10-done-means-it-exists-for-the-user)
 - **Learning event**: one real walk of a user journey, ending in success or in a failure to learn from. [§10](../AGENTS.md#10-done-means-it-exists-for-the-user)

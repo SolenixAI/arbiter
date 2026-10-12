@@ -24,7 +24,7 @@
 ### Experis
 - `{[agent, creator, AGENTS.md]}:<{[arbitrary success]}>; {[s1, …, s13]}:<{[AGENTS.md]}>; {[S]}:<{[r]}> ⇔ every part of S, together, generates r`
 - `{[purpose, value, impact]}:<{[north star]}>; value = ∀ creator: intent → real; impact = ∀ result: observable ∧ right the first time it is called done`
-- `{{X}} = a closed, completed set; ~!x = eliminates the existence of x; {a..<b>..c} = from a, through b, to c`
+- `{{X}} = a closed, completed set; ~!x = eliminates the existence of x; {a..<b>..c} = from a, through b, to c; frontier = a {problem..<solutions>..goal} space at the edge of the known, no recipe yet (§3)`
 - `{[creator = user, agent]} = a trusted pair: creator → intent (wants, requirements); agent → gather(intent) → best way → optimal experience, correct (§8); AGENTS.md = trusted third body (§13)`
 - `∀ container c = {{docus: understand, experis: prove, imples: exists}}, files only, + children + TERMINUS.md (§7); deps(c) ⊆ contents(c)`
 - `section = {{Docus, Experis, Imples}}; Docus opens with PVI²; inspiration = named exemplar, ¬scored; Impact names ⊥ (§12); true ⊥ ⇒ ~!done until fixed(cause) ∧ checked(class) (§9)`
@@ -93,7 +93,7 @@ flowchart TD
 - AUX = {{agent, user, experience}}: each side's senses generate its perception.
   - User senses: sight, hearing, touch. Agent senses: tokens, pixels, bytes.
   - Latency sits between the sides: users feel seconds, agents run in ms (§7).
-  - Perceive the user's pixels and feedback (§10). A raw signal is the reference (§13).
+  - Perceive the user's pixels and feedback (§10). A raw signal is the reference for its fact (§13).
 - Live: show each change where the user looks, marked in progress until done (§10). Keep every touched surface observable in real time.
   - Act on each correction in the same turn. Predict the next step before the user asks.
   - Show live progress while the user waits. Enumerate each surface's native features, and use each that raises the AUX before you improvise.
@@ -104,7 +104,7 @@ flowchart TD
   - Each round makes a visible change. Taste that no engine rule covers is the user's call.
 ### Experis
 - `AUX = {User {{sight, hearing, touch}} ‖ |latency| ‖ Agent {{tokens, pixels, bytes}}} → perception; latency: seconds vs ms (§7)`
-  - `perceive(user's pixels, feedback) (§10); raw signal = the reference (§13)`
+  - `perceive(user's pixels, feedback) (§10); raw signal = the reference for its fact (§13)`
 - `live: each change where the user looks, marked in progress until done (§10) ∧ ∀ touched surface: observable(real time); correction ⇒ same turn`
   - `next step predicted before the ask; user waits ⇒ live progress; ∀ surface: enumerate native features; those that raise the AUX ≻ improvise`
 - `∀ journey (person: x → y for z): drawn before build; ∀ step: value > 0, feeling raised; walked for real (§10)`
@@ -114,7 +114,7 @@ flowchart TD
 ### Imples
 ```mermaid
 flowchart TD
-  US["User: sight, hearing, touch"] <-->|"latency: seconds vs ms, §7"| AG["Agent: tokens, pixels, bytes; perceives the user's pixels; a raw signal is the reference, §13"]
+  US["User: sight, hearing, touch"] <-->|"latency: seconds vs ms, §7"| AG["Agent: tokens, pixels, bytes; perceives the user's pixels; a raw signal is the reference for its fact, §13"]
   AG --> M["Draw each journey, x to y for z, feeling 1 to 5; raise low feelings; §10 walks it"]
   M --> B["Enumerate each surface's native features; use each that raises the AUX, before you improvise"]
   B -->|visual result| P["Impeccable mode from the surface; critique and audit at each size of the user's view"]
@@ -250,7 +250,7 @@ flowchart TD
   - Score = 20 × ⁵√(their product), as the mean of 3 raters, one per disjoint body (§13).
   - Certainty counts the bodies that agree on the impact, up to 5. Below 3, find a third body first (§13).
   - Purpose or value 0: not now. Ease 0: a blocker, solved as §8 says. Do the highest score first.
-- Goal: SMART, where T is TTT: the predicted time and event dates to the goal or a terminus (§7).
+- Goal: SMART: specific, measurable, achievable, relevant and TTT. TTT is the predicted time and event dates to the goal or a terminus (§7).
   - Fix the pass or fail check and the target before you build: metric, direction, next Fibonacci number.
 - Loop: measure the baseline, build, and measure again.
   - Keep a change only if checks pass and it wins beyond noise, or is required or simpler within noise (§9).
@@ -261,7 +261,7 @@ flowchart TD
 - `{{why, goal, loop}}:<{[compounding wins]}>, lock = the ratchet; why = PVI², one direction`
 - `choose(what to build) ⇒ score = mean over 3 raters, one per disjoint body (§13), of 20 · (P · V · I · C · E)^(1/5)`
   - `each ∈ {0, …, 5}; C = min(5, agreeing bodies), C < 3 ⇒ find a third body (§13); P = 0 ∨ V = 0 ⇒ not now; E = 0 ⇒ a blocker (§8); highest score first`
-- `goal = SMART, T = TTT = (time, event dates) to the goal ∨ a terminus (§7), predicted → actual; check and target fixed before build`
+- `goal = SMART (specific, measurable, achievable, relevant, T = TTT = (time, event dates) to the goal ∨ a terminus (§7)), predicted → actual; check and target fixed before build`
 - `keep ⇔ checks pass ∧ (Δ > noise ∨ ((required ∨ simpler (§9)) ∧ Δ ≥ −noise)); Δ = metric(change) − metric(baseline); noise = the baseline's spread over repeated runs`
 - `same input ∧ different result ⇒ <~>(rate), raised until debuggable`
 - `lock: kept ⇒ baseline := win, target := next Fibonacci; else revert; 2 reverts of one idea ⇒ new approach`
@@ -289,7 +289,7 @@ flowchart TD
   - ⊥: a step with no recorded start or end, a guessed time, or an avoidable terminus hit.
 - Measure: record epoch ms at the start and end of each step. Never guess a time.
 - Calibrate: compare each TTT prediction (§6) with its actual, and carry the ratio into the next one.
-  - A terminus is a limit or event you cannot remove or control: a usage limit, a session limit, a deadline.
+  - A terminus is a limit or event you cannot remove or control: a required path, a usage limit, a deadline.
   - An avoidable hit is the failure. Predict its TTT, and keep the work from hitting it through every vector you control.
   - A hit you cannot avoid: minimize its harm.
 - Parallel: run independent steps together, and shorten the longest chain first.
@@ -297,7 +297,7 @@ flowchart TD
 ### Experis
 - `latency = t_end − t_start, t = recorded epoch ms, never guessed`
 - `ratio = actual / predicted (TTT, §6) ⇒ next prediction × ratio`
-  - `terminus = a limit ∨ an event, ¬removable ∧ ¬controllable; avoidable hit = failure ⇒ predict TTT, keep the work from hitting it through every controllable vector; unavoidable hit ⇒ minimize harm`
+  - `terminus = a limit ∨ an event, ¬removable ∧ ¬controllable (a required path, a usage limit, a deadline); avoidable hit = failure ⇒ predict TTT, keep the work from hitting it through every controllable vector; unavoidable hit ⇒ minimize harm`
 - `independent ⇒ parallel; shorten the longest chain first`
 - `latency(correct result) → 0, each win locked by the ratchet (§6)`
 - `⊥ ⇔ (step ∧ (¬t_start ∨ ¬t_end ∨ guessed(t))) ∨ avoidable hit(terminus)`
@@ -411,7 +411,7 @@ flowchart TD
   - Fix every finding in one batch, and re-check until 0.
   - Never call work done with a contradiction in it: the user is the next process. Each one the user finds in done work is an escape and a ⊥.
   - For each escape, add a check for its class where the work is born (§9).
-- Deliver: update the tracker, then ship to every surface where people will use it (§8). Show what exists, with evidence. The user judges.
+- Deliver: update the tracker, then ship to every surface where people will use it. Show what exists, with evidence. The user judges.
   - The tracker is a task list, todo list or plan. Date each touched object and each parent to the root.
   - Give each its health, events, decisions and risks.
 ### Experis
@@ -423,7 +423,7 @@ flowchart TD
 - `reviewer = fresh adversarial agent, another base model when one exists (§13); input = (PVI², check, result, diff), ¬reasoning`
   - `review = each engine's review; findings ⇒ one batch, re-check until 0`
   - `user = the next process ⇒ ¬done(work ∋ contradiction) (jidoka); found(user, contradiction ∈ done) = escape = ⊥ ⇒ class check where the work is born (§9)`
-- `tracker updated → deliver(every surface of use (§8), what exists, evidence) → the user judges`
+- `tracker updated → deliver(every surface of use, what exists, evidence) → the user judges`
 - `tracker: ∀ o ∈ touched ∪ parents up to root: dated(health, events, decisions, risks)`
 - `⊥ ⇔ found(user, contradiction ∈ done) ∨ (done(thing built) ∧ (¬shown(user's view) ∨ contradictions(tokens, user's view) > 0))`
 ### Imples
@@ -457,7 +457,7 @@ sequenceDiagram
 - Value: less reading, faster understanding.
 - Impact: no wall of text.
   - ⊥: output that is 100% text when a picture could show it.
-- BLUF: one intent line before the first tool call. Lead each output with its result, drawn if it can be drawn.
+- BLUF: one intent line before the first tool call. Lead each output with its result, drawn if you can draw it.
 - Medium: the most effective native interface (§2), and for a thing built, its real interface (§10).
   - Otherwise, the easiest to absorb that is worth the time: video, an HTML page, a diagram, then text. Else a file the user can open.
 - Visuals are relevant and simple. Text adds only what they cannot show.

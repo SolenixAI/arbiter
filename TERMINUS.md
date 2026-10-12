@@ -14,6 +14,8 @@ A terminus is a limit or event that this repo cannot remove or control ([AGENTS.
 | `.github/` | GitHub | Workflows, issue forms and Dependabot. |
 | `.agents/`, `.claude/`, `.cursor/`, `.codex/` | Each agent harness | Each harness loads skills and hooks from its own folder. |
 | `.gitignore` | git | git reads it at the root. |
+| `package.json`, `package-lock.json` | npm | npm reads them to install the experis tools. CI runs `npm ci`. |
+| `tsconfig.json` | TypeScript | `tsc` reads it for the strict typecheck of `experis/`. |
 
 ## Events that others control
 

@@ -13,3 +13,6 @@ experis/body-ratings/
 imples/*.json
 imples/checkpoints/
 **/__pycache__/
+
+# npm packages for the experis tools: installed per machine, never committed.
+node_modules/

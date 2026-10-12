@@ -1,0 +1,20 @@
+{
+  "name": "arbiter",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "gates": "node experis/gates.ts",
+    "measure": "node experis/measure.ts",
+    "pvi": "node experis/pvi.ts",
+    "test": "node --test \"experis/*.test.ts\"",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "js-tiktoken": "1.0.21",
+    "typescript": "7.0.2"
+  }
+}

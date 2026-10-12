@@ -41,9 +41,24 @@ jobs:
         with:
           persist-credentials: false
 
-      # STE, triplets, 9-slot, PVI², pointers, no private ids. Stdlib only.
+      - name: Set up Node 24
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+
+      - name: Install the experis tools
+        run: npm ci
+
+      # The experis tools are strict TypeScript, and each has node:test tests beside it.
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Tests
+        run: npm test
+
+      # STE, triplets, 9-slot, PVI², pointers, no private ids.
       - name: Gates
-        run: python3 experis/gates.py --mermaid "$RUNNER_TEMP/mmd"
+        run: node experis/gates.ts --mermaid "$RUNNER_TEMP/mmd"
 
       # Each mermaid block must render, as GitHub shows it to readers.
       - name: Diagrams render
@@ -52,4 +67,4 @@ jobs:
           for f in "$RUNNER_TEMP"/mmd/*.mmd; do
             npx -y @mermaid-js/mermaid-cli@12.0.0 -q -p "$RUNNER_TEMP/puppeteer.json" -i "$f" -o "${f%.mmd}.svg"
           done
-          ls "$RUNNER_TEMP"/mmd/*.svg | wc -l
+          find "$RUNNER_TEMP/mmd" -name '*.svg' | wc -l
